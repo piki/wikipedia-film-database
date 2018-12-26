@@ -26,4 +26,10 @@ class TestTextHelpers < Test::Unit::TestCase
 		assert_equal("abc", Movie.convert_plainlists("abc"))
 		assert_equal("XX{{ubl|A|B}}YY", Movie.convert_plainlists("XX{{Plainlist|\n* A\n* B\n}}YY"))
 	end
+
+	def text_extract_matched_braces
+		assert_equal("{{abc}}", Movie.extract_matched_braces("{{abc}}def"))
+		assert_equal("{{abc{{def\n}}\nghi}}", Movie.extract_matched_braces("{{abc{{def\n}}\nghi}}jkl"))
+		assert_equal("{{abc{{def}}}}", Movie.extract_matched_braces("{{abc{{def}}}}jkl"))
+	end
 end

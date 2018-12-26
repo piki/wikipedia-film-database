@@ -198,6 +198,24 @@ private
 		end
 	end
 
+	def self.extract_matched_braces(str)
+		fail unless str[0..1] == "{{"
+		ofs = 2
+		depth = 1
+		while depth > 0
+			lofs = str.index("{{", ofs)
+			rofs = str.index("}}", ofs)
+			if lofs < rofs
+				ofs = lofs + 2
+				depth += 1
+			else
+				ofs = rofs + 2
+				depth -= 1
+			end
+		end
+		str[0...ofs]
+	end
+
 	def self.expand_brace_commands(str)
 		str.gsub(/{{(.*?)}}/) do |sub|
 			tok = $1.split('|', 3)
