@@ -22,8 +22,7 @@ class TestGetCast < Test::Unit::TestCase
 			    "companies":["Dino De Laurentiis Communications","Renaissance Pictures","Universal Pictures"],
 			    "year":1992}))
 
-		# companies are in "{{Plainlist" format
-		skip_test_helper("Batman (1966 film)",
+		test_helper("Batman (1966 film)",
 			%Q({"title":"Batman (1966 film)",
 			    "cast":["Adam West","Burt Ward","Lee Meriwether","Cesar Romero","Burgess Meredith","Frank Gorshin","Alan Napier","Neil Hamilton","Stafford Repp","Madge Blake","Reginald Denny","Milton Frome","Gil Perkins","Dick Crockett","George Sawaya","Van Williams"],
 			    "directors":["Leslie H. Martinson"],
@@ -31,8 +30,7 @@ class TestGetCast < Test::Unit::TestCase
 			    "companies":["William Dozier Productions","Greenlawn Productions","20th Century Fox"],
 			    "year":1966}))
 
-		# "{{Plainlist" format, comments in the studio list, stars not in the same order as cast
-		skip_test_helper("Batman (1989 film)",
+		test_helper("Batman (1989 film)",
 			%Q({"title":"Batman (1989 film)",
 			    "cast":["Jack Nicholson","Michael Keaton","Kim Basinger","Robert Wuhl","Pat Hingle","Billy Dee Williams","Michael Gough","Jack Palance","Jerry Hall","Tracey Walter","Lee Wallace","William Hootkins","John Dair","Christopher Fairbank","George Roth","Hugo E. Blick","Charles Roskilly","David Baxt","Sharon Holm","Garrick Hagon","Liza Ross","Adrian Meyers"],
 			    "directors":["Tim Burton"],

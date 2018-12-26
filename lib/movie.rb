@@ -65,11 +65,12 @@ private
 		return nil unless ofs
 
 		ret = {}
-		text[ofs..-1].lines[1..-1].each do |line|
+		convert_plainlists(text[ofs..-1]).lines[1..-1].each do |line|
 			break if line == "}}"
 			p line if Parser.debug
 			next unless line =~ /^\s* \| \s* ([^=]+?) \s* = \s* (.*)/x
-			key, value = $1, $2
+			key, value = $1, $2.strip
+			next if value.empty?
 			case key
 				when "director"
 					if val = parse_infobox_list(value)
@@ -96,6 +97,16 @@ private
 		end
 		ret["companies"].uniq! if ret["companies"]
 		ret
+	end
+
+	# Convert {{Plainlist|...}} commands to {{ubl|...} commands, which are
+	# easier for the rest of get_infobox to handle, because they fit on a
+	# single line.
+	def self.convert_plainlists(str)
+		str.gsub(/{{Plain ?list\|(.*?)}}/im) do
+			entries = $1.lines[1..-1].map { |x| x.gsub(/^\s* \* \s* /x, '').chomp }
+			"{{ubl|#{entries.join('|')}}}"
+		end
 	end
 
 	def self.parse_infobox_list(str)
