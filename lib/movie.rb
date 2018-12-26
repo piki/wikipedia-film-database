@@ -102,7 +102,7 @@ private
 	# easier for the rest of get_infobox to handle, because they fit on a
 	# single line.
 	def self.convert_plainlists(str)
-		str.gsub(/{{Plain ?list\|(.*?)}}/im) do
+		str.gsub(/{{Plain \s* list \s* \|(.*?)}}/xim) do
 			entries = $1.lines[1..-1].map { |x| x.gsub(/^\s* \* \s* /x, '').chomp }
 			"{{ubl|#{entries.join('|')}}}"
 		end

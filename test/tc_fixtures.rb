@@ -122,14 +122,12 @@ class TestGetCast < Test::Unit::TestCase
 			    "companies":["Paramount Pictures"],
 			    "year":1955}))
 
-		# "{{Plainlist" format producers, stars, studio
-		# "{{Infobox album" needs to be ignored
-		skip_test_helper("Taxi Driver",
+		test_helper("Taxi Driver",
 			%Q({"title":"Taxi Driver",
 			    "cast":["Robert De Niro","Jodie Foster","Albert Brooks","Harvey Keitel","Leonard Harris","Peter Boyle","Cybill Shepherd","Steven Prince","Ashley Peidl"],
 			    "directors":["Martin Scorsese"],
-			    "producers":["Julie Phillips,Michael Phillips"],
-			    "companies":["Bill/Phillips Productions","Italo/Judeo Productions","Columbia Pictures"]
+			    "producers":["Julia Phillips","Michael Phillips"],
+			    "companies":["Bill/Phillips Productions","Italo/Judeo Productions","Columbia Pictures"],
 			    "year":1976}))
 
 		# stars, directors, producers separated by HTML tags and the word "and"
