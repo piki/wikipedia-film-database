@@ -172,16 +172,24 @@ class TestGetCast < Test::Unit::TestCase
 	end
 
 private
-	def test_helper(fn, expect_json)
+	def test_helper(fn, expect_json, ignore_mismatch=false)
 		File.open("fixtures/#{fn}.xml") do |fp|
 			parser = Parser.new do |movie|
 				actual_json = movie.to_json
-				assert_equal(expect_json.gsub(/\n\s*/, ''), actual_json)
+				expect_json = expect_json.gsub(/\n\s*/, '')
+				if ignore_mismatch
+					if expect_json != actual_json
+						puts "Ignoring known-broken test: #{fn}"
+					end
+				else
+					assert_equal(expect_json, actual_json)
+				end
 			end
 			Ox.sax_parse(parser, fp, :skip => :skip_none)
 		end
 	end
 
-	def skip_test_helper(*args)
+	def skip_test_helper(fn, expect_json)
+		test_helper(fn, expect_json, true)
 	end
 end
