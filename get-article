@@ -1,0 +1,66 @@
+#!/usr/bin/ruby
+
+if ARGV.size != 1
+	puts "Usage:"
+	puts "  #{$0} \"Article Title\" > output.xml"
+	exit 1
+end
+
+seek_title = ARGV[0]
+$stderr.puts "Looking for " + seek_title.inspect
+
+idx_name = Dir["enwiki-*-pages-articles-multistream-index.txt.bz2"].sort.last
+$stderr.puts "Index file: " + idx_name
+fail unless idx_name
+db_name = Dir["enwiki-*-pages-articles-multistream.xml.bz2"].sort.last
+$stderr.puts "Database file: " + db_name
+fail unless db_name
+
+start_ofs = end_ofs = nil
+IO.popen("bzip2 -cd #{idx_name}") do |fp|
+	fp.each_line do |line|
+		ofs, _, title = line.split(':', 3)
+		title.chomp!
+		if start_ofs && start_ofs != ofs
+			end_ofs = ofs
+			break
+		end
+		start_ofs = ofs if title == seek_title
+	end
+end
+
+start_ofs = start_ofs.to_i
+end_ofs = end_ofs.to_i
+$stderr.puts "#{start_ofs} ... #{end_ofs}"
+
+File.open(db_name) do |fp|
+	fp.seek(start_ofs)
+	File.open("op", "w") do |ofp|
+		ofp.write(fp.read(end_ofs-start_ofs))
+	end
+end
+
+system("bzip2recover op 2> /dev/null")
+rec = Dir["rec?????op.bz2"].sort
+$stderr.puts "Recovery files: #{rec.join(" ")}"
+
+IO.popen("bzip2 -cd #{rec.join(" ")}") do |fp|
+	showing = false
+	fp.each_line do |line|
+		if showing
+			puts line
+			if line =~ /<\/page>/
+				break
+			end
+		else
+			if line =~ /<title>(.*?)<\/title>/ && $1 == seek_title
+				puts "<page>"
+				puts line
+				showing = true
+			end
+		end
+	end
+end
+
+File.unlink("op")
+rec.each { |fn| File.unlink(fn) }

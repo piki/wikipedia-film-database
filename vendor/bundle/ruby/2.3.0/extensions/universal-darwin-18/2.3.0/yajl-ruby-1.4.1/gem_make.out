@@ -1,0 +1,43 @@
+current directory: /Users/patrick/src/wikipedia-film-database/vendor/bundle/ruby/2.3.0/gems/yajl-ruby-1.4.1/ext/yajl
+/System/Library/Frameworks/Ruby.framework/Versions/2.3/usr/bin/ruby -r ./siteconf20181224-72757-1q8ragg.rb extconf.rb
+creating Makefile
+
+current directory: /Users/patrick/src/wikipedia-film-database/vendor/bundle/ruby/2.3.0/gems/yajl-ruby-1.4.1/ext/yajl
+make "DESTDIR=" clean
+
+current directory: /Users/patrick/src/wikipedia-film-database/vendor/bundle/ruby/2.3.0/gems/yajl-ruby-1.4.1/ext/yajl
+make "DESTDIR="
+compiling yajl.c
+compiling yajl_alloc.c
+compiling yajl_buf.c
+compiling yajl_encode.c
+compiling yajl_ext.c
+compiling yajl_gen.c
+yajl_gen.c:295:5: warning: implicit conversion from enumeration type 'yajl_gen_state' to different enumeration type 'yajl_gen_status' [-Wenum-conversion]
+    DECREMENT_DEPTH;
+    ^~~~~~~~~~~~~~~
+yajl_gen.c:181:48: note: expanded from macro 'DECREMENT_DEPTH'
+    if (--(g->depth) >= YAJL_MAX_DEPTH) return yajl_gen_error;
+                                        ~~~~~~ ^~~~~~~~~~~~~~
+yajl_gen.c:321:5: warning: implicit conversion from enumeration type 'yajl_gen_state' to different enumeration type 'yajl_gen_status' [-Wenum-conversion]
+    DECREMENT_DEPTH;
+    ^~~~~~~~~~~~~~~
+yajl_gen.c:181:48: note: expanded from macro 'DECREMENT_DEPTH'
+    if (--(g->depth) >= YAJL_MAX_DEPTH) return yajl_gen_error;
+                                        ~~~~~~ ^~~~~~~~~~~~~~
+2 warnings generated.
+compiling yajl_lex.c
+yajl_lex.c:42:13: warning: enumeration value 'yajl_tok_comment' not handled in switch [-Wswitch]
+    switch (tok) {
+            ^
+yajl_lex.c:42:13: note: add missing switch cases
+    switch (tok) {
+            ^
+1 warning generated.
+compiling yajl_parser.c
+compiling yajl_version.c
+linking shared-object yajl/yajl.bundle
+
+current directory: /Users/patrick/src/wikipedia-film-database/vendor/bundle/ruby/2.3.0/gems/yajl-ruby-1.4.1/ext/yajl
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 yajl.bundle ./.gem.20181224-72757-16sdm88/yajl

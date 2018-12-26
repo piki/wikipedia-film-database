@@ -1,0 +1,55 @@
+#!/usr/bin/ruby
+
+require 'rubygems'
+require 'bundler/setup'
+require 'ox'
+require 'yajl'
+$:.unshift File.expand_path "../lib", __FILE__
+require 'movie'
+require 'parser'
+
+# TODO:
+#   parse year out of the infobox to disambiguate same-named films
+#   parse director and producer out of the infobox
+#   parse studio and distributor out of the infobox
+#   parse stars out of the infobox to augment ==cast==
+#   parse cast tables
+#   save page name (link target) for people and movies
+#   parse redirects to do aliases
+
+Parser.debug = true
+parser = Parser.new do |movie|
+	puts movie.to_json
+end
+Ox.sax_parse(parser, ARGF, :skip => :skip_none)
+
+#
+#
+#const char *non_film_infoboxes[] = {
+#	"television", "musical", "cinema", "media", "radio", "comic",
+#	"soap", "big", "animanga", "character", "play", "doctor", "video",
+#	"book", "hollywood", "album", "person", "audio", "settlement", "stage",
+#	"reality"
+#};
+#
+#static bool infobox_says_film(const std::string &text) {
+#	const int oveccount = 30;
+#	int ovector[oveccount];
+#	int rc = pcre_exec(re_infobox, NULL, text.c_str(), text.size(), 0, 0, ovector, oveccount);
+#	if (rc < 0) {
+#		if (rc == PCRE_ERROR_NOMATCH) return false;
+#		printf("Matching error %d\n", rc);
+#		printf("Candidate string: <<%s>>\n", text.c_str());
+#		exit(1);
+#	}
+#
+#	assert(rc == 2);
+#	std::string infobox = text.substr(ovector[2*1], ovector[2*1+1]-ovector[2*1]);
+#	std::transform(infobox.begin(), infobox.end(), infobox.begin(), ::tolower);
+#	if (infobox == "film") return true;
+#	for (int i=0; i<sizeof(non_film_infoboxes)/sizeof(non_film_infoboxes[0]); i++) {
+#		if (infobox == non_film_infoboxes[i]) return false;
+#	}
+#	printf("INFOBOX: \"%s\"\n", infobox.c_str());
+#	return false;
+#}
