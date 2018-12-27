@@ -104,10 +104,18 @@ private
 	# The `str` parameter should be the entire infobox, not just the line
 	# the plainlist begins on, because plainlists can span several lines.
 	def self.convert_plainlists(str)
-		str.gsub(/{{Plain \s* list \s* \|(.*?)}}/xim) do
-			entries = $1.lines[1..-1].map { |x| x.gsub(/^\s* \* \s* /x, '').chomp }
-			"{{ubl|#{entries.join('|')}}}"
+		while m = /{{Plain \s* list \s* \|(.*?)/xim.match(str)
+			ofs = m.begin(0)
+			eofs = find_end_braces(str, ofs)
+			break unless eofs
+
+			body = str[ofs+2 ... eofs-2]  # omit {{ and }}
+			entries = body.lines[1..-1].map { |x| x.gsub(/^\s* \* \s* /x, '').chomp }
+			
+			replacement = "{{ubl|#{entries.join('|')}}}"
+			str = str[0...ofs] + replacement + str[eofs..-1]
 		end
+		str
 	end
 
 	# Parse a single line from an infobox.  In most cases, the value is a
@@ -116,12 +124,14 @@ private
 	#   - `line` is a single line from an infobox
 	# The return value is always an array, possibly containing just one
 	# element, of all the values found on the infobox line.
-	def self.parse_infobox_list(str)
-		if str =~ /{{ubl\|(.*?)}}/
-			delinkify($1).split('|').map{|s| plain_textify(s)}
-		else
-			[ plain_textify(str) ]
+	def self.parse_infobox_list(line)
+		if m = /{{ubl\|.*/.match(line)
+			if eofs = find_end_braces(line, m.begin(0))
+				body = line[m.begin(0)+6...eofs-2]
+				return expand_brace_commands(delinkify(body)).split('|').map{|s| strip_parenthetical(plain_textify(s))}
+			end
 		end
+		[ plain_textify(line) ]
 	end
 
 	# Parse the "Cast" section out of an article, and return the cast list
@@ -136,7 +146,7 @@ private
 		#   Main cast, Cast, Casting
 		m = /^ =+ \s* (?:Main \s+ cast|Cast|Casting) \b (.*)/xmi.match(text)
 		return nil unless m
-		
+
 		ofs = m.begin(0)
 		fail unless text[ofs] == '='
 		fail unless ofs == 0 || text[ofs-1] != '='
@@ -232,13 +242,19 @@ private
 	end
 
 	def self.extract_matched_braces(str)
-		fail unless str[0..1] == "{{"
-		ofs = 2
+		eofs = find_end_braces(str, 0)
+		eofs ? str[0...eofs] : nil
+	end
+
+	def self.find_end_braces(str, ofs)
+		fail unless str[ofs..ofs+1] == "{{"
+		ofs += 2
 		depth = 1
 		while depth > 0
-			lofs = str.index("{{", ofs)
 			rofs = str.index("}}", ofs)
-			if lofs < rofs
+			return unless rofs
+			lofs = str.index("{{", ofs)
+			if lofs && lofs < rofs
 				ofs = lofs + 2
 				depth += 1
 			else
@@ -246,7 +262,7 @@ private
 				depth -= 1
 			end
 		end
-		str[0...ofs]
+		ofs
 	end
 
 	def self.expand_brace_commands(str)

@@ -32,4 +32,19 @@ class TestTextHelpers < Test::Unit::TestCase
 		assert_equal("{{abc{{def\n}}\nghi}}", Movie.extract_matched_braces("{{abc{{def\n}}\nghi}}jkl"))
 		assert_equal("{{abc{{def}}}}", Movie.extract_matched_braces("{{abc{{def}}}}jkl"))
 	end
+
+	def test_find_end_braces
+		assert_equal(10, Movie.find_end_braces("abc{{def}}ghi", 3))
+		assert_equal(nil, Movie.find_end_braces("abc{{defghi", 3))
+		assert_equal(10, Movie.find_end_braces("abc{{def}}ghi}}", 3))
+		assert_equal(17, Movie.find_end_braces("abc{{de{{f}}ghi}}", 3))
+		assert_equal(9, Movie.find_end_braces("abc{{de}}f{{ghi}}", 3))
+		assert_equal(17, Movie.find_end_braces("abc{{de}}f{{ghi}}", 10))
+	end
+
+	def test_de_refify
+		assert_equal("abc", Movie.de_refify("abc"))
+		assert_equal("abcdef", Movie.de_refify("abc<ref blah blah>def</ref>"))
+		assert_equal("abcdef", Movie.de_refify("abc<ref blah blah />def"))
+	end
 end
