@@ -275,6 +275,7 @@ private
 					tok[1]
 				else
 					puts "BRACE COMMAND: \"#{$1}\"" if Parser.debug
+					""
 			end
 		end
 	end
