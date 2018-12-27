@@ -20,7 +20,7 @@ class Movie
 		cast = get_cast(text)
 		if !cast
 			puts "ERROR: \"#{title}\" is a film with no cast" if Parser.debug
-			return
+			cast = []
 		end
 
 		m = Movie.new(title, nil)
