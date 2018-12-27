@@ -225,7 +225,7 @@ private
 
 	# Chop trailing parenthetical, like "Kevin Bacon (uncredited)"
 	def self.strip_parenthetical(str)
-		str.gsub(/ \(.*/, '')
+		str.gsub(/\s+ \( [^)]+ \) \s* $/x, '')
 	end
 
 	def self.plain_textify(str)
