@@ -1,3 +1,10 @@
+# This file is where the bulk of the work happens.  The `Movie` is a
+# simple structure, and `Movie.parse` is a factory that converts Wikipedia
+# articles to Movie objects.
+#
+# The two most important functions are `Movie.get_infobox` and
+# `Movie.get_cast`, which extract structured data from each article's the
+# infobox (right sidebar) and Cast section, respectively.
 require 'yajl'
 
 class Movie
@@ -8,6 +15,10 @@ class Movie
 		@year = year
 	end
 
+	# Parse an article and return a Movie object.
+	#  - title: the title of the article, from <title>...</title>
+	#  - text: the full text of the article
+	# Returns a Movie object, or nil.
 	def self.parse(title, text)
 		infobox = get_infobox(text)
 		p infobox if infobox && Parser.debug
@@ -60,6 +71,20 @@ class Movie
 	end
 
 private
+	# Find an "{{Infobox film ...}}" block and convert it to a hash with the
+	# release year and lists of actors, director(s), producer(s), companies.
+	# Keys in the infobox are standardized, but values are prose in various
+	# forms:
+	#  - scalar, like "director = Tim Burton"
+	#  - structured lists, like "starring = {{ubl|...}" or
+	#    "starring = {{plainlist|\n...}}
+	#  - unstructured lists like "distributor = Warner<br />Paramount"
+	# Parameters:
+	#  - `text` is a string containing the whole infobox, generally the
+	#    whole article
+	# Returns a hash with zero or more of the following keys: directors,
+	# producers, stars, companies, and year.  Year is an integer, and all
+	# others are arrays of strings.
 	def self.get_infobox(text)
 		ofs = text.index("{{Infobox film")
 		return nil unless ofs
@@ -168,25 +193,16 @@ private
 			line = plain_textify(line)
 			break if /^ [=']+ \s* cast \s+ notes \b/ix.match(line)
 
-			# Try to extract an actor name from that line.  Sample patterns include:
-			# * [[Cleavon Little]] as Sheriff Bart
-			# * Richard Collier plays Dr. Samuel Johnson
-			# *[[Rob Cowan (actor)|Rob Cowan]] - Skip
-			# ** [[Dominic Savage]] voices young Bullingdon
-			# * [[Philip Stone]]  as Graham
-			# * [[Ben Affleck]] (''uncredited'') as Basketball Player #10
-			# *George Roth as Eddie
-			# * [[Van Williams]] (''uncredited voice'') as President [[ ...
-			# There can be {{}} control blocks, [[]] image files, or just plain text above the actual cast list.
-			# There can be arbitrarily long character descriptions after the "as character-name."
-
-
+			# Look for bulleted-list lines, like "* Actor Name as Character Name"
 			if line =~ /^\s* \* \s* (.*)/x
 				line = $1
 			else
 				next
 			end
 
+			# The actor name is the concatenation of all capitalized tokens at
+			# the beginning of the line, with special consideration for quoted
+			# nicknames and lowercase name-joining words like "de la".
 			actor = ""
 			line.split(/[ :]/).each do |word|
 				word.gsub!(/-$/, '')
@@ -199,25 +215,6 @@ private
 			end
 
 			ret << actor if is_legal_actor?(actor)
-
-			# FIXME:
-			#   cast in tables: emile-zola, holy-grail, original-sin, totoro, good-earth, four-daughters, air-command, spirited, random-harvest
-			#   lead actors only listed in prose: roman-holiday
-			#
-			# FIXME:
-			#    bad actors:
-			#      single-word names: Mars, Rufus, Armelle, Otto, Sabu, Skippy, Margo, Sapic, Trigger, Ta-Tanisha
-			#      :fr: Claudio Todeschini
-			#      Christopher Walken/Ray Park
-			#      Pat O'Malley''
-			#      Michael Visocoff, S.T.  (?)
-			#      Ferdinand Gottschalk and Jane Kerr
-			#      70px Jean Harlow  (and others)
-			#      Baby Jane Holzer<ref name=Berkeley />
-			#      Hanks' son, Colin, appears
-			#
-			#   "A, Jr." is a name, but "A, B, and C" is three.
-
 		end
 
 		ret
