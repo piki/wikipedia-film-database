@@ -66,7 +66,6 @@ private
 
 		ret = {}
 		convert_plainlists(extract_matched_braces(text[ofs..-1])).lines[1..-1].each do |line|
-			p line if Parser.debug
 			next unless line =~ /^\s* \| \s* ([^=]+?) \s* = \s* (.*)/x
 			key, value = $1, $2.strip
 			next if value.empty?
