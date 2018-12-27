@@ -229,7 +229,11 @@ private
 	end
 
 	def self.plain_textify(str)
-		expand_brace_commands(delinkify(str))
+		expand_brace_commands(de_refify(delinkify(str)))
+	end
+
+	def self.de_refify(str)
+		str.gsub(/<\/? \s* ref .*?>/x, '')
 	end
 
 	def self.delinkify(str)

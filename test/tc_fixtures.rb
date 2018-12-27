@@ -38,10 +38,7 @@ class TestGetCast < Test::Unit::TestCase
 			    "companies":["Warner Bros. Pictures","Guber-Peters Company"],
 			    "year":1989}))
 
-		# "{{Plainlist" format, stars not in the same order as cast
-		# comments in the production companies list
-		# parentheticals in production companies and distributors
-		skip_test_helper("Evil Dead II",
+		test_helper("Evil Dead II",
 			%Q({"title":"Evil Dead II",
 			    "cast":["Bruce Campbell","Sarah Berry","Dan Hicks","Kassie Wesley","Richard Domeier","Ted Raimi","Denise Bixler","John Peaks","Lou Hancock","William Preston Robertson"],
 			    "directors":["Sam Raimi"],
