@@ -228,11 +228,13 @@ private
 	end
 
 	def self.plain_textify(str)
-		expand_brace_commands(de_refify(delinkify(str)))
+		expand_brace_commands(de_tagify(delinkify(str)))
 	end
 
-	def self.de_refify(str)
-		str.gsub(/<\/? \s* ref .*?>/x, '')
+	def self.de_tagify(str)
+		str.
+			gsub(/<\/? \s* ref .*?>/x, '').  # remove <ref> tags
+			gsub(/<!-- .*? -->/x, '')        # remove <!-- --> comments
 	end
 
 	def self.delinkify(str)

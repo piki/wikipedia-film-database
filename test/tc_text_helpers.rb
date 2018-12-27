@@ -42,9 +42,10 @@ class TestTextHelpers < Test::Unit::TestCase
 		assert_equal(17, Movie.find_end_braces("abc{{de}}f{{ghi}}", 10))
 	end
 
-	def test_de_refify
-		assert_equal("abc", Movie.de_refify("abc"))
-		assert_equal("abcdef", Movie.de_refify("abc<ref blah blah>def</ref>"))
-		assert_equal("abcdef", Movie.de_refify("abc<ref blah blah />def"))
+	def test_de_tagify
+		assert_equal("abc", Movie.de_tagify("abc"))
+		assert_equal("abcdef", Movie.de_tagify("abc<ref blah blah>def</ref>"))
+		assert_equal("abcdef", Movie.de_tagify("abc<ref blah blah />def"))
+		assert_equal("abcdef", Movie.de_tagify("abc<!-- comment -->def"))
 	end
 end

@@ -172,6 +172,14 @@ class TestGetCast < Test::Unit::TestCase
 			    "producers":["Lawrence Gordon","Joel Silver"],
 			    "companies":["Paramount Pictures"],
 			    "year":1982}))
+
+		test_helper("Batman Forever",
+			%Q({"title":"Batman Forever",
+			    "cast":["Val Kilmer","Tommy Lee Jones","Jim Carrey","Nicole Kidman","Michael Gough","Pat Hingle","Chris O'Donnell","Drew Barrymore","Debi Mazar","Elizabeth Sanders","Joe Grifasi","Ofer Samra","René Auberjonois"],
+			    "directors":["Joel Schumacher"],
+			    "producers":["Tim Burton","Peter MacGregor-Scott"],
+			    "companies":["Warner Bros. Pictures"],
+			    "year":1995}))
 	end
 
 	def test_tv_shows
