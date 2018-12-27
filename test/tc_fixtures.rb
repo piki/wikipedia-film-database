@@ -46,9 +46,7 @@ class TestGetCast < Test::Unit::TestCase
 			    "companies":["Don Nafia","Renaissance Pictures","Embassy Communications","De Laurentiis Entertainment Group","Palace Pictures"],
 			    "year":1987}))
 
-		# "{{Plainlist" format
 		# ==Cast== is a table
-		# studio value is blank
 		skip_test_helper("Four Daughters",
 			%Q({"title":"Four Daughters",
 			    "cast":["Priscilla Lane","Rosemary Lane","Lola Lane","Gale Page","Claude Rains"],
@@ -57,7 +55,7 @@ class TestGetCast < Test::Unit::TestCase
 			    "companies":["Warner Bros."],
 			    "year":1938}))
 
-		# "{{Plainlist" format, ==Cast== is a table
+		# ==Cast== is a table
 		skip_test_helper("Monty Python and the Holy Grail",
 			%Q({"title":"Monty Python and the Holy Grail",
 			    "cast":["Graham Chapman","John Cleese","Terry Gilliam","Eric Idle","Terry Jones","Michael Palin","Connie Booth","Carol Cleveland","Neil Innes","Bee Duffell","John Young","Rita Davies","Avril Stewart","Sally Kinghorn","Mark Zycon","Sandy Johnson","Julian Doyle","Richard Burton"],
@@ -66,7 +64,6 @@ class TestGetCast < Test::Unit::TestCase
 
 		# ==Cast== is a table
 		# also, Paul Butcher, Jr.
-		# also, parentheticals after actor/actress names
 		skip_test_helper("My Neighbor Totoro",
 			%Q({"title":"My Neighbor Totoro",
 			    "cast":["Chika Sakamoto","Noriko Hidaka","Hitoshi Takagi","Lisa Michelson","Dakota Fanning","Cheryl Chase","Elle Fanning","Shigesato Itoi","Greg Snegoff","Tim Daly","Sumi Shimamoto","Alexandra Kenworthy","Lea Salonga","Frank Welker","Toshiyuki Amagasa","Kenneth Hartman","Paul Butcher, Jr.","Tanie Kitabayashi","Natalie Core","Pat Carroll","Naoki Tatsuta","Carl Macek","Frank Welker","Chie Kojiro","Brianne Siddall","Hiroko Maruyama","Melanie MacQueen","Kath Soucie","Masashi Hirose","Steve Kramer","Peter Renaday","Machiko Washio","Edie Mirman","Tress MacNeille","Reiko Suzuki","Russi Taylor","Daiki Nakamura","Kerrigan Mahan","Yuko Mizutani","Lara Cody","Bridget Hoffman","Kath Soucie","Tomomichi Nishimura","Doug Stone"],
@@ -93,7 +90,7 @@ class TestGetCast < Test::Unit::TestCase
 			    "companies":["Metro-Goldwyn-Mayer","Loew's Inc."],
 			    "year":1942}))
 
-		# "{{Plainlist" format, ==Cast== in a table
+		# ==Cast== in a table
 		skip_test_helper("Roman Holiday",
 			%Q({"title":"Roman Holiday",
 			    "cast":["Gregory Peck","Audrey Hepburn","Eddie Albert","Hartley Power","Harcourt Williams","Margaret Rawlings","Tullio Carminati","Paolo Carlini","Claudio Ermelli","Paola Borboni","Laura Solari","Alfredo Rizzo","Gorella Gori"],
@@ -111,8 +108,7 @@ class TestGetCast < Test::Unit::TestCase
 			    "companies":["Studio Ghibli","Toho"],
 			    "year":2001}))
 
-		# studio name ends with stray whitespace
-		skip_test_helper("Strategic Air Command (film)",
+		test_helper("Strategic Air Command (film)",
 			%Q({"title":"Strategic Air Command (film)",
 			    "cast":["James Stewart","June Allyson","Frank Lovejoy","Bruce Bennett","Barry Sullivan","Alex Nicol","Jay C. Flippen","Harry Morgan"],
 			    "directors":["Anthony Mann"],
@@ -132,7 +128,6 @@ class TestGetCast < Test::Unit::TestCase
 		# "(associate producer)" on its own line is not a third producer.
 		# ==Cast== is two tables, the first of which has two columns
 		# ===Unbilled=== sub of ==Cast== is a comma-separated English sentence
-		# studio= is blank
 		skip_test_helper("The Good Earth (film)",
 			%Q({"title":"The Good Earth (film)",
 			    "cast":["Paul Muni","Luise Rainer","Tilly Losch","Charley Grapewin","Walter Connolly","Jessie Ralph","Soo Yong","Keye Luke","Roland Lui","Suzanna Kim","Ching Wah Lee","Harold Huber","Olaf Hytten","William Law","Mary Wong","Charles Middleton","Chester Gan","Richard Loo","Kam Tong","Victor Sen Yung","Philip Ahn","Bessie Loo","Clarence Lung","Sammee Tong","Richard Daniel Cazares"],
