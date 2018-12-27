@@ -233,7 +233,7 @@ private
 	end
 
 	def self.delinkify(str)
-		str.gsub(/\[\[(.*?)\]\]/) do |sub|
+		str.gsub(/\[\[ (.*?) \]\]/x) do |sub|
 			tok = $1.split('|', 2)
 			# tok.first is the title of the target page
 			# tok.last is the anchor text
