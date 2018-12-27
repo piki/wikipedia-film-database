@@ -49,7 +49,9 @@ class TestGetCast < Test::Unit::TestCase
 			    "companies":["Don Nafia","Renaissance Pictures","Embassy Communications","De Laurentiis Entertainment Group","Palace Pictures"],
 			    "year":1987}))
 
-		# "{{Plainlist" format, studio value is blank
+		# "{{Plainlist" format
+		# ==Cast== is a table
+		# studio value is blank
 		skip_test_helper("Four Daughters",
 			%Q({"title":"Four Daughters",
 			    "cast":["Priscilla Lane","Rosemary Lane","Lola Lane","Gale Page","Claude Rains"],
@@ -66,6 +68,7 @@ class TestGetCast < Test::Unit::TestCase
 			    "year":1975}))
 
 		# stray HTML tags in stars list, "Unknown"
+		# ==Cast== is a table
 		# also, Paul Butcher, Jr.
 		# also, parentheticals after actor/actress names
 		skip_test_helper("My Neighbor Totoro",

@@ -101,6 +101,8 @@ private
 	# Convert {{Plainlist|...}} commands to {{ubl|...} commands, which are
 	# easier for the rest of get_infobox to handle, because they fit on a
 	# single line.
+	# The `str` parameter should be the entire infobox, not just the line
+	# the plainlist begins on, because plainlists can span several lines.
 	def self.convert_plainlists(str)
 		str.gsub(/{{Plain \s* list \s* \|(.*?)}}/xim) do
 			entries = $1.lines[1..-1].map { |x| x.gsub(/^\s* \* \s* /x, '').chomp }
@@ -108,6 +110,12 @@ private
 		end
 	end
 
+	# Parse a single line from an infobox.  In most cases, the value is a
+	# scalar, but in some, it's a {{ubl|...}} command that needs to be
+	# parsed out into an array.
+	#   - `line` is a single line from an infobox
+	# The return value is always an array, possibly containing just one
+	# element, of all the values found on the infobox line.
 	def self.parse_infobox_list(str)
 		if str =~ /{{ubl\|(.*?)}}/
 			delinkify($1).split('|').map{|s| plain_textify(s)}
@@ -116,7 +124,16 @@ private
 		end
 	end
 
+	# Parse the "Cast" section out of an article, and return the cast list
+	# as an array.  The Cast section can appear in several formats: bulleted
+	# lists, individual lines, tables, prose, etc.  It is this function's
+	# job to parse all such formats.
+	# This function does not parse the "starring" list in the infobox.
+	#   - `text` is the article body, or at least the Cast section
+	# The return value is an array of actors' names.
 	def self.get_cast(text)
+		# Allow several different formats for the Cast section heading:
+		#   Main cast, Cast, Casting
 		m = /^ =+ \s* (?:Main \s+ cast|Cast|Casting) \b (.*)/xmi.match(text)
 		return nil unless m
 		
@@ -124,13 +141,19 @@ private
 		fail unless text[ofs] == '='
 		fail unless ofs == 0 || text[ofs-1] != '='
 
+		# Figure out what header depth (e.g., "== Cast ==" is 2) the Cast
+		# section is.
 		section_depth = 0
 		while text[ofs+section_depth] == '='
 			section_depth += 1
 		end
 
+		# Parse from the beginning of the Cast section, to either the end of
+		# the section or the end of the article, looking for lines that
+		# identify an actor.
 		ret = []
 		text[ofs..-1].lines[1..-1].each do |line|
+			# Stop when we reach the beginning of another (equal or higher) section
 			break if is_section_start(line, section_depth)
 			line = plain_textify(line)
 			break if /^ [=']+ \s* cast \s+ notes \b/ix.match(line)
