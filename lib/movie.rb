@@ -246,7 +246,7 @@ private
 
 	def self.extract_matched_braces(str)
 		eofs = find_end_braces(str, 0)
-		eofs ? str[0...eofs] : nil
+		eofs ? str[0...eofs] : str
 	end
 
 	def self.find_end_braces(str, ofs)

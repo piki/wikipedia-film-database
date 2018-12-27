@@ -162,6 +162,16 @@ class TestGetCast < Test::Unit::TestCase
 			    "producers":["David Wilson"],
 			    "companies":["First Run Features","Castle Hill Productions","National Film Board of Canada"],
 			    "year":1990}))
+
+		# '}' where there should be '}}', so infobox has no end
+		# producers separated by HTML tags
+		skip_test_helper("48 Hrs.",
+			%Q({"title":"48 Hrs.",
+			    "cast":["Nick Nolte","Eddie Murphy","James Remar","David Patrick Kelly","Sonny Landham","Brion James","Annette O'Toole","Frank McRae","Kerry Sherman","Jonathan Banks","Margot Rose","Denise Crosby","Olivia Brown"],
+			    "directors":["Walter Hill"],
+			    "producers":["Lawrence Gordon","Joel Silver"],
+			    "companies":["Paramount Pictures"],
+			    "year":1982}))
 	end
 
 	def test_tv_shows
