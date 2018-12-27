@@ -152,6 +152,16 @@ class TestGetCast < Test::Unit::TestCase
 			    "producers":["Henry Blanke"],
 			    "companies":["Warner Bros."],
 			    "year":1937}))
+
+		# stars, companies separated by HTML tags
+		# producer line has "/ ..."
+		skip_test_helper("The Company of Strangers",
+			%Q({"title":"The Company of Strangers",
+			    "cast":["Alice Diabo","Constance Garneau"],
+			    "directors":["Cynthia Scott"],
+			    "producers":["David Wilson"],
+			    "companies":["First Run Features","Castle Hill Productions","National Film Board of Canada"],
+			    "year":1990}))
 	end
 
 	def test_tv_shows
