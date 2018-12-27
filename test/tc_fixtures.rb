@@ -64,7 +64,6 @@ class TestGetCast < Test::Unit::TestCase
 			    "companies":["Python (Monty) Pictures","Michael White Productions","National Film Trustee Company","EMI Films"],
 			    "year":1975}))
 
-		# stray HTML tags in stars list, "Unknown"
 		# ==Cast== is a table
 		# also, Paul Butcher, Jr.
 		# also, parentheticals after actor/actress names
@@ -76,7 +75,7 @@ class TestGetCast < Test::Unit::TestCase
 			    "companies":["Studio Ghibli","Toho"],
 			    "year":1988}))
 
-		# ==Cast== in a table, stray HTML tags in stars and producers lists
+		# ==Cast== in a table
 		skip_test_helper("Original Sin (2001 film)",
 			%Q({"title":"Original Sin (2001 film)",
 			    "cast":["Antonio Banderas","Angelina Jolie","Thomas Jane","Jack Thompson","Gregory Itzin","Pedro Armendáriz, Jr.","James Haven","Allison Mackie","Joan Pringle","Cordelia Richards","Pedro Armendariz","Mario Ivan Martinez","Harry Porter","Fernando Torre Lapham","Shaula Vega","Lisa Owen","Daniel Martínez","Farnesio De Bernal","Nitzi Arellano","Roger Cudney","Adrian Makala","Francis Laborial","Derek Rojo","Abraham Stavans","Julio Bracho"],
@@ -85,7 +84,7 @@ class TestGetCast < Test::Unit::TestCase
 			    "companies":["Hyde Park Entertainment","Metro–Goldwyn–Mayer","MGM Distribution Co."],
 			    "year":2001}))
 
-		# ==Cast== in a table, stray HTML tags in stars list
+		# ==Cast== in a table
 		skip_test_helper("Random Harvest (film)",
 			%Q({"title":"Random Harvest (film)",
 			    "cast":["Ronald Colman","Greer Garson","Philip Dorn","Susan Peters","Henry Travers","Reginald Owen","Bramwell Fletcher","Rhys Williams","Una O'Connor","Aubrey Mather","Margaret Wycherly","Arthur Margetson","Melville Cooper","Alan Napier","Jill Esmond","Ivan F. Simpson","Ann Richards","Norma Varden","David Cavendish","Marie De Becker","Charles Waldron","Elisabeth Risdon"],
@@ -112,7 +111,6 @@ class TestGetCast < Test::Unit::TestCase
 			    "companies":["Studio Ghibli","Toho"],
 			    "year":2001}))
 
-		#	==Cast== in a table, stray HTML tags in stars list
 		# studio name ends with stray whitespace
 		skip_test_helper("Strategic Air Command (film)",
 			%Q({"title":"Strategic Air Command (film)",
@@ -130,7 +128,7 @@ class TestGetCast < Test::Unit::TestCase
 			    "companies":["Bill/Phillips Productions","Italo/Judeo Productions","Columbia Pictures"],
 			    "year":1976}))
 
-		# stars, directors, producers separated by HTML tags and the word "and"
+		# stars, directors, producers separated by the word "and"
 		# "(associate producer)" on its own line is not a third producer.
 		# ==Cast== is two tables, the first of which has two columns
 		# ===Unbilled=== sub of ==Cast== is a comma-separated English sentence
@@ -143,7 +141,6 @@ class TestGetCast < Test::Unit::TestCase
 			    "companies":["Metro-Goldwyn-Mayer"],
 			    "year":1937}))
 
-		# stars separated by HTML tags
 		# ==Cast== in a table
 		skip_test_helper("The Life of Emile Zola",
 			%Q({"title":"The Life of Emile Zola",
@@ -153,7 +150,6 @@ class TestGetCast < Test::Unit::TestCase
 			    "companies":["Warner Bros."],
 			    "year":1937}))
 
-		# stars, companies separated by HTML tags
 		# producer line has "/ ..."
 		skip_test_helper("The Company of Strangers",
 			%Q({"title":"The Company of Strangers",
@@ -163,9 +159,7 @@ class TestGetCast < Test::Unit::TestCase
 			    "companies":["First Run Features","Castle Hill Productions","National Film Board of Canada"],
 			    "year":1990}))
 
-		# '}' where there should be '}}', so infobox has no end
-		# producers separated by HTML tags
-		skip_test_helper("48 Hrs.",
+		test_helper("48 Hrs.",
 			%Q({"title":"48 Hrs.",
 			    "cast":["Nick Nolte","Eddie Murphy","James Remar","David Patrick Kelly","Sonny Landham","Brion James","Annette O'Toole","Frank McRae","Kerry Sherman","Jonathan Banks","Margot Rose","Denise Crosby","Olivia Brown"],
 			    "directors":["Walter Hill"],

@@ -118,8 +118,8 @@ private
 	end
 
 	# Parse a single line from an infobox.  In most cases, the value is a
-	# scalar, but in some, it's a {{ubl|...}} command that needs to be
-	# parsed out into an array.
+	# scalar, but in some, it's a {{ubl|...}} command or an "A<br />B<br />C"
+	# sequence that needs to be parsed out into an array.
 	#   - `line` is a single line from an infobox
 	# The return value is always an array, possibly containing just one
 	# element, of all the values found on the infobox line.
@@ -130,7 +130,8 @@ private
 				return expand_brace_commands(delinkify(body)).split('|').map{|s| strip_parenthetical(plain_textify(s))}
 			end
 		end
-		[ plain_textify(line) ]
+		arr = line.split(/<br \s* \/? >/xi)  # <br/> or <br>
+		arr.map { |tok| plain_textify(tok) }
 	end
 
 	# Parse the "Cast" section out of an article, and return the cast list
