@@ -270,12 +270,24 @@ private
 
 	def self.expand_brace_commands(str)
 		str.gsub(/{{(.*?)}}/) do |sub|
-			tok = $1.split('|', 3)
-			case tok.first
+			tok = $1.split('|', 4)
+			case tok.first.downcase
+				# https://en.wikipedia.org/wiki/Template:Anchor
 				when "anchor"
 					""
+
+				# https://en.wikipedia.org/wiki/Template:Interlanguage_link
 				when "ill", "Interlanguage link multi"
 					tok[1]
+
+				# https://en.wikipedia.org/wiki/Template:Sortname
+				when "sortname"
+					tok[1..2].join(' ')
+
+				# https://en.wikipedia.org/wiki/Template:Sort
+				when "sort"
+					tok[2]
+
 				else
 					puts "BRACE COMMAND: \"#{$1}\"" if Parser.debug
 					""

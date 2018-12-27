@@ -48,4 +48,12 @@ class TestTextHelpers < Test::Unit::TestCase
 		assert_equal("abcdef", Movie.de_tagify("abc<ref blah blah />def"))
 		assert_equal("abcdef", Movie.de_tagify("abc<!-- comment -->def"))
 	end
+
+	def test_expand_brace_commands
+		# sort
+		assert_equal("Richard Burton", Movie.plain_textify("{{sort|Burton|[[Black Knight (Monty Python) #Performance difficulty|Richard Burton]]}}"))
+		# sortname
+		assert_equal("John Cleese", Movie.plain_textify("{{sortname|John|Cleese}}"))
+		assert_equal("Bee Duffell", Movie.plain_textify("{{sortname|Bee|Duffell|nolink=y}}"))
+	end
 end
