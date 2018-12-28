@@ -250,13 +250,17 @@ private
 	end
 
 	def self.find_end_braces(str, ofs)
-		fail unless str[ofs..ofs+1] == "{{"
+		find_block_end(str, ofs, "{{", "}}")
+	end
+
+	def self.find_block_end(str, ofs, ldelim, rdelim)
+		fail unless str[ofs..ofs+1] == ldelim
 		ofs += 2
 		depth = 1
 		while depth > 0
-			rofs = str.index("}}", ofs)
+			rofs = str.index(rdelim, ofs)
 			return unless rofs
-			lofs = str.index("{{", ofs)
+			lofs = str.index(ldelim, ofs)
 			if lofs && lofs < rofs
 				ofs = lofs + 2
 				depth += 1
