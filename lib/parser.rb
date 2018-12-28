@@ -49,7 +49,14 @@ class Parser < ::Ox::Sax
 
 private
 	def end_page
-		m = Movie.parse(@title, @text)
+		begin
+			m = Movie.parse(@title, @text)
+		rescue => e
+			puts "EXCEPTION parsing #{@title.inspect}:"
+			puts e
+			puts e.backtrace
+			raise unless @@debug
+		end
 		@block.call(m) if m
 		reset
 	end
