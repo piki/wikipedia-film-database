@@ -202,24 +202,28 @@ private
 				next
 			end
 
-			# The actor name is the concatenation of all capitalized tokens at
-			# the beginning of the line, with special consideration for quoted
-			# nicknames and lowercase name-joining words like "de la".
-			actor = ""
-			line.split(/[ :]/).each do |word|
-				word.gsub!(/-$/, '')
-				if word =~ /^[A-Z"']/ || is_name_connector(word)
-					actor << " " unless actor.empty?
-					actor << word
-				else
-					break
-				end
-			end
-
+			actor = get_actor_from_line(line)
 			ret << actor if is_legal_actor?(actor)
 		end
 
 		ret
+	end
+
+	def self.get_actor_from_line(line)
+		# The actor name is the concatenation of all capitalized tokens at
+		# the beginning of the line, with special consideration for quoted
+		# nicknames and lowercase name-joining words like "de la".
+		actor = ""
+		line.split(/[ :]/).each do |word|
+			word.gsub!(/-$/, '')
+			if word =~ /^[A-Z"']/ || is_name_connector(word)
+				actor << " " unless actor.empty?
+				actor << word
+			else
+				break
+			end
+		end
+		actor
 	end
 
 	# Chop trailing parenthetical, like "Kevin Bacon (uncredited)"
