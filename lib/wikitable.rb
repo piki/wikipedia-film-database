@@ -30,9 +30,10 @@ class WikiTable
 			line = $1
 		end
 
-		line.split(/\s* \|\| \s*/x).each_with_index do |tok, idx|
+		# split at || or !!
+		line.split(/\s* (?: \|\| | !!) \s*/x).each_with_index do |tok, idx|
 			next_cell unless idx == 0
-			if tok =~ /\s* (?:scope|style|width) \s* = .*? \s* \| \s* (.*)/x
+			if tok =~ /\s* (?:rowspan|colspan|scope|style|width) \s* = .*? \s* \| \s* (.*)/x
 				tok = $1
 			end
 			@data[@row] ||= []

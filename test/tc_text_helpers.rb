@@ -137,6 +137,23 @@ class TestTextHelpers < Test::Unit::TestCase
 			'| Cell C',
 			'|}')
 
+		# 3x3 table with headings
+		table_helper([
+			["Column heading 1", "Column heading 2", "Column heading 3"],
+			["Row heading 1", "Cell 2", "Cell 3"],
+			["Row heading A", "Cell B", "Cell C"]],
+			'{| border="1"',
+			'|+ The caption',
+			'! Column heading 1 !! Column heading 2 !! Column heading 3',
+			'|-',
+			'! scope="row" | Row heading 1',
+			'| Cell 2 || Cell 3',
+			'|-',
+			'! scope="row" | Row heading A',
+			'| Cell B',
+			'| Cell C',
+			'|}')
+
 		table_helper([
 			[ "× ", "1 ", "2 ", "3" ],
 			[ "1", "1", "2", "3" ],
@@ -253,6 +270,30 @@ class TestTextHelpers < Test::Unit::TestCase
 			'! Row heading',
 			'| On each row, of a table, the centering of the text will happen...',
 			'| short text',
+			'|}')
+
+		# table with spans
+		table_helper([
+			[ "First header", "Second header" ],
+			[ "upper left", "&nbsp;", "\nright side" ],
+			[ "lower left", "lower middle" ],
+			[ "\ncontent" ]],
+			'{| border="1" cellpadding="5" cellspacing="0" align="center"',
+			'|+ An example table',
+			'|-',
+			'! style="background: #efefef;" | First header',
+			'! colspan="2" style="background: #ffdead;" | Second header',
+			'|-',
+			'| upper left',
+			'| &nbsp;',
+			'| rowspan="2" style="border-bottom: 3px solid grey;" valign="top" |',
+			'right side',
+			'|-',
+			'| style="border-bottom: 3px solid grey;" | lower left',
+			'| style="border-bottom: 3px solid grey;" | lower middle',
+			'|-',
+			'| colspan="3" align="center" |',
+			'content',
 			'|}')
 	end
 
