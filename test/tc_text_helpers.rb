@@ -56,4 +56,213 @@ class TestTextHelpers < Test::Unit::TestCase
 		assert_equal("John Cleese", Movie.plain_textify("{{sortname|John|Cleese}}"))
 		assert_equal("Bee Duffell", Movie.plain_textify("{{sortname|Bee|Duffell|nolink=y}}"))
 	end
+
+	def test_wikitables
+		# trivial one-cell table
+		table_helper([["one cell"]],
+			"{|",
+			"| one cell",
+			"|}")
+
+		# ignore the caption
+		table_helper([["foo"]],
+			"{|",
+			"|+ caption",
+			"| foo",
+			"|}")
+
+		# 2x2 table with || delimeters
+		table_helper([["foo", "bar"], ["xxx", "yyy"]],
+			"{|",
+			"|-",
+			"| foo || bar",
+			"|-",
+			"| xxx || yyy",
+			"|-",
+			"|}")
+
+		# 2x2 table with one cell per line
+		table_helper([["foo", "bar"], ["xxx", "yyy"]],
+			"{|",
+			"| foo",
+			"| bar",
+			"|-",
+			"| xxx",
+			"| yyy",
+			"|-",
+			"|}")
+
+		# 3x1 table with mixed delimeters
+		table_helper([["aaa", "bbb", "ccc"]],
+			"{|",
+			"|-",
+			"| aaa",
+			"| bbb || ccc",
+			"|-",
+			"|}")
+
+		# one-cell table; "|" is not a cell separator
+		table_helper([["single | pipes"]],
+			"{|",
+			"|-",
+			"| single | pipes",
+			"|-",
+			"|}")
+
+		# one-cell table; "\n" is not a cell separator
+		table_helper([["aa\nbb"]],
+			"{|",
+			"|-",
+			"| aa",
+			"bb",
+			"|-",
+			"|}")
+
+		# 3x3 table with headings
+		table_helper([
+			["Column heading 1", "Column heading 2", "Column heading 3"],
+			["Row heading 1", "Cell 2", "Cell 3"],
+			["Row heading A", "Cell B", "Cell C"]],
+			'{| border="1"',
+			'|+ The caption',
+			'! scope="col" | Column heading 1',
+			'! scope="col" | Column heading 2',
+			'! scope="col" | Column heading 3',
+			'|-',
+			'! scope="row" | Row heading 1',
+			'| Cell 2 || Cell 3',
+			'|-',
+			'! scope="row" | Row heading A',
+			'| Cell B',
+			'| Cell C',
+			'|}')
+
+		table_helper([
+			[ "× ", "1 ", "2 ", "3" ],
+			[ "1", "1", "2", "3" ],
+			[ "2", "2", "4", "6" ],
+			[ "3", "3", "6", "9" ],
+			[ "4", "4", "8", "12" ],
+			[ "5", "5", "10", "15" ]],
+			'{| class="wikitable" style="text-align: center; width: 200px; height: 200px;"',
+			'|+ Multiplication table',
+			'|-',
+			'! scope="col" | × ',
+			'! scope="col" | 1 ',
+			'! scope="col" | 2 ',
+			'! scope="col" | 3',
+			'|-',
+			'! scope="row" | 1',
+			'| 1 || 2 || 3',
+			'|-',
+			'! scope="row" | 2',
+			'| 2 || 4 || 6',
+			'|-',
+			'! scope="row" | 3',
+			'| 3 || 6 || 9',
+			'|-',
+			'! scope="row" | 4',
+			'| 4 || 8 || 12',
+			'|-',
+			'! scope="row" | 5',
+			'| 5 || 10 || 15',
+			'|}')
+
+		# We should ignore all styles
+		table_helper([
+			[ "abc", "def", "ghi" ],
+			[ "jkl", "mno", "pqr" ],
+			[ "stu", "vwx", "yz" ]],
+			'{| style="background: yellow; color: green"',
+			'|-',
+			'| abc || def || ghi',
+			'|- style="background: red; color: white"',
+			'| jkl || mno || pqr',
+			'|-',
+			'| stu || style="background: silver" | vwx || yz',
+			'|}')
+
+		table_helper([
+			[ "abc", "def", "ghi" ],
+			[ "jkl", "mno", "pqr" ],
+			[ "stu", "vwx", "yz" ]],
+			'{| style="width: 75%; height: 200px" border="1"',
+			'|-',
+			'| abc || def || ghi',
+			'|- style="height: 100px;"',
+			'| jkl || style="width: 200px;" | mno || pqr',
+			'|-',
+			'| stu || vwx || yz',
+			'|}')
+
+		table_helper([
+			[ "Name", "Effect", "Games Found In" ],
+			[ "Poké Ball", "Regular Poké Ball", "All Versions" ],
+			[ "Great Ball", "Better than a Poké Ball", "All Versions" ]],
+			'{| border="1" cellpadding="2"',
+			'! scope="col" width="50" | Name',
+			'! scope="col" width="225" | Effect',
+			'! scope="col" width="225" | Games Found In',
+			'|-',
+			'| Poké Ball || Regular Poké Ball || All Versions',
+			'|-',
+			'| Great Ball || Better than a Poké Ball || All Versions',
+			'|}')
+
+		table_helper([
+			[ "This column is 100 points wide", "This column is 200 points wide", "This column is 300 points wide" ],
+			[ "blah", "blih", "bluh" ]],
+			'{| border="1" cellpadding="2"',
+			'|-',
+			'| width="100pt" | This column is 100 points wide',
+			'| width="200pt" | This column is 200 points wide',
+			'| width="300pt" | This column is 300 points wide',
+			'|-',
+			'| blah || blih || bluh',
+			'|}')
+
+		# 
+		table_helper([
+			[ "Left", "Middle", "Right" ],
+			[ "\n[[File:StarIconBronze.png|120px]]", "\n[[File:StarIconGold.png|120px|Caption when mouse-over image]]", "<!--greenish border-->\n[[File:StarIconGreen.png|120px|Green stellar icon]]" ],
+			[ "Bronze star", "Gold star", "Green star" ]],
+			'{| cellpadding="2" style="border: 1px solid darkgray;"',
+			'! width="140" | Left',
+			'! width="150" | Middle',
+			'! width="130" | Right',
+			'|- align="center"',
+			'| style="border: 1px solid blue;"|',
+			'[[File:StarIconBronze.png|120px]]',
+			'| style="border: 1px solid #777777;"|',
+			'[[File:StarIconGold.png|120px|Caption when mouse-over image]]',
+			'| style="border: 1px solid #22AA55;"|<!--greenish border-->',
+			'[[File:StarIconGreen.png|120px|Green stellar icon]]',
+			'|- align="center"',
+			'|Bronze star || Gold star || Green star',
+			'|}')
+
+		table_helper([
+			[ "Row heading", "A longer piece of text. Each cell of a table...", "short text" ],
+			[ "Row heading", "On each row, of a table, the centering of the text will happen...", "short text" ]],
+			'{| border="1" cellpadding="2" width="400"',
+			'|- valign="top"',
+			'! width="10%" | Row heading',
+			'| width="70%" | A longer piece of text. Each cell of a table...',
+			'| width="20%" | short text',
+			'|- valign="top"',
+			'! Row heading',
+			'| On each row, of a table, the centering of the text will happen...',
+			'| short text',
+			'|}')
+	end
+
+	def table_helper(expect, *lines)
+		wt = WikiTable.new
+		lines.each do |line|
+			wt.line(line)
+		end
+		assert_equal(expect, wt.data)
+		assert_raises(RuntimeError) { wt.line("foo") }
+		wt
+	end
 end

@@ -6,6 +6,8 @@
 # `Movie.get_cast`, which extract structured data from each article's the
 # infobox (right sidebar) and Cast section, respectively.
 require 'yajl'
+$:.unshift File.expand_path "../../lib", __FILE__
+require 'wikitable'
 
 class Movie
 	attr_accessor :title, :cast, :directors, :producers, :companies, :year
