@@ -189,9 +189,28 @@ private
 		# the section or the end of the article, looking for lines that
 		# identify an actor.
 		ret = []
+		table = nil
 		text[ofs..-1].lines[1..-1].each do |line|
 			# Stop when we reach the beginning of another (equal or higher) section
 			break if is_section_start(line, section_depth)
+
+			if !table && line =~ /^{\|/
+				table = WikiTable.new
+				next
+			end
+			if table
+				table.line(line)
+				if line =~ /^\|}/
+					# end of table
+					actors = get_actors_from_table(table.data)
+					actors.each do |actor|
+						ret << actor if is_legal_actor?(actor)
+					end
+					table = nil
+				end
+				next
+			end
+
 			line = plain_textify(line)
 			break if /^ [=']+ \s* cast \s+ notes \b/ix.match(line)
 
@@ -206,6 +225,25 @@ private
 			ret << actor if is_legal_actor?(actor)
 		end
 
+		ret
+	end
+
+	def self.get_actors_from_table(data)
+		top_row = data.first
+		actor_columns = (0...top_row.size).select { |idx| top_row[idx] =~ /\b (actor|actress) \b/ix }
+		return [] if actor_columns.empty?
+		puts "Cast table: #{top_row.inspect} => #{actor_columns.inspect}" if Parser.debug
+		ret = []
+		data[1..-1].each do |row|
+			actor_columns.each do |col|
+				next unless row[col]
+				actor = get_actor_from_line(plain_textify(row[col]))
+				if is_legal_actor?(actor)
+					puts "actor from table col #{col}: #{actor.inspect}" if Parser.debug
+					ret << actor
+				end
+			end
+		end
 		ret
 	end
 
@@ -318,6 +356,6 @@ private
 	end
 
 	def self.is_legal_actor?(str)
-		!str.empty? && str != "The" && str != "In"
+		str && !str.empty? && str != "The" && str != "In"
 	end
 end

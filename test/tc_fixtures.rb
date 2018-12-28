@@ -46,17 +46,16 @@ class TestGetCast < Test::Unit::TestCase
 			    "companies":["Don Nafia","Renaissance Pictures","Embassy Communications","De Laurentiis Entertainment Group","Palace Pictures"],
 			    "year":1987}))
 
-		# ==Cast== is a table
+		# ==Cast== is a 2-column table
 		skip_test_helper("Four Daughters",
 			%Q({"title":"Four Daughters",
-			    "cast":["Priscilla Lane","Rosemary Lane","Lola Lane","Gale Page","Claude Rains"],
+			    "cast":["Priscilla Lane","Rosemary Lane","Lola Lane","Gale Page","John Garfield","Jeffrey Lynn","May Robson","Frank McHugh","Claude Rains","Dick Foran","Claude Rains"],
 			    "directors":["Michael Curtiz"],
 			    "producers":["Hal B. Wallis"],
 			    "companies":["Warner Bros."],
 			    "year":1938}))
 
-		# ==Cast== is a table
-		skip_test_helper("Monty Python and the Holy Grail",
+		test_helper("Monty Python and the Holy Grail",
 			%Q({"title":"Monty Python and the Holy Grail",
 			    "cast":["Graham Chapman","John Cleese","Terry Gilliam","Eric Idle","Terry Jones","Michael Palin","Connie Booth","Carol Cleveland","Neil Innes","Bee Duffell","John Young","Rita Davies","Avril Stewart","Sally Kinghorn","Mark Zycon","Sandy Johnson","Julian Doyle","Richard Burton"],
 			    "companies":["Python (Monty) Pictures","Michael White Productions","National Film Trustee Company","EMI Films"],
@@ -72,8 +71,7 @@ class TestGetCast < Test::Unit::TestCase
 			    "companies":["Studio Ghibli","Toho"],
 			    "year":1988}))
 
-		# ==Cast== in a table
-		skip_test_helper("Original Sin (2001 film)",
+		test_helper("Original Sin (2001 film)",
 			%Q({"title":"Original Sin (2001 film)",
 			    "cast":["Antonio Banderas","Angelina Jolie","Thomas Jane","Jack Thompson","Gregory Itzin","Pedro Armendáriz, Jr.","James Haven","Allison Mackie","Joan Pringle","Cordelia Richards","Pedro Armendariz","Mario Ivan Martinez","Harry Porter","Fernando Torre Lapham","Shaula Vega","Lisa Owen","Daniel Martínez","Farnesio De Bernal","Nitzi Arellano","Roger Cudney","Adrian Makala","Francis Laborial","Derek Rojo","Abraham Stavans","Julio Bracho"],
 			    "directors":["Michael Cristofer"],
@@ -81,8 +79,7 @@ class TestGetCast < Test::Unit::TestCase
 			    "companies":["Hyde Park Entertainment","Metro–Goldwyn–Mayer","MGM Distribution Co."],
 			    "year":2001}))
 
-		# ==Cast== in a table
-		skip_test_helper("Random Harvest (film)",
+		test_helper("Random Harvest (film)",
 			%Q({"title":"Random Harvest (film)",
 			    "cast":["Ronald Colman","Greer Garson","Philip Dorn","Susan Peters","Henry Travers","Reginald Owen","Bramwell Fletcher","Rhys Williams","Una O'Connor","Aubrey Mather","Margaret Wycherly","Arthur Margetson","Melville Cooper","Alan Napier","Jill Esmond","Ivan F. Simpson","Ann Richards","Norma Varden","David Cavendish","Marie De Becker","Charles Waldron","Elisabeth Risdon"],
 			    "directors":["Mervyn LeRoy"],
@@ -191,9 +188,7 @@ private
 				actual_json = movie.to_json
 				expect_json = expect_json.gsub(/\n\s*/, '')
 				if ignore_mismatch
-					if expect_json != actual_json
-						puts "Ignoring known-broken test: #{fn}"
-					end
+					puts "Known-broken test #{fn}: " + ((expect_json == actual_json) ? "FIXED" : "still broken")
 				else
 					assert_equal(expect_json, actual_json)
 				end
