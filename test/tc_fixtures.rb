@@ -206,6 +206,17 @@ class TestGetCast < Test::Unit::TestCase
 			    "producers":["Ralph Nelson"],
 			    "companies":["ABC Motion Pictures","Robertson and Associates","Selmur Productions","Cinerama Releasing Corporation"],
 			    "year":1968}))
+
+		# stars=''see below''
+		# cast is a bulleted list contained within a table
+		#  - this is the only article in Wikipedia with that arrangement, not really worth the special case
+		skip_test_helper("1920 (film series)",
+			%Q({"title":"1920 (film series)",
+			    "cast":["Rajneesh Duggal","Adah Sharma","Anjori Alagh","Indraneil Sengupta","Raj Zutshi","Sri Vallabh Vyas","Vipin Sharma","Rakhi Sawant","Aftab Shivdasani","Tia Bajpai","Sharad Kelkar","Vidya Malvade","Vicky Ahuja as Bankimlal","Sharman Joshi","Meera Chopra","Vishal Karwal","Gajendra Chauhan","Meenal Kapoor as Witch","Sushmita Mukherjee","Karan Kundra","Zareen Khan","Vikram Bhatt"],
+			    "directors":["Vikram Bhatt","Bhushan Patel","Tinu Suresh Desai"],
+			    "producers":["Surendra Sharma","Bhagwati Gabrani","Amita Bisnoi","Vikram Bhatt","Reliance Entertainment"],
+			    "companies":["Reliance Big Pictures","ASA Productions and Enterprises Pvt. Ltd.","Reliance Entertainment"],
+			    "year":2008}))
 	end
 
 	def test_tv_shows

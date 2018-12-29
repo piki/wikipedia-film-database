@@ -163,7 +163,7 @@ private
 			end
 		end
 		arr = line.split(/\s* <br \s* \/? > \s*/xi)  # <br/> or <br>
-		arr.map { |tok| strip_parenthetical(plain_textify(tok)) }
+		arr.map { |tok| strip_parenthetical(plain_textify(tok)) }.reject(&:empty?)
 	end
 
 	# Parse the "Cast" section out of an article, and return the cast list
@@ -235,6 +235,7 @@ private
 
 	def self.get_actors_from_table(data)
 		top_row = data.first
+		return [] unless top_row
 		actor_columns = (0...top_row.size).select { |idx| top_row[idx] =~ /\b (actor|actress|cast) \b/ix }
 		puts "Cast table: #{top_row.inspect} => #{actor_columns.inspect}" if Parser.debug
 
