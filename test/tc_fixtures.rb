@@ -47,9 +47,9 @@ class TestGetCast < Test::Unit::TestCase
 			    "year":1987}))
 
 		# ==Cast== is a 2-column table
-		skip_test_helper("Four Daughters",
+		test_helper("Four Daughters",
 			%Q({"title":"Four Daughters",
-			    "cast":["Priscilla Lane","Rosemary Lane","Lola Lane","Gale Page","John Garfield","Jeffrey Lynn","May Robson","Frank McHugh","Claude Rains","Dick Foran","Claude Rains"],
+			    "cast":["Priscilla Lane","Rosemary Lane","Lola Lane","Gale Page","John Garfield","Jeffrey Lynn","May Robson","Frank McHugh","Claude Rains","Dick Foran"],
 			    "directors":["Michael Curtiz"],
 			    "producers":["Hal B. Wallis"],
 			    "companies":["Warner Bros."],
@@ -85,8 +85,7 @@ class TestGetCast < Test::Unit::TestCase
 			    "companies":["Metro-Goldwyn-Mayer","Loew's Inc."],
 			    "year":1942}))
 
-		# ==Cast== in a table
-		skip_test_helper("Roman Holiday",
+		test_helper("Roman Holiday",
 			%Q({"title":"Roman Holiday",
 			    "cast":["Gregory Peck","Audrey Hepburn","Eddie Albert","Hartley Power","Harcourt Williams","Margaret Rawlings","Tullio Carminati","Paolo Carlini","Claudio Ermelli","Paola Borboni","Laura Solari","Alfredo Rizzo","Gorella Gori"],
 			    "directors":["William Wyler"],

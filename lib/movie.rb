@@ -232,8 +232,32 @@ private
 	def self.get_actors_from_table(data)
 		top_row = data.first
 		actor_columns = (0...top_row.size).select { |idx| top_row[idx] =~ /\b (actor|actress) \b/ix }
-		return [] if actor_columns.empty?
 		puts "Cast table: #{top_row.inspect} => #{actor_columns.inspect}" if Parser.debug
+
+		# If there are no headers with the word "actor", it's a free-form
+		# table.  Look for cells with /^as Character Name/ or
+		# /Actor Name as Character Name/.
+		if actor_columns.empty?
+			ret = []
+			data.each do |row|
+				row.each_with_index do |cell, idx|
+					if cell =~ /\S \s+ as \s+ \S/x
+						cell = plain_textify(cell)
+						actor = get_actor_from_line(plain_textify(cell))
+					elsif idx > 0 && cell =~ /^ \s* as \s+ \S/x
+						actor = get_actor_from_line(plain_textify(row[idx-1]))
+					end
+					if is_legal_actor?(actor)
+						puts "actor from table cell #{cell.inspect}: #{actor.inspect}" if Parser.debug
+						ret << actor
+					end
+				end
+			end
+			return ret
+		end
+
+		# This is a well formed table with one or more "actor" headers, so
+		# just pick out cells from every "actor" column.
 		ret = []
 		data[1..-1].each do |row|
 			actor_columns.each do |col|
