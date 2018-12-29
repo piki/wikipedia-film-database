@@ -65,7 +65,7 @@ class TestTextHelpers < Test::Unit::TestCase
 
 	def test_de_tagify
 		assert_equal("abc", Movie.de_tagify("abc"))
-		assert_equal("abcdef", Movie.de_tagify("abc<ref blah blah>def</ref>"))
+		assert_equal("abc", Movie.de_tagify("abc<ref blah blah>def</ref>"))
 		assert_equal("abcdef", Movie.de_tagify("abc<ref blah blah />def"))
 		assert_equal("abcdef", Movie.de_tagify("abc<!-- comment -->def"))
 	end

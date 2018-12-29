@@ -305,8 +305,9 @@ private
 
 	def self.de_tagify(str)
 		str.
-			gsub(/<\/? \s* ref .*?>/x, '').  # remove <ref> tags
-			gsub(/<!-- .*? -->/x, '')        # remove <!-- --> comments
+			gsub(/<ref [^>]*?>.*?<\/ref>/x, '').  # remove <ref>...</ref> spans
+			gsub(/<\/? \s* ref .*?>/x, '').       # remove residual <ref> tags
+			gsub(/<!-- .*? -->/x, '')             # remove <!-- --> comments
 	end
 
 	def self.delinkify(str)
