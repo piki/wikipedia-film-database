@@ -279,7 +279,7 @@ private
 		actor = ""
 		line.split(/[ :]/).each do |word|
 			word.gsub!(/-$/, '')
-			if word =~ /^["']/ || Unicode.downcase(word[0]) != word[0] || is_name_connector(word)
+			if word =~ /^["']/ || (word[0] && Unicode.downcase(word[0]) != word[0]) || is_name_connector(word)
 				actor << " " unless actor.empty?
 				actor << word
 			else

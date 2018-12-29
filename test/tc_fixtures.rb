@@ -160,6 +160,15 @@ class TestGetCast < Test::Unit::TestCase
 			    "producers":["Tim Burton","Peter MacGregor-Scott"],
 			    "companies":["Warner Bros. Pictures"],
 			    "year":1995}))
+
+		# broken: Dominic Savage played young Bullingdon, is credited with a "**" indented bulleted list.
+		test_helper("Barry Lyndon",
+			%Q({"title":"Barry Lyndon",
+			    "cast":["Ryan O'Neal","Marisa Berenson","Patrick Magee","Hardy Krüger","Diana Koerner","Gay Hamilton","Michael Hordern","Godfrey Quigley","Steven Berkoff","Wolf Kahler","Marie Kean","Murray Melvin","Frank Middlemass","Leon Vitali","Leonard Rossiter","André Morell","Anthony Sharp","Philip Stone","David Morley","Arthur O'Sullivan","Billy Boyle","Roger Booth"],
+			    "directors":["Stanley Kubrick"],
+			    "producers":["Stanley Kubrick"],
+			    "companies":["Hawk Films","Peregrine Productions","Warner Bros."],
+			    "year":1975}))
 	end
 
 	def test_tv_shows
