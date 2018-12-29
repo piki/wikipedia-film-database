@@ -24,7 +24,7 @@ class Movie
 	# Returns a Movie object, or nil.
 	def self.parse(title, text)
 		infobox = get_infobox(text)
-		p infobox if infobox && Parser.debug
+		puts "INFOBOX: #{infobox.inspect}" if infobox && Parser.debug
 
 		if !infobox && title !~ /film\)$/
 			# not a film, even if it has a cast
@@ -47,12 +47,8 @@ class Movie
 			m.companies = infobox["companies"] if infobox["companies"]
 		end
 
-		puts "FILM ===> #{title}" if Parser.debug
 		if cast.empty?
 			puts "ERROR: \"#{title}\" is a film with empty cast" if Parser.debug
-		end
-		cast.each do |actor|
-			puts "  ACTOR ===> #{actor}" if Parser.debug
 		end
 		m.cast = cast
 		m
