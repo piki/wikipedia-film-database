@@ -163,7 +163,7 @@ private
 			end
 		end
 		arr = line.split(/\s* <br \s* \/? > \s*/xi)  # <br/> or <br>
-		arr.map { |tok| strip_parenthetical(plain_textify(tok)) }.reject(&:empty?)
+		arr.map { |tok| strip_parenthetical(plain_textify(tok)).strip }.reject(&:empty?)
 	end
 
 	# Parse the "Cast" section out of an article, and return the cast list
