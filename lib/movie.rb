@@ -244,6 +244,7 @@ private
 		if actor_columns.empty?
 			ret = []
 			data.each do |row|
+				next unless row
 				row.each_with_index do |cell, idx|
 					if cell =~ /\S \s+ as \s+ \S/x
 						cell = plain_textify(cell)
@@ -264,6 +265,7 @@ private
 		# just pick out cells from every "actor" column.
 		ret = []
 		data[1..-1].each do |row|
+			next unless row
 			actor_columns.each do |col|
 				next unless row[col]
 				actor = get_actor_from_line(plain_textify(row[col]))
