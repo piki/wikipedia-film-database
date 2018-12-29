@@ -99,7 +99,7 @@ class TestGetCast < Test::Unit::TestCase
 		# ==Cast== in a table, rowspan=2 for actors with more than one role
 		skip_test_helper("Spirited Away",
 			%Q({"title":"Spirited Away",
-			    "cast":["Rumi Hiiragi","Miyu Irino","Mari Natsuki","Takeshi Naito","Yasuko Sawaguchi","Tsunehiko Kamijō","Takehiko Ono","Bunta Sugawara","Rumi Hiiragi","Daveigh Chase","Miyu Irino","Jason Marsden","Mari Natsuki","Suzanne Pleshette","Bunta Sugawara","David Ogden Stiers","Yoomi Tamai","Susan Egan","Tsunehiko Kamijō","Paul Eiding","Takehiko Ono","John Ratzenberger","Akio Nakamura","Bob Bergen","Tatsuya Gashūin","Yō Ōizumi","Rodger Bumpass","Ryūnosuke Kamiki","Tara Strong","Takashi Naitō","Michael Chiklis","Yasuko Sawaguchi","Lauren Holly","Koba Hayashi","Jim Ward","Ken Yasuda","Jack Angel"],
+			    "cast":["Rumi Hiiragi","Miyu Irino","Mari Natsuki","Takeshi Naito","Yasuko Sawaguchi","Tsunehiko Kamijō","Takehiko Ono","Bunta Sugawara","Daveigh Chase","Jason Marsden","Suzanne Pleshette","David Ogden Stiers","Yoomi Tamai","Susan Egan","Paul Eiding","John Ratzenberger","Akio Nakamura","Bob Bergen","Tatsuya Gashūin","Yō Ōizumi","Rodger Bumpass","Ryūnosuke Kamiki","Tara Strong","Takashi Naitō","Michael Chiklis","Lauren Holly","Koba Hayashi","Jim Ward","Ken Yasuda","Jack Angel"],
 			    "directors":["Hayao Miyazaki"],
 			    "producers":["Toshio Suzuki"],
 			    "companies":["Studio Ghibli","Toho"],
@@ -133,10 +133,9 @@ class TestGetCast < Test::Unit::TestCase
 			    "companies":["Metro-Goldwyn-Mayer"],
 			    "year":1937}))
 
-		# ==Cast== in a table
-		skip_test_helper("The Life of Emile Zola",
+		test_helper("The Life of Emile Zola",
 			%Q({"title":"The Life of Emile Zola",
-			    "cast":["Paul Muni","Gloria Holden","Gale Sondergaard","Joseph Schildkraut","Paul Muni","Gloria Holden","Gale Sondergaard","Joseph Schildkraut","Donald Crisp","Erin O'Brien-Moore","John Litel","Henry O'Neill","Morris Carnovsky","Louis Calhern","Ralph Morgan","Robert Barrat","Vladimir Sokoloff","Grant Mitchell","Harry Davenport","Robert Warwick","Charles Richman","Gilbert Emery","Walter Kingsford","Paul Everton","Montagu Love","Frank Sheridan","Lumsden Hare","Marcia Mae Jone","Florence Robertss","Dickie Moore","Rolla Gourvitch"],
+			    "cast":["Paul Muni","Gloria Holden","Gale Sondergaard","Joseph Schildkraut","Donald Crisp","Erin O'Brien-Moore","John Litel","Henry O'Neill","Morris Carnovsky","Louis Calhern","Ralph Morgan","Robert Barrat","Vladimir Sokoloff","Grant Mitchell","Harry Davenport","Robert Warwick","Charles Richman","Gilbert Emery","Walter Kingsford","Paul Everton","Montagu Love","Frank Sheridan","Lumsden Hare","Marcia Mae Jones","Florence Roberts","Dickie Moore","Rolla Gourvitch"],
 			    "directors":["William Dieterle"],
 			    "producers":["Henry Blanke"],
 			    "companies":["Warner Bros."],
