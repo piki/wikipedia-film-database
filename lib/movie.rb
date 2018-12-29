@@ -162,7 +162,7 @@ private
 				return ret
 			end
 		end
-		arr = line.split(/<br \s* \/? >/xi)  # <br/> or <br>
+		arr = line.split(/\s* <br \s* \/? > \s*/xi)  # <br/> or <br>
 		arr.map { |tok| strip_parenthetical(plain_textify(tok)) }
 	end
 
