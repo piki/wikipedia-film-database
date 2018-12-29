@@ -88,8 +88,9 @@ private
 	# producers, stars, companies, and year.  Year is an integer, and all
 	# others are arrays of strings.
 	def self.get_infobox(text)
-		ofs = text.index("{{Infobox film")
-		return nil unless ofs
+		m = /{{Infobox \s+ film \s* $/xi.match(text)
+		return nil unless m
+		ofs = m.begin(0)
 
 		ret = {}
 		convert_plainlists(extract_matched_braces(text[ofs..-1])).lines[1..-1].each do |line|
