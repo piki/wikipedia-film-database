@@ -169,6 +169,14 @@ class TestGetCast < Test::Unit::TestCase
 			    "producers":["Stanley Kubrick"],
 			    "companies":["Hawk Films","Peregrine Productions","Warner Bros."],
 			    "year":1975}))
+
+		test_helper("Rocky",
+			%Q({"title":"Rocky",
+			    "cast":["Sylvester Stallone","Talia Shire","Burt Young","Carl Weathers","Burgess Meredith","Thayer David","Joe Spinell","Tony Burton","Pedro Lovell"],
+			    "directors":["John G. Avildsen"],
+			    "producers":["Irwin Winkler","Robert Chartoff"],
+			    "companies":["Chartoff-Winkler Productions","United Artists"],
+			    "year":1976}))
 	end
 
 	def test_tv_shows
