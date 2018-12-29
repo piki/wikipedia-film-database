@@ -61,11 +61,9 @@ class TestGetCast < Test::Unit::TestCase
 			    "companies":["Python (Monty) Pictures","Michael White Productions","National Film Trustee Company","EMI Films"],
 			    "year":1975}))
 
-		# ==Cast== is a table
-		# also, Paul Butcher, Jr.
-		skip_test_helper("My Neighbor Totoro",
+		test_helper("My Neighbor Totoro",
 			%Q({"title":"My Neighbor Totoro",
-			    "cast":["Chika Sakamoto","Noriko Hidaka","Hitoshi Takagi","Lisa Michelson","Dakota Fanning","Cheryl Chase","Elle Fanning","Shigesato Itoi","Greg Snegoff","Tim Daly","Sumi Shimamoto","Alexandra Kenworthy","Lea Salonga","Frank Welker","Toshiyuki Amagasa","Kenneth Hartman","Paul Butcher, Jr.","Tanie Kitabayashi","Natalie Core","Pat Carroll","Naoki Tatsuta","Carl Macek","Frank Welker","Chie Kojiro","Brianne Siddall","Hiroko Maruyama","Melanie MacQueen","Kath Soucie","Masashi Hirose","Steve Kramer","Peter Renaday","Machiko Washio","Edie Mirman","Tress MacNeille","Reiko Suzuki","Russi Taylor","Daiki Nakamura","Kerrigan Mahan","Yuko Mizutani","Lara Cody","Bridget Hoffman","Kath Soucie","Tomomichi Nishimura","Doug Stone"],
+			    "cast":["Chika Sakamoto","Noriko Hidaka","Hitoshi Takagi","Lisa Michelson","Dakota Fanning","Cheryl Chase","Elle Fanning","Shigesato Itoi","Greg Snegoff","Tim Daly","Sumi Shimamoto","Alexandra Kenworthy","Lea Salonga","Frank Welker","Toshiyuki Amagasa","Kenneth Hartman","Paul Butcher","Tanie Kitabayashi","Natalie Core","Pat Carroll","Naoki Tatsuta","Carl Macek","Chie Kojiro","Brianne Siddall","Hiroko Maruyama","Melanie MacQueen","Kath Soucie","Masashi Hirose","Steve Kramer","Peter Renaday","Machiko Washio","Edie Mirman","Tress MacNeille","Reiko Suzuki","Russi Taylor","Daiki Nakamura","Kerrigan Mahan","Yuko Mizutani","Lara Cody","Bridget Hoffman","Tomomichi Nishimura","Doug Stone"],
 			    "directors":["Hayao Miyazaki"],
 			    "producers":["Toru Hara"],
 			    "companies":["Studio Ghibli","Toho"],
