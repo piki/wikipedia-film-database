@@ -102,10 +102,10 @@ class TestTextHelpers < Test::Unit::TestCase
 			"|}")
 
 		# one-cell table; "|" is not a cell separator
-		table_helper([["single | pipes"]],
+		table_helper([["aaa | bbb"]],
 			"{|",
 			"|-",
-			"| single | pipes",
+			"| fmt | aaa | bbb",
 			"|-",
 			"|}")
 

@@ -33,7 +33,10 @@ class WikiTable
 		# split at || or !!
 		line.split(/\s* (?: \|\| | !!) \s*/x).each_with_index do |tok, idx|
 			next_cell unless idx == 0
-			if tok =~ /\s* (?:rowspan|colspan|scope|style|width) \s* = .*? \s* \| \s* (.*)/x
+			# If there's any format specifier, discard up to the first '|'.
+			# But disallow [ and { before the | as a hacky way of avoiding
+			# getting fooled by [links] and {{commands}}.
+			if tok =~ /^\s* (?: [^\[{]+?) \| \s* (.*)/x
 				tok = $1
 			end
 			@data[@row] ||= []
