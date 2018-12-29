@@ -207,6 +207,14 @@ class TestGetCast < Test::Unit::TestCase
 			    "companies":["ABC Motion Pictures","Robertson and Associates","Selmur Productions","Cinerama Releasing Corporation"],
 			    "year":1968}))
 
+		test_helper("Midnight Cowboy",
+			%Q({"title":"Midnight Cowboy",
+			    "cast":["Dustin Hoffman","Jon Voight","Sylvia Miles","John McGiver","Brenda Vaccaro","Barnard Hughes","Ruth White","Jennifer Salt","Gilman Rankin","Georgann Johnson","Anthony Holland","Bob Balaban"],
+			    "directors":["John Schlesinger"],
+			    "producers":["Jerome Hellman"],
+			    "companies":["Jerome Hellman Productions","United Artists"],
+			    "year":1969}))
+
 		# stars=''see below''
 		# cast is a bulleted list contained within a table
 		#  - this is the only article in Wikipedia with that arrangement, not really worth the special case

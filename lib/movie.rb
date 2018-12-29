@@ -152,9 +152,9 @@ private
 	# The return value is always an array, possibly containing just one
 	# element, of all the values found on the infobox line.
 	def self.parse_infobox_list(line)
-		if m = /{{ubl\|.*/.match(line)
+		if m = /{{(?: ubl | unbulleted \s+ list) \| (.*)/ix.match(line)
 			if eofs = find_end_braces(line, m.begin(0))
-				body = line[m.begin(0)+6...eofs-2]
+				body = line[m.begin(1)...eofs-2]
 				body = expand_brace_commands(delinkify(body))
 				ret = body.split('|')
 				ret = ret.map {|s| strip_parenthetical(plain_textify(s))}
