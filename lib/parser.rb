@@ -55,7 +55,7 @@ private
 			puts "EXCEPTION parsing #{@title.inspect}:"
 			puts e
 			puts e.backtrace
-			raise unless @@debug
+			raise unless Parser.debug
 		end
 		@block.call(m) if m
 		reset
