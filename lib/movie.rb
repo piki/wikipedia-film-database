@@ -300,7 +300,8 @@ private
 	def self.strip_parenthetical(str)
 		str.
 			gsub(/\s+ \( [^)]+ \) \s* $/x, '').
-			gsub(/\s+ \/ .* $/x, '')
+			gsub(/\s+ \/ .* $/x, '').
+			gsub(/[-,*]$/, '')
 	end
 
 	def self.plain_textify(str)
