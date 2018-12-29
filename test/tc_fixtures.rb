@@ -188,6 +188,16 @@ class TestGetCast < Test::Unit::TestCase
 			    "producers":["Jack Cummings"],
 			    "companies":["Metro-Goldwyn-Mayer","Loew's, Inc."],
 			    "year":1954}))
+
+		# "Actor Name ''as Character Name''" in table cells
+		# Two actors for the same character, separated by <br>
+		skip_test_helper("The Castle of Cagliostro",
+			%Q({"title":"The Castle of Cagliostro",
+			    "cast":["Yasuo Yamada","Eiko Masuyama","Kiyoshi Kobayashi","Makio Inoue","Goro Naya","Sumi Shimamoto","Tarō Ishida","Robert Bergen","Sean Barker","Joan-Carol O'Connell","Barbara Goodson","Ruby Marlowe","Michael McConnohie","Sparky Thornton","Gorō Naya","David Povall","Dougary Grant","Steve Bulen"Ivan Buckley","Edie Mirman","Dorothy Melendrez","Ichirō Nagai","Jeff Winkless","Richard Barnes","Steve Kramer","Michael Gregory","Kōhei Miyauchi","Mike Reynolds","Gil Starberry","Tadamichi Tsuneizumi","Kirk Thornton","Marlon Mann","Shōzō Hirabayashi","Jeff Winkless","G. Gordon Baer","Juji Matsuda","Kerrigan Mahan","James Lyon","Kinpei Azusa","Kirk Thornton","Alfred Thor","Yoko Yamaoka","Julie Donald","Bambi Darro"]
+			    "directors":["Hayao Miyazaki"],
+			    "producers":["Tetsuo Katayama"],
+			    "companies":["Tokyo Movie Shinsha","Toho"],
+			    "year":1979}))
 	end
 
 	def test_tv_shows
