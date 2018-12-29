@@ -1,7 +1,7 @@
 ## Overview
 
-This is a little Ruby script to generate a structured movie database from
-Wikipedia.
+This is a little Ruby script to generate a totally free movie database
+from Wikipedia.
 
 The input is the bzipped XML file containing all [English-language
 Wikipedia pages](https://dumps.wikimedia.org/enwiki/).  The output is a
