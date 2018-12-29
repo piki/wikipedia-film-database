@@ -47,7 +47,6 @@ class Movie
 			m.companies = infobox["companies"] if infobox["companies"]
 		end
 
-		title = strip_parenthetical(title)
 		puts "FILM ===> #{title}" if Parser.debug
 		if cast.empty?
 			puts "ERROR: \"#{title}\" is a film with empty cast" if Parser.debug
