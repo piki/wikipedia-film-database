@@ -319,7 +319,47 @@ private
 		str.gsub(/\[\[ (.*?) \]\]/x) do |sub|
 			tok = $1.split('|', 2)
 			# tok.first is the title of the target page
-			# tok.last is the anchor text
+			# tok.last is the link text
+			# We use the link text (tok.last) here, though an argument could be
+			# made for either choice.  In favor of using link text:
+			#  - Generally matches non-link usage elsewhere in the page.  A name
+			#    might be listed with a link in the cast and without a link in
+			#    the infobox.  The presented text for those names generally
+			#    matches.
+			#  - Sometimes individual actors don't have pages, but page authors
+			#    have added links for those actors to some more general page.
+			#    For example, in "Four Daughters," both Rosemary Lane and Lola
+			#    Lane link to the page called "Lane Sisters."  Needless to say,
+			#    Lane Sisters is not the name of an actress.
+			#    - This is the main reason.
+			# But, here are the arguments in favor of using the title of the
+			# target page:
+			#  - It fixes aliasing.  Sometimes an actor will have several names
+			#    (e.g., with/without a middle initial, with/without Jr.,
+			#    with/without a pseudonym, before/after a name change).
+			#    Wikipedia editors tend to clean up duplicate pages on the same
+			#    subject, but they're much less likely to clean up article text
+			#    that mentions the same person by two different names.  In fact,
+			#    that may even be desirable: crediting a person exactly as
+			#    they're listed in the cast, for example, by the name they had
+			#    at the time the film was made.
+			#    - But: it's still possible for two mentions to have different
+			#      link text for the same person, using redirect articles.  So
+			#      to fully realize the benefits of a switch to using tok.first,
+			#      we'd also have to build a map of all redirect pages.
+			#  - It fixes name collisions.  Two people may have the same
+			#    presented name, but if they're really two different people,
+			#    they should have two different Wikipedia pages.  SAG rules help
+			#    a little here (names have to be unique in cast lists of major
+			#    motion pictures, IIUC), but it's unlikely that Wikipedia always
+			#    follows SAG rules.  So using tok.last might end up treating
+			#    Someone and Someone Jr. as the same person, if Someone Jr. is
+			#    sometimes mentioned as just "Someone."
+			#  - It makes links on oracleofbacon.org work better, because they
+			#    always go to the right page, instead of to a fuzzy match.
+			#    There's a simpler way to realize that benefit, though, which is
+			#    to make each actor (and film's) page title a piece of metadata,
+			#    rather than making it the primary ID.
 			tok.last
 		end
 	end
