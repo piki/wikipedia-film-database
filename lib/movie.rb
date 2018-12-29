@@ -8,6 +8,7 @@
 require 'yajl'
 $:.unshift File.expand_path "../../lib", __FILE__
 require 'wikitable'
+require 'unicode'
 
 class Movie
 	attr_accessor :title, :cast, :directors, :producers, :companies, :year
@@ -254,7 +255,7 @@ private
 		actor = ""
 		line.split(/[ :]/).each do |word|
 			word.gsub!(/-$/, '')
-			if word =~ /^[A-Z"']/ || is_name_connector(word)
+			if word =~ /^["']/ || Unicode.downcase(word[0]) != word[0] || is_name_connector(word)
 				actor << " " unless actor.empty?
 				actor << word
 			else
@@ -325,7 +326,7 @@ private
 					""
 
 				# https://en.wikipedia.org/wiki/Template:Interlanguage_link
-				when "ill", "Interlanguage link multi"
+				when "ill", "interlanguage link multi"
 					tok[1]
 
 				# https://en.wikipedia.org/wiki/Template:Sortname

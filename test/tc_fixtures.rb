@@ -96,8 +96,7 @@ class TestGetCast < Test::Unit::TestCase
 			    "companies":["Paramount Pictures"],
 			    "year":1953}))
 
-		# ==Cast== in a table, rowspan=2 for actors with more than one role
-		skip_test_helper("Spirited Away",
+		test_helper("Spirited Away",
 			%Q({"title":"Spirited Away",
 			    "cast":["Rumi Hiiragi","Miyu Irino","Mari Natsuki","Takeshi Naito","Yasuko Sawaguchi","Tsunehiko Kamijō","Takehiko Ono","Bunta Sugawara","Daveigh Chase","Jason Marsden","Suzanne Pleshette","David Ogden Stiers","Yoomi Tamai","Susan Egan","Paul Eiding","John Ratzenberger","Akio Nakamura","Bob Bergen","Tatsuya Gashūin","Yō Ōizumi","Rodger Bumpass","Ryūnosuke Kamiki","Tara Strong","Takashi Naitō","Michael Chiklis","Lauren Holly","Koba Hayashi","Jim Ward","Ken Yasuda","Jack Angel"],
 			    "directors":["Hayao Miyazaki"],

@@ -57,6 +57,14 @@ class TestTextHelpers < Test::Unit::TestCase
 		assert_equal("Bee Duffell", Movie.plain_textify("{{sortname|Bee|Duffell|nolink=y}}"))
 	end
 
+	def test_get_actor_from_line
+		assert_equal("Kevin Bacon", Movie.get_actor_from_line("Kevin Bacon as Character Name"))
+		assert_equal("Aaa Bbb de Ccc", Movie.get_actor_from_line("Aaa Bbb de Ccc is an actor"))
+		assert_equal("Aaa 'Bbb' Ccc", Movie.get_actor_from_line("Aaa 'Bbb' Ccc as Character Name"))
+		assert_equal("Aaa Ōsomething", Movie.get_actor_from_line("Aaa Ōsomething lower Upper"))
+		assert_equal("Aaa Ásomething", Movie.get_actor_from_line("Aaa Ásomething lower Upper"))
+	end
+
 	def test_wikitables
 		# trivial one-cell table
 		table_helper([["one cell"]],

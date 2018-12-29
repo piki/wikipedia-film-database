@@ -5,6 +5,7 @@ GEM
     power_assert (1.1.3)
     test-unit (3.2.9)
       power_assert
+    unicode (0.4.4.4)
     yajl-ruby (1.4.1)
 
 PLATFORMS
@@ -13,6 +14,7 @@ PLATFORMS
 DEPENDENCIES
   ox
   test-unit
+  unicode
   yajl-ruby
 
 BUNDLED WITH
