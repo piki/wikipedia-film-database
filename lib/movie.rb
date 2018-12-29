@@ -235,7 +235,7 @@ private
 
 	def self.get_actors_from_table(data)
 		top_row = data.first
-		actor_columns = (0...top_row.size).select { |idx| top_row[idx] =~ /\b (actor|actress) \b/ix }
+		actor_columns = (0...top_row.size).select { |idx| top_row[idx] =~ /\b (actor|actress|cast) \b/ix }
 		puts "Cast table: #{top_row.inspect} => #{actor_columns.inspect}" if Parser.debug
 
 		# If there are no headers with the word "actor", it's a free-form
