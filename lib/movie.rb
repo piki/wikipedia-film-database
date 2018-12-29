@@ -159,7 +159,7 @@ private
 			end
 		end
 		arr = line.split(/<br \s* \/? >/xi)  # <br/> or <br>
-		arr.map { |tok| plain_textify(tok) }
+		arr.map { |tok| strip_parenthetical(plain_textify(tok)) }
 	end
 
 	# Parse the "Cast" section out of an article, and return the cast list
@@ -290,8 +290,11 @@ private
 	end
 
 	# Chop trailing parenthetical, like "Kevin Bacon (uncredited)"
+	# Also chop trailing slash-alternate, like "Kevin Bacon / some detail"
 	def self.strip_parenthetical(str)
-		str.gsub(/\s+ \( [^)]+ \) \s* $/x, '')
+		str.
+			gsub(/\s+ \( [^)]+ \) \s* $/x, '').
+			gsub(/\s+ \/ .* $/x, '')
 	end
 
 	def self.plain_textify(str)

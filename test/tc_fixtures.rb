@@ -137,8 +137,7 @@ class TestGetCast < Test::Unit::TestCase
 			    "companies":["Warner Bros."],
 			    "year":1937}))
 
-		# producer line has "/ ..."
-		skip_test_helper("The Company of Strangers",
+		test_helper("The Company of Strangers",
 			%Q({"title":"The Company of Strangers",
 			    "cast":["Alice Diabo","Constance Garneau"],
 			    "directors":["Cynthia Scott"],
