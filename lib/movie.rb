@@ -284,7 +284,7 @@ private
 		# nicknames and lowercase name-joining words like "de la".
 		actor = ""
 		line.split(/[ :]/).each do |word|
-			word.gsub!(/-$/, '')
+			word.gsub!(/[-*]$/, '')
 			if word =~ /^["']/ || (word[0] && Unicode.downcase(word[0]) != word[0]) || is_name_connector(word)
 				actor << " " unless actor.empty?
 				actor << word
