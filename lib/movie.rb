@@ -116,7 +116,7 @@ private
 						ret["companies"] += val
 					end
 				when "released"
-					if value =~ /\b ((?: 19 | 20) \d \d) \b/x
+					if value =~ /\b ((?: 18 | 19 | 20) \d \d) \b/x
 						ret["year"] = $1.to_i
 					end
 			end
