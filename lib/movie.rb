@@ -155,7 +155,9 @@ private
 		else
 			arr = line.split(/\s* <br \s* \/? > \s*/xi)  # <br/> or <br>
 		end
-		arr.map { |tok| strip_parenthetical(plain_textify(tok)).strip }.reject(&:empty?)
+		arr = arr.map { |tok| strip_parenthetical(plain_textify(tok)).strip }
+		arr.select! { |x| is_legal_actor?(x) }
+		arr
 	end
 
 	# Parse the "Cast" section out of an article, and return the cast list
@@ -424,6 +426,6 @@ private
 	end
 
 	def self.is_legal_actor?(str)
-		str && !str.empty? && str != "The" && str != "In"
+		str && !str.empty? && str != "The" && str != "In" && str !~ /\b see \s+ below \b/xi
 	end
 end

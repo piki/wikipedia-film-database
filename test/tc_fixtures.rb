@@ -225,6 +225,14 @@ class TestGetCast < Test::Unit::TestCase
 			    "producers":["Surendra Sharma","Bhagwati Gabrani","Amita Bisnoi","Vikram Bhatt","Reliance Entertainment"],
 			    "companies":["Reliance Big Pictures","ASA Productions and Enterprises Pvt. Ltd.","Reliance Entertainment"],
 			    "year":2008}))
+
+		test_helper("This Rebel Breed",
+			%Q({"title":"This Rebel Breed",
+			    "cast":["Rita Moreno","Mark Damon","Gerald Mohr","Jay Novello","Eugene Martin","Tom Gilson","Richard Rust","Douglas Hume","Richard Laurier","Don Eitner","Dyan Cannon","Ken Miller","Al Freeman Jr.","Charles Franc","Ike Jones","Shirley Falls","Steven Perry","Hari Rhodes"],
+			    "directors":["Richard L. Bare","William Rowland"],
+			    "producers":["William Rowland","Robert Yamin"],
+			    "companies":["All God's Children Co.","Warner Bros."],
+			    "year":1960}))
 	end
 
 	def test_tv_shows

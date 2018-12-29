@@ -15,6 +15,27 @@ class TestTextHelpers < Test::Unit::TestCase
 		assert_equal(nil, Movie.get_cast("abcd\n==Cat==\nfoo"))
 	end
 
+	def test_get_infobox
+		assert_equal(nil, Movie.get_infobox("foo bar"))
+		assert_equal(nil, Movie.get_infobox("{{Infobox film awards"))
+		assert_equal(nil, Movie.get_infobox("{{Infobox film series"))
+		assert_equal(nil, Movie.get_infobox("{{Infobox film festival"))
+		assert_equal({}, Movie.get_infobox("{{Infobox film"))
+		assert_equal({}, Movie.get_infobox("{{Infobox film\n}}"))
+		assert_equal({}, Movie.get_infobox("{{Infobox film |foo}}"))
+		assert_equal({"directors"=>["aaa","bbb"]}, Movie.get_infobox("{{Infobox film\n| director=aaa<br>bbb\n}}"))
+		assert_equal({"producers"=>["aaa"]}, Movie.get_infobox("{{Infobox film\n| producer=aaa\n}}"))
+		assert_equal({"year"=>1988}, Movie.get_infobox("{{Infobox film\n| released = {{Film date|df=yes|1988|04|16}}\n}}"))
+		assert_equal({"stars"=>["aaa","bbb","ccc"]}, Movie.get_infobox("{{Infobox film\n| starring={{ubl|aaa|bbb|ccc}}\n}}"))
+		assert_equal({"stars"=>["aaa","bbb","ccc"]}, Movie.get_infobox("{{Infobox film\n| starring={{plainlist|\n* aaa\n* bbb\n* ccc}}\n}}"))
+		assert_equal({"stars"=>[]}, Movie.get_infobox("{{Infobox film\n| starring=see below\n}}"))
+		assert_equal({"stars"=>[]}, Movie.get_infobox("{{Infobox film\n| starring=''see below''\n}}"))
+		assert_equal({"stars"=>[]}, Movie.get_infobox("{{Infobox film\n| starring='''See Below'''\n}}"))
+		assert_equal({"stars"=>[]}, Movie.get_infobox("{{Infobox film\n| starring=<small>See Below</small>\n}}"))
+		assert_equal({"stars"=>[]}, Movie.get_infobox("{{Infobox film\n| starring=(See Below)\n}}"))
+		assert_equal({"stars"=>[]}, Movie.get_infobox("{{Infobox film\n| starring=(''See Below'')\n}}"))
+	end
+
 	def test_plain_textify
 		assert_equal("AfooB", Movie.plain_textify("A{{ill|foo|bar}}B"))
 		assert_equal("AtextB", Movie.plain_textify("A[[target|text]]B"))
