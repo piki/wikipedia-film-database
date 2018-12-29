@@ -153,7 +153,7 @@ private
 				body = line[m.begin(1)...eofs-2]
 				body = expand_brace_commands(delinkify(body))
 				ret = body.split('|')
-				ret = ret.map {|s| strip_parenthetical(plain_textify(s))}
+				ret = ret.map {|s| strip_parenthetical(plain_textify(s)).strip }
 				ret.reject!(&:empty?)
 				return ret
 			end
