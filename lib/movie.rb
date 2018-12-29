@@ -84,7 +84,7 @@ private
 	# producers, stars, companies, and year.  Year is an integer, and all
 	# others are arrays of strings.
 	def self.get_infobox(text)
-		m = /{{Infobox \s+ film \s* $/xi.match(text)
+		m = /{{Infobox \s+ film \s* (\| | $)/xi.match(text)
 		return nil unless m
 		ofs = m.begin(0)
 
