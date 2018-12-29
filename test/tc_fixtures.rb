@@ -198,6 +198,14 @@ class TestGetCast < Test::Unit::TestCase
 			    "producers":["Tetsuo Katayama"],
 			    "companies":["Tokyo Movie Shinsha","Toho"],
 			    "year":1979}))
+
+		test_helper("Charly",
+			%Q({"title":"Charly",
+			    "cast":["Cliff Robertson","Claire Bloom","Leon Janney","Lilia Skala","Dick Van Patten","Ruth White","Edward McNally","Barney Martin","William Dwyer","Dan Morgan"],
+			    "directors":["Ralph Nelson"],
+			    "producers":["Ralph Nelson"],
+			    "companies":["ABC Motion Pictures","Robertson and Associates","Selmur Productions","Cinerama Releasing Corporation"],
+			    "year":1968}))
 	end
 
 	def test_tv_shows
