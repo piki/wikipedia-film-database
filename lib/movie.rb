@@ -249,7 +249,7 @@ private
 					if cell =~ /\S \s+ as \s+ \S/x
 						cell = plain_textify(cell)
 						actor = get_actor_from_line(plain_textify(cell))
-					elsif idx > 0 && cell =~ /^ \s* as \s+ \S/x
+					elsif idx > 0 && cell =~ /^ \s* (?: as | '''......''' ) \s+ \S/x
 						actor = get_actor_from_line(plain_textify(row[idx-1]))
 					end
 					if is_legal_actor?(actor)
