@@ -155,7 +155,11 @@ private
 		if m = /{{ubl\|.*/.match(line)
 			if eofs = find_end_braces(line, m.begin(0))
 				body = line[m.begin(0)+6...eofs-2]
-				return expand_brace_commands(delinkify(body)).split('|').map{|s| strip_parenthetical(plain_textify(s))}
+				body = expand_brace_commands(delinkify(body))
+				ret = body.split('|')
+				ret = ret.map {|s| strip_parenthetical(plain_textify(s))}
+				ret.reject!(&:empty?)
+				return ret
 			end
 		end
 		arr = line.split(/<br \s* \/? >/xi)  # <br/> or <br>
