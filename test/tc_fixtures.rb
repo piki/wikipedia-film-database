@@ -177,6 +177,17 @@ class TestGetCast < Test::Unit::TestCase
 			    "producers":["Irwin Winkler","Robert Chartoff"],
 			    "companies":["Chartoff-Winkler Productions","United Artists"],
 			    "year":1976}))
+
+		# Two on a line: Actor as Character and Actor as Character
+		# Two first names for a last name: Benjamin and Julie Newmar
+		# Bulleted lists with "* '''Character Name''': Actor Name ..."
+		skip_test_helper("Seven Brides for Seven Brothers",
+			%Q({"title":"Seven Brides for Seven Brothers",
+			    "cast":["Howard Keel","Jane Powell","Jeff Richards","Matt Mattox","Marc Platt","Jacques d'Amboise","Tommy Rall","Russ Tamblyn","Julie Newmar","Ruta Lee","Norma Doggett","Virginia Gibson","Betty Carr","Nancy Kilgas","Ian Wolfe","Marjorie Wood","Russell Simpson","Howard Petrie","Benjamin Newmar","Julie Newmar","Daniel Doggett","Ephraim Gibson"],
+			    "directors":["Stanley Donen"],
+			    "producers":["Jack Cummings"],
+			    "companies":["Metro-Goldwyn-Mayer","Loew's, Inc."],
+			    "year":1954}))
 	end
 
 	def test_tv_shows
