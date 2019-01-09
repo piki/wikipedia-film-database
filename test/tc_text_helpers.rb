@@ -37,9 +37,11 @@ class TestTextHelpers < Test::Unit::TestCase
 	end
 
 	def test_plain_textify
-		assert_equal("AfooB", Movie.plain_textify("A{{ill|foo|bar}}B"))
+		assert_equal("A[[foo]]B", Movie.plain_textify("A{{ill|foo|bar}}B"))
+		assert_equal("A[[foo|baz]]B", Movie.plain_textify("A{{ill|foo|bar|lt=baz|blah}}B"))
+		assert_equal("A[[foo|bix]]B", Movie.plain_textify("A{{ill|foo|bar|lt=bix|blah|lt=baz}}B"))  # two lt= tokens
 		assert_equal("A[[target|text]]B", Movie.plain_textify("A[[target|text]]B"))
-		assert_equal("AfooB C[[target|text]]D", Movie.plain_textify("A{{ill|foo|bar}}B C[[target|text]]D"))
+		assert_equal("A[[foo]]B C[[target|text]]D", Movie.plain_textify("A{{ill|foo|bar}}B C[[target|text]]D"))
 	end
 
 	def test_split_around_markup

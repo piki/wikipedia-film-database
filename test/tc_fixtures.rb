@@ -105,18 +105,18 @@ class TestGetCast < Test::Unit::TestCase
 
 		test_helper("Strategic Air Command (film)",
 			%Q({"title":"Strategic Air Command (film)",
-			    "cast":["James Stewart","June Allyson","Frank Lovejoy","Bruce Bennett","Barry Sullivan","Alex Nicol","Jay C. Flippen","Harry Morgan"],
-			    "directors":["Anthony Mann"],
-			    "producers":["Samuel J. Briskin"],
-			    "companies":["Paramount Pictures"],
+			    "cast":["[[James Stewart]]","[[June Allyson]]","[[Frank Lovejoy]]","[[Bruce Bennett]]","[[Barry Sullivan (actor)|Barry Sullivan]]","[[Alex Nicol]]","[[Jay C. Flippen]]","[[Harry Morgan]]"],
+			    "directors":["[[Anthony Mann]]"],
+			    "producers":["[[Samuel J. Briskin]]"],
+			    "companies":["[[Paramount Pictures]]"],
 			    "year":1955}))
 
 		test_helper("Taxi Driver",
 			%Q({"title":"Taxi Driver",
-			    "cast":["Robert De Niro","Jodie Foster","Albert Brooks","Harvey Keitel","Leonard Harris","Peter Boyle","Cybill Shepherd","Steven Prince","Ashley Peidl"],
-			    "directors":["Martin Scorsese"],
-			    "producers":["Julia Phillips","Michael Phillips"],
-			    "companies":["Bill/Phillips Productions","Italo/Judeo Productions","Columbia Pictures"],
+			    "cast":["[[Robert De Niro]]","[[Jodie Foster]]","[[Albert Brooks]]","[[Harvey Keitel]]","[[Leonard Harris (actor)|Leonard Harris]]","[[Peter Boyle]]","[[Cybill Shepherd]]","Steven Prince","[[Ashley Peidl]]"],
+			    "directors":["[[Martin Scorsese]]"],
+			    "producers":["[[Julia Phillips]]","[[Michael Phillips (producer)|Michael Phillips]]"],
+			    "companies":["Bill/Phillips Productions","Italo/Judeo Productions","[[Columbia Pictures]]"],
 			    "year":1976}))
 
 		# stars, directors, producers separated by the word "and"
@@ -125,59 +125,60 @@ class TestGetCast < Test::Unit::TestCase
 		# ===Unbilled=== sub of ==Cast== is a comma-separated English sentence
 		skip_test_helper("The Good Earth (film)",
 			%Q({"title":"The Good Earth (film)",
-			    "cast":["Paul Muni","Luise Rainer","Tilly Losch","Charley Grapewin","Walter Connolly","Jessie Ralph","Soo Yong","Keye Luke","Roland Lui","Suzanna Kim","Ching Wah Lee","Harold Huber","Olaf Hytten","William Law","Mary Wong","Charles Middleton","Chester Gan","Richard Loo","Kam Tong","Victor Sen Yung","Philip Ahn","Bessie Loo","Clarence Lung","Sammee Tong","Richard Daniel Cazares"],
-			    "directors":["Sidney Franklin","Victor Fleming","Gustav Machatý"],
-			    "producers":["Irving Thalberg","Albert Lewin"],
-			    "companies":["Metro-Goldwyn-Mayer"],
+			    "cast":["[[Paul Muni]]","[[Luise Rainer]]","[[Tilly Losch]]","[[Charley Grapewin]]","[[Walter Connolly]]","[[Jessie Ralph]]","[[Soo Yong]]","[[Keye Luke]]","[[Roland Lui]]","[[Suzanna Kim]]","[[Ching Wah Lee]]","[[Harold Huber]]","[[Olaf Hytten]]","[[William Law]]","[[Mary Wong]]","[[Charles Middleton]]","[[Chester Gan]]","[[Richard Loo]]","[[Kam Tong]]","[[Victor Sen Yung]]","[[Philip Ahn]]","[[Bessie Loo]]","[[Clarence Lung]]","[[Sammee Tong]]","[[Richard Daniel Cazares]]"],
+			    "directors":["[[Sidney Franklin]]","[[Victor Fleming]]","[[Gustav Machatý]]"],
+			    "producers":["[[Irving Thalberg]]","[[Albert Lewin]]"],
+			    "companies":["[[Metro-Goldwyn-Mayer]]"],
 			    "year":1937}))
 
 		test_helper("The Life of Emile Zola",
 			%Q({"title":"The Life of Emile Zola",
-			    "cast":["Paul Muni","Gloria Holden","Gale Sondergaard","Joseph Schildkraut","Donald Crisp","Erin O'Brien-Moore","John Litel","Henry O'Neill","Morris Carnovsky","Louis Calhern","Ralph Morgan","Robert Barrat","Vladimir Sokoloff","Grant Mitchell","Harry Davenport","Robert Warwick","Charles Richman","Gilbert Emery","Walter Kingsford","Paul Everton","Montagu Love","Frank Sheridan","Lumsden Hare","Marcia Mae Jones","Florence Roberts","Dickie Moore","Rolla Gourvitch"],
-			    "directors":["William Dieterle"],
-			    "producers":["Henry Blanke"],
-			    "companies":["Warner Bros."],
+			    "cast":["[[Paul Muni]]","[[Gloria Holden]]","[[Gale Sondergaard]]","[[Joseph Schildkraut]]","[[Donald Crisp]]","[[Erin O'Brien-Moore]]","[[John Litel]]","[[Henry O'Neill]]","[[Morris Carnovsky]]","[[Louis Calhern]]","[[Ralph Morgan]]","[[Robert Barrat]]","[[Vladimir Sokoloff]]","[[Grant Mitchell (actor)|Grant Mitchell]]","[[Harry Davenport (actor)|Harry Davenport]]","[[Robert Warwick]]","[[Charles Richman (actor)|Charles Richman]]","[[Gilbert Emery]]","[[Walter Kingsford]]","Paul Everton","[[Montagu Love]]","[[Frank Sheridan]]","[[Lumsden Hare]]","[[Marcia Mae Jones]]","[[Florence Roberts]]","[[Dickie Moore (actor)|Dickie Moore]]","Rolla Gourvitch"],
+			    "directors":["[[William Dieterle]]"],
+			    "producers":["[[Henry Blanke]]"],
+			    "companies":["[[Warner Bros.]]"],
 			    "year":1937}))
 
 		test_helper("The Company of Strangers",
 			%Q({"title":"The Company of Strangers",
 			    "cast":["Alice Diabo","Constance Garneau"],
-			    "directors":["Cynthia Scott"],
-			    "producers":["David Wilson"],
-			    "companies":["First Run Features","Castle Hill Productions","National Film Board of Canada"],
+			    "directors":["[[Cynthia Scott]]"],
+			    "producers":["[[David Wilson (producer)|David Wilson]]"],
+			    "companies":["[[First Run Features]]","[[Castle Hill Productions]]","National Film Board of Canada"],
 			    "year":1990}))
 
 		test_helper("48 Hrs.",
 			%Q({"title":"48 Hrs.",
-			    "cast":["Nick Nolte","Eddie Murphy","James Remar","David Patrick Kelly","Sonny Landham","Brion James","Annette O'Toole","Frank McRae","Kerry Sherman","Jonathan Banks","Margot Rose","Denise Crosby","Olivia Brown"],
-			    "directors":["Walter Hill"],
-			    "producers":["Lawrence Gordon","Joel Silver"],
-			    "companies":["Paramount Pictures"],
+			    "cast":["[[Nick Nolte]]","[[Eddie Murphy]]","[[James Remar]]","[[David Patrick Kelly]]","[[Sonny Landham]]","[[Brion James]]","[[Annette O'Toole]]","[[Frank McRae]]","[[Kerry Sherman]]","[[Jonathan Banks]]","[[Margot Rose]]","[[Denise Crosby]]","[[Olivia Brown]]"],
+			    "directors":["[[Walter Hill (director)|Walter Hill]]"],
+			    "producers":["[[Lawrence Gordon (producer)|Lawrence Gordon]]","[[Joel Silver]]"],
+			    "companies":["[[Paramount Pictures]]"],
 			    "year":1982}))
 
 		test_helper("Batman Forever",
 			%Q({"title":"Batman Forever",
-			    "cast":["Val Kilmer","Tommy Lee Jones","Jim Carrey","Nicole Kidman","Michael Gough","Pat Hingle","Chris O'Donnell","Drew Barrymore","Debi Mazar","Elizabeth Sanders","Joe Grifasi","Ofer Samra","René Auberjonois"],
-			    "directors":["Joel Schumacher"],
-			    "producers":["Tim Burton","Peter MacGregor-Scott"],
-			    "companies":["Warner Bros. Pictures"],
+			    "cast":["[[Val Kilmer]]","[[Tommy Lee Jones]]","[[Jim Carrey]]","[[Nicole Kidman]]","[[Michael Gough]]","[[Pat Hingle]]","[[Chris O'Donnell]]","[[Drew Barrymore]]","[[Debi Mazar]]","[[Elizabeth Sanders]]","[[Joe Grifasi]]","[[Ofer Samra]]","[[René Auberjonois]]"],
+			    "directors":["[[Joel Schumacher]]"],
+			    "producers":["[[Tim Burton]]","[[Peter MacGregor-Scott]]"],
+			    "companies":["[[Warner Bros. Pictures]]"],
 			    "year":1995}))
 
 		# broken: Dominic Savage played young Bullingdon, is credited with a "**" indented bulleted list.
+		# Diana Koerner is listed with links to "Diana Koerner" (stars list) and "Diana Körner" (cast section)
 		test_helper("Barry Lyndon",
 			%Q({"title":"Barry Lyndon",
-			    "cast":["Ryan O'Neal","Marisa Berenson","Patrick Magee","Hardy Krüger","Diana Koerner","Gay Hamilton","Michael Hordern","Godfrey Quigley","Steven Berkoff","Wolf Kahler","Marie Kean","Murray Melvin","Frank Middlemass","Leon Vitali","Leonard Rossiter","André Morell","Anthony Sharp","Philip Stone","David Morley","Arthur O'Sullivan","Billy Boyle","Roger Booth"],
-			    "directors":["Stanley Kubrick"],
-			    "producers":["Stanley Kubrick"],
-			    "companies":["Hawk Films","Peregrine Productions","Warner Bros."],
+			    "cast":["[[Ryan O'Neal]]","[[Marisa Berenson]]","[[Patrick Magee (actor)|Patrick Magee]]","[[Hardy Krüger]]","[[Diana Koerner]]","[[Gay Hamilton]]","[[Michael Hordern]]","[[Godfrey Quigley]]","[[Steven Berkoff]]","[[Wolf Kahler]]","[[Marie Kean]]","[[Murray Melvin]]","[[Frank Middlemass]]","[[Leon Vitali]]","[[Leonard Rossiter]]","[[André Morell]]","[[Anthony Sharp]]","[[Philip Stone]]","[[David Morley (musician)|David Morley]]","[[Diana Körner|Diana Koerner]]","[[Arthur O'Sullivan]]","[[Billy Boyle]]","[[Roger Booth (actor)|Roger Booth]]"],
+			    "directors":["[[Stanley Kubrick]]"],
+			    "producers":["[[Stanley Kubrick]]"],
+			    "companies":["[[Hawk Films]]","Peregrine Productions","[[Warner Bros.]]"],
 			    "year":1975}))
 
 		test_helper("Rocky",
 			%Q({"title":"Rocky",
-			    "cast":["Sylvester Stallone","Talia Shire","Burt Young","Carl Weathers","Burgess Meredith","Thayer David","Joe Spinell","Tony Burton","Pedro Lovell"],
-			    "directors":["John G. Avildsen"],
-			    "producers":["Irwin Winkler","Robert Chartoff"],
-			    "companies":["Chartoff-Winkler Productions","United Artists"],
+			    "cast":["[[Sylvester Stallone]]","[[Talia Shire]]","[[Burt Young]]","[[Carl Weathers]]","[[Burgess Meredith]]","[[Thayer David]]","[[Joe Spinell]]","[[Tony Burton]]","[[Pedro Lovell]]"],
+			    "directors":["[[John G. Avildsen]]"],
+			    "producers":["[[Irwin Winkler]]","[[Robert Chartoff]]"],
+			    "companies":["Chartoff-Winkler Productions","[[United Artists]]"],
 			    "year":1976}))
 
 		# Two on a line: Actor as Character and Actor as Character
@@ -195,26 +196,26 @@ class TestGetCast < Test::Unit::TestCase
 		# Two actors for the same character, separated by <br>
 		skip_test_helper("The Castle of Cagliostro",
 			%Q({"title":"The Castle of Cagliostro",
-			    "cast":["Yasuo Yamada","Eiko Masuyama","Kiyoshi Kobayashi","Makio Inoue","Goro Naya","Sumi Shimamoto","Tarō Ishida","Robert Bergen","Sean Barker","Joan-Carol O'Connell","Barbara Goodson","Ruby Marlowe","Michael McConnohie","Sparky Thornton","Gorō Naya","David Povall","Dougary Grant","Steve Bulen"Ivan Buckley","Edie Mirman","Dorothy Melendrez","Ichirō Nagai","Jeff Winkless","Richard Barnes","Steve Kramer","Michael Gregory","Kōhei Miyauchi","Mike Reynolds","Gil Starberry","Tadamichi Tsuneizumi","Kirk Thornton","Marlon Mann","Shōzō Hirabayashi","Jeff Winkless","G. Gordon Baer","Juji Matsuda","Kerrigan Mahan","James Lyon","Kinpei Azusa","Kirk Thornton","Alfred Thor","Yoko Yamaoka","Julie Donald","Bambi Darro"]
-			    "directors":["Hayao Miyazaki"],
-			    "producers":["Tetsuo Katayama"],
-			    "companies":["Tokyo Movie Shinsha","Toho"],
+			    "cast":["[[Yasuo Yamada]]","[[Eiko Masuyama]]","[[Kiyoshi Kobayashi]]","[[Makio Inoue]]","[[Goro Naya]]","[[Sumi Shimamoto]]","[[Tarō Ishida]]","[[Robert Bergen]]","[[Sean Barker]]","[[Joan-Carol O'Connell]]","[[Barbara Goodson]]","[[Ruby Marlowe]]","[[Michael McConnohie]]","[[Sparky Thornton]]","[[Gorō Naya]]","[[David Povall]]","[[Dougary Grant]]","[[Steve Bulen"Ivan Buckley]]","[[Edie Mirman]]","[[Dorothy Melendrez]]","[[Ichirō Nagai]]","[[Jeff Winkless]]","[[Richard Barnes]]","[[Steve Kramer]]","[[Michael Gregory]]","[[Kōhei Miyauchi]]","[[Mike Reynolds]]","[[Gil Starberry]]","[[Tadamichi Tsuneizumi]]","[[Kirk Thornton]]","[[Marlon Mann]]","[[Shōzō Hirabayashi]]","[[Jeff Winkless]]","[[G. Gordon Baer]]","[[Juji Matsuda]]","[[Kerrigan Mahan]]","[[James Lyon]]","[[Kinpei Azusa]]","[[Kirk Thornton]]","[[Alfred Thor]]","[[Yoko Yamaoka]]","[[Julie Donald]]","[[Bambi Darro]]"]
+			    "directors":["[[Hayao Miyazaki]]"],
+			    "producers":["[[Tetsuo Katayama]]"],
+			    "companies":["[[Tokyo Movie Shinsha]]","[[Toho]]"],
 			    "year":1979}))
 
 		test_helper("Charly",
 			%Q({"title":"Charly",
-			    "cast":["Cliff Robertson","Claire Bloom","Leon Janney","Lilia Skala","Dick Van Patten","Ruth White","Edward McNally","Barney Martin","William Dwyer","Dan Morgan"],
-			    "directors":["Ralph Nelson"],
-			    "producers":["Ralph Nelson"],
-			    "companies":["ABC Motion Pictures","Robertson and Associates","Selmur Productions","Cinerama Releasing Corporation"],
+			    "cast":["[[Cliff Robertson]]","[[Claire Bloom]]","[[Leon Janney]]","[[Lilia Skala]]","[[Dick Van Patten]]","[[Ruth White (actress)|Ruth White]]","Edward McNally","[[Barney Martin]]","William Dwyer","Dan Morgan"],
+			    "directors":["[[Ralph Nelson]]"],
+			    "producers":["[[Ralph Nelson]]"],
+			    "companies":["[[ABC Motion Pictures]]","Robertson and Associates","Selmur Productions","[[Cinerama Releasing Corporation]]"],
 			    "year":1968}))
 
 		test_helper("Midnight Cowboy",
 			%Q({"title":"Midnight Cowboy",
-			    "cast":["Dustin Hoffman","Jon Voight","Sylvia Miles","John McGiver","Brenda Vaccaro","Barnard Hughes","Ruth White","Jennifer Salt","Gilman Rankin","Georgann Johnson","Anthony Holland","Bob Balaban"],
-			    "directors":["John Schlesinger"],
-			    "producers":["Jerome Hellman"],
-			    "companies":["Jerome Hellman Productions","United Artists"],
+			    "cast":["[[Dustin Hoffman]]","[[Jon Voight]]","[[Sylvia Miles]]","[[John McGiver]]","[[Brenda Vaccaro]]","[[Barnard Hughes]]","[[Ruth White (actress)|Ruth White]]","[[Jennifer Salt]]","[[Gilman Rankin]]","[[Georgann Johnson]]","[[Anthony Holland (actor)|Anthony Holland]]","[[Bob Balaban]]"],
+			    "directors":["[[John Schlesinger]]"],
+			    "producers":["[[Jerome Hellman]]"],
+			    "companies":["Jerome Hellman Productions","[[United Artists]]"],
 			    "year":1969}))
 
 		# stars=''see below''
@@ -222,18 +223,18 @@ class TestGetCast < Test::Unit::TestCase
 		#  - this is the only article in Wikipedia with that arrangement, not really worth the special case
 		skip_test_helper("1920 (film series)",
 			%Q({"title":"1920 (film series)",
-			    "cast":["Rajneesh Duggal","Adah Sharma","Anjori Alagh","Indraneil Sengupta","Raj Zutshi","Sri Vallabh Vyas","Vipin Sharma","Rakhi Sawant","Aftab Shivdasani","Tia Bajpai","Sharad Kelkar","Vidya Malvade","Vicky Ahuja as Bankimlal","Sharman Joshi","Meera Chopra","Vishal Karwal","Gajendra Chauhan","Meenal Kapoor as Witch","Sushmita Mukherjee","Karan Kundra","Zareen Khan","Vikram Bhatt"],
-			    "directors":["Vikram Bhatt","Bhushan Patel","Tinu Suresh Desai"],
-			    "producers":["Surendra Sharma","Bhagwati Gabrani","Amita Bisnoi","Vikram Bhatt","Reliance Entertainment"],
-			    "companies":["Reliance Big Pictures","ASA Productions and Enterprises Pvt. Ltd.","Reliance Entertainment"],
+			    "cast":["[[Rajneesh Duggal]]","[[Adah Sharma]]","[[Anjori Alagh]]","[[Indraneil Sengupta]]","[[Raj Zutshi]]","[[Sri Vallabh Vyas]]","[[Vipin Sharma]]","[[Rakhi Sawant]]","[[Aftab Shivdasani]]","[[Tia Bajpai]]","[[Sharad Kelkar]]","[[Vidya Malvade]]","[[Vicky Ahuja as Bankimlal]]","[[Sharman Joshi]]","[[Meera Chopra]]","[[Vishal Karwal]]","[[Gajendra Chauhan]]","[[Meenal Kapoor as Witch]]","[[Sushmita Mukherjee]]","[[Karan Kundra]]","[[Zareen Khan]]","[[Vikram Bhatt]]"],
+			    "directors":["[[Vikram Bhatt]]","[[Bhushan Patel]]","[[Tinu Suresh Desai]]"],
+			    "producers":["[[Surendra Sharma]]","[[Bhagwati Gabrani]]","[[Amita Bisnoi]]","[[Vikram Bhatt]]","[[Reliance Entertainment]]"],
+			    "companies":["[[Reliance Big Pictures]]","[[ASA Productions and Enterprises Pvt. Ltd.]]","[[Reliance Entertainment]]"],
 			    "year":2008}))
 
 		test_helper("This Rebel Breed",
 			%Q({"title":"This Rebel Breed",
-			    "cast":["Rita Moreno","Mark Damon","Gerald Mohr","Jay Novello","Eugene Martin","Tom Gilson","Richard Rust","Douglas Hume","Richard Laurier","Don Eitner","Dyan Cannon","Ken Miller","Al Freeman Jr.","Charles Franc","Ike Jones","Shirley Falls","Steven Perry","Hari Rhodes"],
-			    "directors":["Richard L. Bare","William Rowland"],
-			    "producers":["William Rowland","Robert Yamin"],
-			    "companies":["All God's Children Co.","Warner Bros."],
+			    "cast":["[[Rita Moreno]]","[[Mark Damon]]","[[Gerald Mohr]]","[[Jay Novello]]","[[Eugene Martin (actor)|Eugene Martin]]","[[Tom Gilson]]","[[Richard Rust]]","[[Douglas Hume]]","[[Richard Laurier]]","[[Don Eitner]]","[[Dyan Cannon]]","Ken Miller","[[Al Freeman Jr.]]","[[Charles Franc]]","[[Ike Jones]]","[[Shirley Falls]]","[[Steven Perry (actor)|Steven Perry]]","[[Hari Rhodes]]"],
+			    "directors":["[[Richard L. Bare]]","[[William Rowland]]"],
+			    "producers":["[[William Rowland]]","[[Robert Yamin]]"],
+			    "companies":["All God's Children Co.","[[Warner Bros.]]"],
 			    "year":1960}))
 	end
 
