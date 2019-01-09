@@ -65,42 +65,42 @@ class TestGetCast < Test::Unit::TestCase
 
 		test_helper("My Neighbor Totoro",
 			%Q({"title":"My Neighbor Totoro",
-			    "cast":["Chika Sakamoto","Noriko Hidaka","Hitoshi Takagi","Lisa Michelson","Dakota Fanning","Cheryl Chase","Elle Fanning","Shigesato Itoi","Greg Snegoff","Tim Daly","Sumi Shimamoto","Alexandra Kenworthy","Lea Salonga","Frank Welker","Toshiyuki Amagasa","Kenneth Hartman","Paul Butcher","Tanie Kitabayashi","Natalie Core","Pat Carroll","Naoki Tatsuta","Carl Macek","Chie Kojiro","Brianne Siddall","Hiroko Maruyama","Melanie MacQueen","Kath Soucie","Masashi Hirose","Steve Kramer","Peter Renaday","Machiko Washio","Edie Mirman","Tress MacNeille","Reiko Suzuki","Russi Taylor","Daiki Nakamura","Kerrigan Mahan","Yuko Mizutani","Lara Cody","Bridget Hoffman","Tomomichi Nishimura","Doug Stone"],
-			    "directors":["Hayao Miyazaki"],
+			    "cast":["[[Chika Sakamoto]]","[[Noriko Hidaka]]","[[Hitoshi Takagi]]","[[Lisa Michelson]]","[[Dakota Fanning]]","[[Cheryl Chase]]","[[Elle Fanning]]","[[Shigesato Itoi]]","[[Gregory Snegoff|Greg Snegoff]]","[[Tim Daly]]","[[Sumi Shimamoto]]","[[Alexandra Kenworthy]]","[[Lea Salonga]]","[[Frank Welker]]","Toshiyuki Amagasa","Kenneth Hartman","[[Paul Butcher, Jr.|Paul Butcher]]","[[Tanie Kitabayashi]]","Natalie Core","[[Pat Carroll (actress)|Pat Carroll]]","[[Naoki Tatsuta]]","[[Carl Macek]]","[[Chie Kojiro]]","[[Brianne Siddall]]","Hiroko Maruyama","Melanie MacQueen","[[Kath Soucie]]","[[Masashi Hirose]]","[[Steve Kramer (actor)|Steve Kramer]]","[[Peter Renaday]]","[[Machiko Washio]]","[[Edie Mirman]]","[[Tress MacNeille]]","[[Reiko Suzuki]]","[[Russi Taylor]]","[[Daiki Nakamura]]","[[Kerrigan Mahan]]","[[Yuko Mizutani]]","[[Lara Cody]]","[[Bridget Hoffman]]","[[Tomomichi Nishimura]]","[[Doug Stone (voice actor)|Doug Stone]]"],
+			    "directors":["[[Hayao Miyazaki]]"],
 			    "producers":["Toru Hara"],
-			    "companies":["Studio Ghibli","Toho"],
+			    "companies":["[[Studio Ghibli]]","[[Toho]]"],
 			    "year":1988}))
 
 		test_helper("Original Sin (2001 film)",
 			%Q({"title":"Original Sin (2001 film)",
-			    "cast":["Antonio Banderas","Angelina Jolie","Thomas Jane","Jack Thompson","Gregory Itzin","Pedro Armendáriz, Jr.","James Haven","Allison Mackie","Joan Pringle","Cordelia Richards","Pedro Armendariz","Mario Ivan Martinez","Harry Porter","Fernando Torre Lapham","Shaula Vega","Lisa Owen","Daniel Martínez","Farnesio De Bernal","Nitzi Arellano","Roger Cudney","Adrian Makala","Francis Laborial","Derek Rojo","Abraham Stavans","Julio Bracho"],
-			    "directors":["Michael Cristofer"],
-			    "producers":["Denise Di Novi","Kate Guinzberg","Carol Lees"],
-			    "companies":["Hyde Park Entertainment","Metro–Goldwyn–Mayer","MGM Distribution Co."],
+			    "cast":["[[Antonio Banderas]]","[[Angelina Jolie]]","[[Thomas Jane]]","[[Jack Thompson (actor)|Jack Thompson]]","[[Gregory Itzin]]","[[Pedro Armendáriz, Jr.]]","[[James Haven]]","[[Allison Mackie]]","[[Joan Pringle]]","[[Cordelia Richards]]","[[Pedro Armendariz]]","[[Mario Ivan Martinez]]","[[Harry Porter]]","[[Fernando Torre Lapham]]","[[Shaula Vega]]","[[Lisa Owen]]","[[Daniel Martínez (actor)|Daniel Martínez]]","[[Farnesio De Bernal]]","[[Nitzi Arellano]]","[[Roger Cudney]]","[[Adrian Makala]]","[[Francis Laborial]]","[[Derek Rojo]]","[[Abraham Stavans]]","[[Julio Bracho]]"],
+			    "directors":["[[Michael Cristofer]]"],
+			    "producers":["[[Denise Di Novi]]","Kate Guinzberg","Carol Lees"],
+			    "companies":["[[Hyde Park Entertainment]]","[[Metro–Goldwyn–Mayer]]","[[MGM Distribution Co.]]"],
 			    "year":2001}))
 
 		test_helper("Random Harvest (film)",
 			%Q({"title":"Random Harvest (film)",
-			    "cast":["Ronald Colman","Greer Garson","Philip Dorn","Susan Peters","Henry Travers","Reginald Owen","Bramwell Fletcher","Rhys Williams","Una O'Connor","Aubrey Mather","Margaret Wycherly","Arthur Margetson","Melville Cooper","Alan Napier","Jill Esmond","Ivan F. Simpson","Ann Richards","Norma Varden","David Cavendish","Marie De Becker","Charles Waldron","Elisabeth Risdon"],
-			    "directors":["Mervyn LeRoy"],
-			    "producers":["Sidney Franklin"],
-			    "companies":["Metro-Goldwyn-Mayer","Loew's Inc."],
+			    "cast":["[[Ronald Colman]]","[[Greer Garson]]","[[Philip Dorn]]","[[Susan Peters]]","[[Henry Travers]]","[[Reginald Owen]]","[[Bramwell Fletcher]]","[[Rhys Williams (Welsh-American actor)|Rhys Williams]]","[[Una O'Connor (actress)|Una O'Connor]]","[[Aubrey Mather]]","[[Margaret Wycherly]]","[[Arthur Margetson]]","[[Melville Cooper]]","[[Alan Napier]]","[[Jill Esmond]]","[[Ivan F. Simpson]]","[[Ann Richards (actress)|Ann Richards]]","[[Norma Varden]]","[[David Cavendish]]","[[Marie De Becker]]","[[Charles Waldron]]","[[Elisabeth Risdon]]"],
+			    "directors":["[[Mervyn LeRoy]]"],
+			    "producers":["[[Sidney Franklin (director)|Sidney Franklin]]"],
+			    "companies":["[[Metro-Goldwyn-Mayer]]","Loew's Inc."],
 			    "year":1942}))
 
 		test_helper("Roman Holiday",
 			%Q({"title":"Roman Holiday",
-			    "cast":["Gregory Peck","Audrey Hepburn","Eddie Albert","Hartley Power","Harcourt Williams","Margaret Rawlings","Tullio Carminati","Paolo Carlini","Claudio Ermelli","Paola Borboni","Laura Solari","Alfredo Rizzo","Gorella Gori"],
-			    "directors":["William Wyler"],
-			    "producers":["William Wyler"],
-			    "companies":["Paramount Pictures"],
+			    "cast":["[[Gregory Peck]]","[[Audrey Hepburn]]","[[Eddie Albert]]","[[Hartley Power]]","[[Harcourt Williams]]","[[Margaret Rawlings]]","[[Tullio Carminati]]","[[Paolo Carlini]]","[[Claudio Ermelli]]","[[Paola Borboni]]","[[Laura Solari]]","[[Alfredo Rizzo]]","[[Gorella Gori]]"],
+			    "directors":["[[William Wyler]]"],
+			    "producers":["[[William Wyler]]"],
+			    "companies":["[[Paramount Pictures]]"],
 			    "year":1953}))
 
 		test_helper("Spirited Away",
 			%Q({"title":"Spirited Away",
-			    "cast":["Rumi Hiiragi","Miyu Irino","Mari Natsuki","Takeshi Naito","Yasuko Sawaguchi","Tsunehiko Kamijō","Takehiko Ono","Bunta Sugawara","Daveigh Chase","Jason Marsden","Suzanne Pleshette","David Ogden Stiers","Yoomi Tamai","Susan Egan","Paul Eiding","John Ratzenberger","Akio Nakamura","Bob Bergen","Tatsuya Gashūin","Yō Ōizumi","Rodger Bumpass","Ryūnosuke Kamiki","Tara Strong","Takashi Naitō","Michael Chiklis","Lauren Holly","Koba Hayashi","Jim Ward","Ken Yasuda","Jack Angel"],
-			    "directors":["Hayao Miyazaki"],
-			    "producers":["Toshio Suzuki"],
-			    "companies":["Studio Ghibli","Toho"],
+			    "cast":["[[Rumi Hiiragi]]","[[Miyu Irino]]","[[Mari Natsuki]]","Takeshi Naito","[[Yasuko Sawaguchi]]","[[Tsunehiko Kamijō]]","[[Takehiko Ono]]","[[Bunta Sugawara]]","[[Daveigh Chase]]","[[Jason Marsden]]","[[Suzanne Pleshette]]","[[David Ogden Stiers]]","[[Yoomi Tamai]]","[[Susan Egan]]","[[Paul Eiding]]","[[John Ratzenberger]]","[[Akio Nakamura]]","[[Bob Bergen]]","[[Tatsuya Gashūin]]","[[Yo Oizumi|Yō Ōizumi]]","[[Rodger Bumpass]]","[[Ryunosuke Kamiki|Ryūnosuke Kamiki]]","[[Tara Strong]]","[[Takashi Naitō]]","[[Michael Chiklis]]","[[Lauren Holly]]","[[Koba Hayashi]]","[[Jim Ward (voice actor)|Jim Ward]]","[[Ken Yasuda (actor)|Ken Yasuda]]","[[Jack Angel]]"],
+			    "directors":["[[Hayao Miyazaki]]"],
+			    "producers":["[[Toshio Suzuki (producer)|Toshio Suzuki]]"],
+			    "companies":["[[Studio Ghibli]]","[[Toho]]"],
 			    "year":2001}))
 
 		test_helper("Strategic Air Command (film)",

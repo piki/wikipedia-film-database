@@ -472,7 +472,13 @@ private
 
 				# https://en.wikipedia.org/wiki/Template:Interlanguage_link
 				when "ill", "interlanguage link multi"
-					tok[1]
+					lt = tok.grep(/^lt \s* =/ix)
+					if lt.any?
+						lt = lt.first.split(/\s* = \s*/x, 2)[1]
+						"[[#{tok[1]}|#{lt}]]"
+					else
+						"[[#{tok[1]}]]"
+					end
 
 				# https://en.wikipedia.org/wiki/Template:Sortname
 				when "sortname"
