@@ -38,8 +38,14 @@ class TestTextHelpers < Test::Unit::TestCase
 
 	def test_plain_textify
 		assert_equal("AfooB", Movie.plain_textify("A{{ill|foo|bar}}B"))
-		assert_equal("AtextB", Movie.plain_textify("A[[target|text]]B"))
-		assert_equal("AfooB CtextD", Movie.plain_textify("A{{ill|foo|bar}}B C[[target|text]]D"))
+		assert_equal("A[[target|text]]B", Movie.plain_textify("A[[target|text]]B"))
+		assert_equal("AfooB C[[target|text]]D", Movie.plain_textify("A{{ill|foo|bar}}B C[[target|text]]D"))
+	end
+
+	def test_split_around_markup
+		assert_equal(["a", "b", "c"], Movie.split_around_markup("a|b|c", "|"))
+		assert_equal(["a", "[[bbb|B]]", "[[c|C]]", "d"], Movie.split_around_markup("a|[[bbb|B]]|[[c|C]]|d", "|"))
+		assert_equal(["a", "{{b|B}}", "c"], Movie.split_around_markup("a|{{b|B}}|c", "|"))
 	end
 
 	def test_plainlist
@@ -72,9 +78,10 @@ class TestTextHelpers < Test::Unit::TestCase
 
 	def test_expand_brace_commands
 		# sort
-		assert_equal("Richard Burton", Movie.plain_textify("{{sort|Burton|[[Black Knight (Monty Python) #Performance difficulty|Richard Burton]]}}"))
+		assert_equal("[[Black Knight (Monty Python) #Performance difficulty|Richard Burton]]", Movie.plain_textify("{{sort|Burton|[[Black Knight (Monty Python) #Performance difficulty|Richard Burton]]}}"))
 		# sortname
-		assert_equal("John Cleese", Movie.plain_textify("{{sortname|John|Cleese}}"))
+		assert_equal("[[John Cleese]]", Movie.plain_textify("{{sortname|John|Cleese}}"))
+		assert_equal("[[John Young (actor)|John Young]]", Movie.plain_textify("{{sortname|John|Young|dab=actor}}"))
 		assert_equal("Bee Duffell", Movie.plain_textify("{{sortname|Bee|Duffell|nolink=y}}"))
 	end
 

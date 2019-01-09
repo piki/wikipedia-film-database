@@ -150,14 +150,49 @@ private
 	def self.parse_infobox_list(line)
 		if (m = /{{(?: ubl | unbulleted \s+ list) \| (.*)/ix.match(line)) && (eofs = find_end_braces(line, m.begin(0)))
 			body = line[m.begin(1)...eofs-2]
-			body = expand_brace_commands(delinkify(body))
-			arr = body.split('|')
+			body = expand_brace_commands(body)
+			arr = split_around_markup(body, "|")
 		else
 			arr = line.split(/\s* <br \s* \/? > \s*/xi)  # <br/> or <br>
 		end
 		arr = arr.map { |tok| strip_parenthetical(plain_textify(tok)).strip }
 		arr.select! { |x| is_legal_actor?(x) }
 		arr
+	end
+
+	
+	# Split the string `str` into an array, using `sep` as the field
+	# separator.  This is like `str.split(sep)`, except that it ignores
+	# instances of `sep` that appear in `[[...]]` and `{{...}}` markup
+	# sequences.
+	#  e.g.,
+	#    split_around_markup("a|b|c", "|") -> ["a", "b", "c"]
+	#    split_around_markup("a|[b|B]|c", "|") -> ["a", "[b|B]", "c"]
+	def self.split_around_markup(str, sep)
+		ret = []
+		ofs = 0
+		while !str.empty?
+			sep_ofs = str.index(sep, ofs)
+			brace_ofs = str.index("{{", ofs)
+			bracket_ofs = str.index("[[", ofs)
+			next_ofs = [ sep_ofs, brace_ofs, bracket_ofs ].compact.min
+			case next_ofs
+				when nil
+					ret << str
+					str = ""
+				when sep_ofs
+					ret << str[0...sep_ofs]
+					str = str[sep_ofs+1..-1]
+					ofs = 0
+				when brace_ofs
+					ofs = find_block_end(str, ofs, "{{", "}}")
+				when bracket_ofs
+					ofs = find_block_end(str, ofs, "[[", "]]")
+				else
+					fail
+			end
+		end
+		ret
 	end
 
 	# Parse the "Cast" section out of an article, and return the cast list
@@ -300,7 +335,7 @@ private
 	end
 
 	def self.plain_textify(str)
-		expand_brace_commands(de_tagify(delinkify(str)))
+		expand_brace_commands(de_tagify(str))
 	end
 
 	def self.de_tagify(str)
@@ -389,7 +424,7 @@ private
 
 	def self.expand_brace_commands(str)
 		str.gsub(/{{(.*?)}}/) do |sub|
-			tok = $1.split('|', 4)
+			tok = split_around_markup($1, "|")
 			case tok.first.downcase
 				# https://en.wikipedia.org/wiki/Template:Anchor
 				when "anchor"
@@ -401,7 +436,15 @@ private
 
 				# https://en.wikipedia.org/wiki/Template:Sortname
 				when "sortname"
-					tok[1..2].join(' ')
+					name = tok[1..2].join(' ')
+					case tok[3]
+						when /dab=(.*)/
+							"[[#{name} (#{$1})|#{name}]]"
+						when /nolink=y/
+							name
+						else
+							"[[#{name}]]"
+					end
 
 				# https://en.wikipedia.org/wiki/Template:Sort
 				when "sort"
