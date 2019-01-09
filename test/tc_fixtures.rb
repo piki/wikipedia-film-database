@@ -40,25 +40,27 @@ class TestGetCast < Test::Unit::TestCase
 
 		test_helper("Evil Dead II",
 			%Q({"title":"Evil Dead II",
-			    "cast":["Bruce Campbell","Sarah Berry","Dan Hicks","Kassie Wesley","Richard Domeier","Ted Raimi","Denise Bixler","John Peaks","Lou Hancock","William Preston Robertson"],
-			    "directors":["Sam Raimi"],
-			    "producers":["Robert Tapert","Alex De Benedetti","Irvin Shapiro"],
-			    "companies":["Don Nafia","Renaissance Pictures","Embassy Communications","De Laurentiis Entertainment Group","Palace Pictures"],
+			    "cast":["[[Bruce Campbell]]","Sarah Berry","[[Dan Hicks (actor)|Dan Hicks]]","[[Kassie DePaiva|Kassie Wesley]]","Richard Domeier","[[Ted Raimi]]","Denise Bixler","John Peaks","Lou Hancock","William Preston Robertson"],
+			    "directors":["[[Sam Raimi]]"],
+			    "producers":["[[Robert Tapert]]","Alex De Benedetti","[[Irvin Shapiro]]"],
+			    "companies":["Don Nafia","[[Renaissance Pictures]]","[[Embassy Communications]]","[[De Laurentiis Entertainment Group]]","[[Palace Pictures]]"],
 			    "year":1987}))
 
-		# ==Cast== is a 2-column table
+		# Rosemary Lane and Lola Lane appear twice, with different link text.
 		test_helper("Four Daughters",
 			%Q({"title":"Four Daughters",
-			    "cast":["Priscilla Lane","Rosemary Lane","Lola Lane","Gale Page","John Garfield","Jeffrey Lynn","May Robson","Frank McHugh","Claude Rains","Dick Foran"],
-			    "directors":["Michael Curtiz"],
-			    "producers":["Hal B. Wallis"],
-			    "companies":["Warner Bros."],
+			    "cast":["[[Priscilla Lane]]","[[Rosemary Lane (actress)|Rosemary Lane]]","[[Lola Lane]]","[[Gale Page]]","[[John Garfield]]","[[Lane Sisters|Rosemary Lane]]","[[Jeffrey Lynn]]","[[Lane Sisters|Lola Lane]]","[[May Robson]]","[[Frank McHugh]]","[[Claude Rains]]","[[Dick Foran]]"],
+			    "directors":["[[Michael Curtiz]]"],
+			    "producers":["[[Hal B. Wallis]]"],
+			    "companies":["[[Warner Bros.]]"],
 			    "year":1938}))
 
 		test_helper("Monty Python and the Holy Grail",
 			%Q({"title":"Monty Python and the Holy Grail",
-			    "cast":["Graham Chapman","John Cleese","Terry Gilliam","Eric Idle","Terry Jones","Michael Palin","Connie Booth","Carol Cleveland","Neil Innes","Bee Duffell","John Young","Rita Davies","Avril Stewart","Sally Kinghorn","Mark Zycon","Sandy Johnson","Julian Doyle","Richard Burton"],
-			    "companies":["Python (Monty) Pictures","Michael White Productions","National Film Trustee Company","EMI Films"],
+			    "cast":["[[Graham Chapman]]","[[John Cleese]]","[[Terry Gilliam]]","[[Eric Idle]]","[[Terry Jones]]","[[Michael Palin]]","[[Connie Booth]]","[[Carol Cleveland]]","[[Neil Innes]]","Bee Duffell","[[John Young (actor)|John Young]]","Rita Davies","Avril Stewart","Sally Kinghorn","Mark Zycon","[[Sandy Johnson (director)|Sandy Johnson]]","[[Julian Doyle (filmmaker)|Julian Doyle]]","[[Black Knight (Monty Python) #Performance difficulty|Richard Burton]]"],
+			    "directors":["[[Terry Gilliam]]","[[Terry Jones]]"],
+			    "producers":["[[Mark Forstater]]","[[Michael White (producer)|Michael White]]"],
+			    "companies":["[[Python (Monty) Pictures]]","Michael White Productions","National Film Trustee Company","[[EMI Films]]"],
 			    "year":1975}))
 
 		test_helper("My Neighbor Totoro",

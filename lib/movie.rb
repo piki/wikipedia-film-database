@@ -121,11 +121,11 @@ private
 			key, value = $1, $2.strip
 			next if value.empty?
 			case key
-				when "director"
+				when "director", "directors"
 					if val = parse_infobox_list(value)
 						ret["directors"] = val
 					end
-				when "producer"
+				when "producer", "producers"
 					if val = parse_infobox_list(value)
 						ret["producers"] = val
 					end
@@ -212,9 +212,9 @@ private
 					str = str[sep_ofs+1..-1]
 					ofs = 0
 				when brace_ofs
-					ofs = find_block_end(str, ofs, "{{", "}}")
+					ofs = find_block_end(str, brace_ofs, "{{", "}}")
 				when bracket_ofs
-					ofs = find_block_end(str, ofs, "[[", "]]")
+					ofs = find_block_end(str, bracket_ofs, "[[", "]]")
 				else
 					fail
 			end
@@ -444,7 +444,7 @@ private
 	end
 
 	def self.find_block_end(str, ofs, ldelim, rdelim)
-		fail unless str[ofs..ofs+1] == ldelim
+		fail "expected #{ldelim.inspect} but got #{str.inspect}" unless str[ofs..ofs+1] == ldelim
 		ofs += 2
 		depth = 1
 		while depth > 0
