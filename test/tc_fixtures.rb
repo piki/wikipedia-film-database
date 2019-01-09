@@ -8,34 +8,34 @@ class TestGetCast < Test::Unit::TestCase
 	def test_fixtures
 		test_helper("Actrius",
 			%Q({"title":"Actrius",
-			    "cast":["Núria Espert","Rosa Maria Sardà","Anna Lizaran","Mercè Pons"],
-			    "directors":["Ventura Pons"],
-			    "producers":["Ventura Pons"],
-			    "companies":["Canal+ España","Els Films de la Rambla S.A.","Generalitat de Catalunya - Departament de Cultura","Televisión Española","Buena Vista International"],
+			    "cast":["[[Núria Espert]]","[[Rosa Maria Sardà]]","[[Anna Lizaran]]","[[Mercè Pons]]"],
+			    "directors":["[[Ventura Pons]]"],
+			    "producers":["[[Ventura Pons]]"],
+			    "companies":["[[Canal+|Canal+ España]]","Els Films de la Rambla S.A.","[[Generalitat de Catalunya|Generalitat de Catalunya - Departament de Cultura]]","[[Televisión Española]]","[[Buena Vista International]]"],
 			    "year":1997}))
 
 		test_helper("Army of Darkness",
 			%Q({"title":"Army of Darkness",
-			    "cast":["Bruce Campbell","Embeth Davidtz","Marcus Gilbert","Ian Abercrombie","Richard Grove","Timothy Patrick Quill","Michael Earl Reid","Bridget Fonda","Patricia Tallman","Ted Raimi","Angela Featherstone"],
-			    "directors":["Sam Raimi"],
-			    "producers":["Robert Tapert"],
-			    "companies":["Dino De Laurentiis Communications","Renaissance Pictures","Universal Pictures"],
+			    "cast":["[[Bruce Campbell]]","[[Embeth Davidtz]]","[[Marcus Gilbert (actor)|Marcus Gilbert]]","[[Ian Abercrombie]]","Richard Grove","Timothy Patrick Quill","Michael Earl Reid","[[Bridget Fonda]]","[[Patricia Tallman]]","[[Ted Raimi]]","[[Angela Featherstone]]"],
+			    "directors":["[[Sam Raimi]]"],
+			    "producers":["[[Robert Tapert]]"],
+			    "companies":["[[Dino De Laurentiis|Dino De Laurentiis Communications]]","[[Renaissance Pictures]]","[[Universal Studios|Universal Pictures]]"],
 			    "year":1992}))
 
 		test_helper("Batman (1966 film)",
 			%Q({"title":"Batman (1966 film)",
-			    "cast":["Adam West","Burt Ward","Lee Meriwether","Cesar Romero","Burgess Meredith","Frank Gorshin","Alan Napier","Neil Hamilton","Stafford Repp","Madge Blake","Reginald Denny","Milton Frome","Gil Perkins","Dick Crockett","George Sawaya","Van Williams"],
-			    "directors":["Leslie H. Martinson"],
-			    "producers":["William Dozier"],
-			    "companies":["William Dozier Productions","Greenlawn Productions","20th Century Fox"],
+			    "cast":["[[Adam West]]","[[Burt Ward]]","[[Lee Meriwether]]","[[Cesar Romero]]","[[Burgess Meredith]]","[[Frank Gorshin]]","[[Alan Napier]]","[[Neil Hamilton (actor)|Neil Hamilton]]","[[Stafford Repp]]","[[Madge Blake]]","[[Reginald Denny (actor)|Reginald Denny]]","[[Milton Frome]]","[[Gil Perkins]]","[[Dick Crockett]]","[[George Sawaya]]","[[Van Williams]]"],
+			    "directors":["[[Leslie H. Martinson]]"],
+			    "producers":["[[William Dozier]]"],
+			    "companies":["William Dozier Productions","Greenlawn Productions","[[20th Century Fox]]"],
 			    "year":1966}))
 
 		test_helper("Batman (1989 film)",
 			%Q({"title":"Batman (1989 film)",
-			    "cast":["Jack Nicholson","Michael Keaton","Kim Basinger","Robert Wuhl","Pat Hingle","Billy Dee Williams","Michael Gough","Jack Palance","Jerry Hall","Tracey Walter","Lee Wallace","William Hootkins","John Dair","Christopher Fairbank","George Roth","Hugo E. Blick","Charles Roskilly","David Baxt","Sharon Holm","Garrick Hagon","Liza Ross","Adrian Meyers"],
-			    "directors":["Tim Burton"],
-			    "producers":["Jon Peters","Peter Guber"],
-			    "companies":["Warner Bros. Pictures","Guber-Peters Company"],
+			    "cast":["[[Jack Nicholson]]","[[Michael Keaton]]","[[Kim Basinger]]","[[Robert Wuhl]]","[[Pat Hingle]]","[[Billy Dee Williams]]","[[Michael Gough]]","[[Jack Palance]]","[[Jerry Hall]]","[[Tracey Walter]]","[[Lee Wallace (actor)|Lee Wallace]]","[[William Hootkins]]","[[John Dair]]","[[Christopher Fairbank]]","George Roth","[[Hugo Blick|Hugo E. Blick]]","Charles Roskilly","David Baxt","Sharon Holm","[[Garrick Hagon]]","Liza Ross","Adrian Meyers"],
+			    "directors":["[[Tim Burton]]"],
+			    "producers":["[[Jon Peters]]","[[Peter Guber]]"],
+			    "companies":["[[Warner Bros. Pictures]]","Guber-Peters Company"],
 			    "year":1989}))
 
 		test_helper("Evil Dead II",

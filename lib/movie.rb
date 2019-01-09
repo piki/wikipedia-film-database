@@ -40,6 +40,7 @@ class Movie
 					arr[idx] = linkmap[name]
 				end
 			end
+			arr.uniq!
 		end
 	end
 
