@@ -335,6 +335,19 @@ private
 	end
 
 	def self.get_actor_from_line(line)
+		# If the line begins with a link, and the text of that link is an
+		# actor's name, then return the whole link.
+		if line[0..1] == "[["
+			block = extract_matched_block(line, "[[", "]]")
+			bare = delinkify(block)
+			return block if get_bare_actor_from_line(bare) == bare
+		end
+
+		# Otherwise, try to parse it as plain text.
+		get_bare_actor_from_line(line)
+	end
+
+	def self.get_bare_actor_from_line(line)
 		# The actor name is the concatenation of all capitalized tokens at
 		# the beginning of the line, with special consideration for quoted
 		# nicknames and lowercase name-joining words like "de la".
