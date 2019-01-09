@@ -115,7 +115,7 @@ private
 		ofs = m.begin(0)
 
 		ret = {}
-		convert_plainlists(extract_matched_braces(text[ofs..-1])).lines[1..-1].each do |line|
+		convert_plainlists(extract_matched_block(text[ofs..-1], "{{", "}}")).lines[1..-1].each do |line|
 			next unless line =~ /^\s* \| \s* ([^=]+?) \s* = \s* (.*)/x
 			key, value = $1, $2.strip
 			next if value.empty?
@@ -420,8 +420,8 @@ private
 		end
 	end
 
-	def self.extract_matched_braces(str)
-		eofs = find_end_braces(str, 0)
+	def self.extract_matched_block(str, ldelim, rdelim)
+		eofs = find_block_end(str, 0, ldelim, rdelim)
 		eofs ? str[0...eofs] : str
 	end
 
