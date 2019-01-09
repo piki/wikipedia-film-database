@@ -18,6 +18,31 @@ class Movie
 		@year = year
 	end
 
+	# Convert all plaintext names into links if they appear as links
+	# anywhere else in the same movie.  For example, if Steven Spielberg
+	# appears as both "director=[[Steven Spielberg]]" and "producer=Steven
+	# Spielberg", this function will make both appear as links.  This is
+	# fairly common on Wikipedia: only the first occurrence of a name will
+	# be a link.  Without this function, "[[name]]" and "name" would appear
+	# to be two different people.
+	def linkify
+		linkmap = {}
+		[ @cast, @directors, @producers, @companies ].compact.each do |arr|
+			arr.each do |name|
+				plain = Movie.delinkify(name)
+				linkmap[plain] = name unless plain == name
+			end
+		end
+
+		[ @cast, @directors, @producers, @companies ].compact.each do |arr|
+			arr.each_with_index do |name, idx|
+				if linkmap[name]
+					arr[idx] = linkmap[name]
+				end
+			end
+		end
+	end
+
 	# Parse an article and return a Movie object.
 	#  - title: the title of the article, from <title>...</title>
 	#  - text: the full text of the article
@@ -51,6 +76,7 @@ class Movie
 			puts "ERROR: \"#{title}\" is a film with empty cast" if Parser.debug
 		end
 		m.cast = cast
+		m.linkify
 		m
 	end
 
