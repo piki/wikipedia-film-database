@@ -49,6 +49,10 @@ class Parser < ::Ox::Sax
 
 private
 	def end_page
+		if @title =~ /^(rough \s+)? draft:/xi
+			puts "SKIP: #{@title}" if Parser.debug
+			return
+		end
 		begin
 			m = Movie.parse(@title, @text)
 		rescue => e
