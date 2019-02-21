@@ -238,7 +238,24 @@ class TestGetCast < Test::Unit::TestCase
 			    "year":1960}))
 
 		# cast has *chapter-headings with actors listed as **subheadings
-		test_helper("The Ballad of Buster Scruggs",
+		skip_test_helper("The Ballad of Buster Scruggs",
+			%Q({"title":"The Ballad of Buster Scruggs",
+			    "cast":["[[Tyne Daly]]","[[James Franco]]","[[Brendan Gleeson]]","[[Zoe Kazan]]","[[Liam Neeson]]","[[Tim Blake Nelson]]","[[Tom Waits]]","[[Willie Watson (musician)|Willie Watson]]","[[David Krumholtz]]","E.E. Bell","[[Tom Proctor (actor)|Tom Proctor]]","[[Clancy Brown]]","[[Stephen Root]]","[[Ralph Ineson]]","[[Jesse Luken]]","[[Harry Melling (actor)|Harry Melling]]","Sam Dillon","[[Zoe Kazan]]","[[Bill Heck]]","[[Grainger Hines]]","Jackamoe Buzzell","[[Jefferson Mays]]","Ethan Dubin","[[Jonjo O'Neill (actor)|Jonjo O'Neill]]","[[Saul Rubinek]]","[[Chelcie Ross]]"],
+			    "directors":["[[Coen brothers|Joel Coen","Ethan Coen]]"],
+			    "producers":["Joel Coen","Ethan Coen","[[Megan Ellison]]","[[Sue Naegle]]","Robert Graf"],
+			    "companies":["[[Annapurna Pictures]]","[[Coen Brothers|Mike Zoss Productions]]","[[Netflix]]"],
+			    "year":2018}))
+
+		# cast has *chapter-headings with actors listed as **subheadings
+		skip_test_helper("Malibu Express",
+			%Q({"title":"Malibu Express",
+			    "cast":["[[Darby Hinton]]","[[Sybil Danning]]","[[Lynda Wiesmeier]]","Lori Sutton","[[Art Metrano]]","Shelley Taylor Morgan","Brett Baxter Clark","Niki Dantine","Lorraine Michaels","Kimberly McArthur","Barbara Edwards","Abb Dickson","Busty O'Shea","Randy Rudy","Michael A. Andrews","Richard Brose","John Brown","Suzanne M. Regard","John Alderman","Robyn Hilton","Les Steinmetz","Robert Darnell","Jeanine Vargas","Peter Knecht","Harry Hauss","Ruth Stamer","Peggy Ann Filsinger","[[Regis Philbin]]","Joy Philbin","Niki Patterson"],
+			    "directors":["[[Andy Sidaris]]"],
+			    "producers":["[[Andy Sidaris]]"],
+			    "companies":["Malibu Bay Films","[[Universal Studios]]"],
+			    "year":1985}))
+
+		skip_test_helper("The Ballad of Buster Scruggs",
 			%Q({"title":"The Ballad of Buster Scruggs",
 			    "cast":["[[Tyne Daly]]","[[James Franco]]","[[Brendan Gleeson]]","[[Zoe Kazan]]","[[Liam Neeson]]","[[Tim Blake Nelson]]","[[Tom Waits]]","[[Willie Watson (musician)|Willie Watson]]","[[David Krumholtz]]","E.E. Bell","[[Tom Proctor (actor)|Tom Proctor]]","[[Clancy Brown]]","[[Stephen Root]]","[[Ralph Ineson]]","[[Jesse Luken]]","[[Harry Melling (actor)|Harry Melling]]","Sam Dillon","[[Zoe Kazan]]","[[Bill Heck]]","[[Grainger Hines]]","Jackamoe Buzzell","[[Jefferson Mays]]","Ethan Dubin","[[Jonjo O'Neill (actor)|Jonjo O'Neill]]","[[Saul Rubinek]]","[[Chelcie Ross]]"],
 			    "directors":["[[Coen brothers|Joel Coen","Ethan Coen]]"],
