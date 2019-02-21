@@ -11,6 +11,9 @@ require 'parser'
 # TODO:
 #   save page name (link target) for people and movies
 #   parse redirects to do aliases
+# FIXME:
+#   - John Robinson, James Brown
+#     - Two people with the link text "John Robinson" but different page names
 
 Parser.debug = true
 parser = Parser.new do |movie|
