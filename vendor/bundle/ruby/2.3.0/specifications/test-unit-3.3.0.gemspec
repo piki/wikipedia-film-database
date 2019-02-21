@@ -1,15 +1,15 @@
 # -*- encoding: utf-8 -*-
-# stub: test-unit 3.2.9 ruby lib
+# stub: test-unit 3.3.0 ruby lib
 
 Gem::Specification.new do |s|
   s.name = "test-unit".freeze
-  s.version = "3.2.9"
+  s.version = "3.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0".freeze) if s.respond_to? :required_rubygems_version=
   s.metadata = { "source_code_uri" => "https://github.com/test-unit/test-unit" } if s.respond_to? :metadata=
   s.require_paths = ["lib".freeze]
   s.authors = ["Kouhei Sutou".freeze, "Haruka Yoshihara".freeze]
-  s.date = "2018-12-01"
+  s.date = "2019-01-23"
   s.description = "test-unit (Test::Unit) is unit testing framework for Ruby, based on xUnit\nprinciples. These were originally designed by Kent Beck, creator of extreme\nprogramming software development methodology, for Smalltalk's SUnit. It allows\nwriting tests, checking results and automated testing in Ruby.\n".freeze
   s.email = ["kou@cozmixng.org".freeze, "yoshihara@clear-code.com".freeze]
   s.homepage = "http://test-unit.github.io/".freeze

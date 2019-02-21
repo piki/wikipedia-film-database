@@ -3,7 +3,7 @@ GEM
   specs:
     ox (2.10.0)
     power_assert (1.1.3)
-    test-unit (3.2.9)
+    test-unit (3.3.0)
       power_assert
     unicode (0.4.4.4)
     yajl-ruby (1.4.1)
@@ -18,4 +18,4 @@ DEPENDENCIES
   yajl-ruby
 
 BUNDLED WITH
-   1.16.6
+   1.11.2
