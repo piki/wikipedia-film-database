@@ -236,6 +236,15 @@ class TestGetCast < Test::Unit::TestCase
 			    "producers":["[[William Rowland]]","[[Robert Yamin]]"],
 			    "companies":["All God's Children Co.","[[Warner Bros.]]"],
 			    "year":1960}))
+
+		# cast has *chapter-headings with actors listed as **subheadings
+		test_helper("The Ballad of Buster Scruggs",
+			%Q({"title":"The Ballad of Buster Scruggs",
+			    "cast":["[[Tyne Daly]]","[[James Franco]]","[[Brendan Gleeson]]","[[Zoe Kazan]]","[[Liam Neeson]]","[[Tim Blake Nelson]]","[[Tom Waits]]","[[Willie Watson (musician)|Willie Watson]]","[[David Krumholtz]]","E.E. Bell","[[Tom Proctor (actor)|Tom Proctor]]","[[Clancy Brown]]","[[Stephen Root]]","[[Ralph Ineson]]","[[Jesse Luken]]","[[Harry Melling (actor)|Harry Melling]]","Sam Dillon","[[Zoe Kazan]]","[[Bill Heck]]","[[Grainger Hines]]","Jackamoe Buzzell","[[Jefferson Mays]]","Ethan Dubin","[[Jonjo O'Neill (actor)|Jonjo O'Neill]]","[[Saul Rubinek]]","[[Chelcie Ross]]"],
+			    "directors":["[[Coen brothers|Joel Coen","Ethan Coen]]"],
+			    "producers":["Joel Coen","Ethan Coen","[[Megan Ellison]]","[[Sue Naegle]]","Robert Graf"],
+			    "companies":["[[Annapurna Pictures]]","[[Coen Brothers|Mike Zoss Productions]]","[[Netflix]]"],
+			    "year":2018}))
 	end
 
 	def test_tv_shows
