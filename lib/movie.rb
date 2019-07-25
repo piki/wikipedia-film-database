@@ -178,6 +178,7 @@ private
 		if (m = /{{(?: ubl | unbulleted \s+ list) \| (.*)/ix.match(line)) && (eofs = find_end_braces(line, m.begin(0)))
 			body = line[m.begin(1)...eofs-2]
 			body = expand_brace_commands(body)
+			body = remove_comments(body)
 			arr = split_around_markup(body, "|")
 		else
 			arr = line.split(/\s* <br \s* \/? > \s*/xi)  # <br/> or <br>
@@ -187,6 +188,9 @@ private
 		arr
 	end
 
+	def self.remove_comments(str)
+		str.gsub(/<!-- .*? -->/x, "")
+	end
 	
 	# Split the string `str` into an array, using `sep` as the field
 	# separator.  This is like `str.split(sep)`, except that it ignores
