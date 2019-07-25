@@ -220,14 +220,11 @@ class TestGetCast < Test::Unit::TestCase
 
 		test_helper("X-Men: First Class",
 			%Q({"title":"X-Men: First Class",
-			    "cast":["[[James McAvoy]]","[[Michael Fassbender]]","[[Rose Byrne]]","[[January Jones]]","[[Oliver Platt]]","[[Kevin Bacon]]","[[Jennifer Lawrence]]","[[Nicholas Hoult]]","[[Jason Flemyng]]","[[Lucas Till]]","[[Edi Gathegi]]","[[Caleb Landry Jones]]","[[Zoë Kravitz]]","[[Matt Craven]]","[[Álex González (actor)|Álex González]]","[[Rade Šerbedžija]]","[[Glenn Morshower]]"],
+			    "cast":["[[James McAvoy]]","[[Michael Fassbender]]","[[Rose Byrne]]","[[January Jones]]","[[Oliver Platt]]","[[Kevin Bacon]]","[[Laurence Belcher]]","[[Bill Milner]]","[[Jennifer Lawrence]]","[[Morgan Lily]]","[[Rebecca Romijn]]","[[Nicholas Hoult]]","[[Jason Flemyng]]","[[Lucas Till]]","[[Edi Gathegi]]","[[Caleb Landry Jones]]","[[Zoë Kravitz]]","[[Matt Craven]]","[[Álex González (actor)|Álex González]]","[[Rade Šerbedžija]]","[[Glenn Morshower]]"],
 			    "directors":["[[Matthew Vaughn]]"],
 			    "producers":["[[Lauren Shuler Donner]]","[[Bryan Singer]]","[[Simon Kinberg]]","[[Gregory Goodman]]"],
 			    "companies":["[[Marvel Entertainment]]","[[Lauren Shuler Donner|The Donners' Company]]","[[Bad Hat Harry Productions]]","[[Dune Entertainment]]","[[Ingenious Media|Ingenious Film Partners]]","[[20th Century Fox]]"],
 			    "year":2011}))
-
-		# Full cast for X-Men First Class, counting people with deeper indents in the credits
-		# "cast":["[[James McAvoy]]","[[Michael Fassbender]]","[[Rose Byrne]]","[[January Jones]]","[[Oliver Platt]]","[[Kevin Bacon]]","[[Laurence Belcher]]","[[Bill Milner]]","[[Jennifer Lawrence]]","[[Morgan Lily]]","[[Rebecca Romijn]]","[[Nicholas Hoult]]","[[Jason Flemyng]]","[[Lucas Till]]","[[Edi Gathegi]]","[[Caleb Landry Jones]]","[[Zoë Kravitz]]","[[Matt Craven]]","[[Álex González (actor)|Álex González]]","[[Rade Šerbedžija]]","[[Glenn Morshower]]"],
 
 		# stars=''see below''
 		# cast is a bulleted list contained within a table
