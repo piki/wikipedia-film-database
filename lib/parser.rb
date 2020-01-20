@@ -23,7 +23,14 @@ class Parser < ::Ox::Sax
 				@in_text_tag = true
 			when :title
 				@in_title_tag = true
+			when :redirect
+				@in_redirect_tag = true
 		end
+	end
+
+	def attr(name, str)
+		return unless @in_redirect_tag && name == :title
+		@redirect = str
 	end
 
 	def end_element(name)
@@ -34,6 +41,8 @@ class Parser < ::Ox::Sax
 				@in_text_tag = false
 			when :title
 				@in_title_tag = false
+			when :redirect
+				@in_redirect_tag = false
 			when :page
 				end_page
 		end
@@ -54,6 +63,11 @@ private
 			reset
 			return
 		end
+		if !@redirect.empty?
+			puts "REDIRECT: #{@title} -> #{@redirect}" if Parser.debug
+			reset
+			return
+		end
 		begin
 			m = Movie.parse(@title, @text)
 		rescue => e
@@ -67,8 +81,9 @@ private
 	end
 
 	def reset
-		@in_text_tag = @in_title_tag = false
+		@in_text_tag = @in_title_tag = @in_redirect_tag = false
 		@text = ""
 		@title = ""
+		@redirect = ""
 	end
 end

@@ -285,6 +285,10 @@ class TestGetCast < Test::Unit::TestCase
 		test_helper_empty("Werner Herzog")
 	end
 
+	def test_redirect
+		test_helper_empty("redirect")
+	end
+
 private
 	def test_helper(fn, expect_json, ignore_mismatch=false)
 		count = 0
