@@ -51,6 +51,7 @@ private
 	def end_page
 		if @title =~ /^(rough \s+)? draft:/xi
 			puts "SKIP: #{@title}" if Parser.debug
+			reset
 			return
 		end
 		begin
