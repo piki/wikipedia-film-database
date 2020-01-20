@@ -274,21 +274,23 @@ class TestGetCast < Test::Unit::TestCase
 
 	def test_tv_shows
 		# These are TV shows, so they don't get parsed as movies.
-		test_helper("Hercules: The Legendary Journeys", "")
-		test_helper("Matlock (TV series)", "")
-		test_helper("The Dukes of Hazzard", "")
-		test_helper("Twin Peaks", "")
+		test_helper_empty("Hercules: The Legendary Journeys")
+		test_helper_empty("Matlock (TV series)")
+		test_helper_empty("The Dukes of Hazzard")
+		test_helper_empty("Twin Peaks")
 	end
 
 	def test_people
 		# These are people, so they don't get parsed as movies.
-		test_helper("Werner Herzog", "")
+		test_helper_empty("Werner Herzog")
 	end
 
 private
 	def test_helper(fn, expect_json, ignore_mismatch=false)
+		count = 0
 		File.open("fixtures/#{fn}.xml") do |fp|
 			parser = Parser.new do |movie|
+				count += 1
 				actual_json = movie.to_json
 				expect_json = expect_json.gsub(/\n\s*/, '')
 				if ignore_mismatch
@@ -299,9 +301,19 @@ private
 			end
 			Ox.sax_parse(parser, fp, :skip => :skip_none)
 		end
+		assert_equal 1, count
 	end
 
 	def skip_test_helper(fn, expect_json)
 		test_helper(fn, expect_json, true)
+	end
+
+	def test_helper_empty(fn)
+		File.open("fixtures/#{fn}.xml") do |fp|
+			parser = Parser.new do |movie|
+				fail "Got an unexpected movie from \"#{fn}\""
+			end
+			Ox.sax_parse(parser, fp, :skip => :skip_none)
+		end
 	end
 end
