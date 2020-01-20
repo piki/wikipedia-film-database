@@ -371,6 +371,7 @@ private
 
 	# Chop trailing parenthetical, like "Kevin Bacon (uncredited)"
 	# Also chop trailing slash-alternate, like "Kevin Bacon / some detail"
+	# Also chop trailing dash, comma, and asterisk
 	def self.strip_parenthetical(str)
 		str.
 			gsub(/\s+ \( [^)]+ \) \s* $/x, '').
