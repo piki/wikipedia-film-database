@@ -63,11 +63,6 @@ private
 			reset
 			return
 		end
-		if !@redirect.empty?
-			puts "REDIRECT: #{@title} -> #{@redirect}" if Parser.debug
-			reset
-			return
-		end
 		begin
 			m = Movie.parse(@title, @text)
 		rescue => e
@@ -76,7 +71,15 @@ private
 			puts e.backtrace
 			raise unless Parser.debug
 		end
-		@block.call(m) if m
+
+		if m
+			if @redirect.empty?
+				@block.call(m)
+			else
+				puts "REDIRECT: #{@title} -> #{@redirect}" if Parser.debug
+			end
+		end
+
 		reset
 	end
 
