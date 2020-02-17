@@ -270,6 +270,10 @@ class TestGetCast < Test::Unit::TestCase
 			    "producers":["Joel Coen","Ethan Coen","[[Megan Ellison]]","[[Sue Naegle]]","Robert Graf"],
 			    "companies":["[[Annapurna Pictures]]","[[Coen Brothers|Mike Zoss Productions]]","[[Netflix]]"],
 			    "year":2018}))
+
+		# can we parse things like /(Name Name) \b(?:appears|plays|portrays|as|cameos|has a cameo)\b/ ?
+		skip_test_helper("Ghostbusters II",
+			%Q({"title":"Ghostbusters II","cast":["[[Bill Murray]]","[[Dan Aykroyd]]","[[Sigourney Weaver]]","[[Harold Ramis]]","[[Rick Moranis]]","[[Ernie Hudson]]","[[Annie Potts]]","[[Peter MacNicol]]","[[Kurt Fuller]]","[[David Margulies]]","[[Harris Yulin]]","[[Janet Margolin]]","William T. Deutschendorf","[[Wilhelm von Homburg]]","[[Brian Doyle-Murray]]","Karen Humber","[[Mary Ellen Trainor]]","[[Cheech Marin]]","[[Philip Baker Hall]]","[[Ben Stein]]","[[Louise Troy]]"],"directors":["[[Ivan Reitman]]"],"producers":["[[Ivan Reitman]]"],"companies":["[[Columbia Pictures]]"],"year":1989}))
 	end
 
 	def test_tv_shows
