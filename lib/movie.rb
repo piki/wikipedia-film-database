@@ -52,10 +52,11 @@ class Movie
 		infobox = get_infobox(text)
 		puts "INFOBOX: #{infobox.inspect}" if infobox && Parser.debug
 
-		if !infobox && title !~ /film\)$/
-			# not a film, even if it has a cast
-			return
-		end
+		# not a film, even if it has a cast
+		return if !infobox && title !~ /film\)$/
+
+		# page for deletion
+		return if title =~ /Wikipedia:Articles for deletion/
 
 		cast = get_cast(text)
 		if !cast
