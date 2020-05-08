@@ -274,6 +274,16 @@ class TestGetCast < Test::Unit::TestCase
 		# can we parse things like /(Name Name) \b(?:appears|plays|portrays|as|cameos|has a cameo)\b/ ?
 		skip_test_helper("Ghostbusters II",
 			%Q({"title":"Ghostbusters II","cast":["[[Bill Murray]]","[[Dan Aykroyd]]","[[Sigourney Weaver]]","[[Harold Ramis]]","[[Rick Moranis]]","[[Ernie Hudson]]","[[Annie Potts]]","[[Peter MacNicol]]","[[Kurt Fuller]]","[[David Margulies]]","[[Harris Yulin]]","[[Janet Margolin]]","William T. Deutschendorf","[[Wilhelm von Homburg]]","[[Brian Doyle-Murray]]","Karen Humber","[[Mary Ellen Trainor]]","[[Cheech Marin]]","[[Philip Baker Hall]]","[[Ben Stein]]","[[Louise Troy]]"],"directors":["[[Ivan Reitman]]"],"producers":["[[Ivan Reitman]]"],"companies":["[[Columbia Pictures]]"],"year":1989}))
+
+		# These two (and many others) raised exceptions in
+		# split_around_markup, because the caller expand_brace_commands was
+		# generating blocks with mismatched sets of {{braces}}.
+		test_helper("Enter the Dragon",
+			%Q({"title":"Enter the Dragon","cast":["[[Bruce Lee]]","[[John Saxon]]","[[Ahna Capri]]","[[Robert Wall|Bob Wall]]","[[Shih Kien]]","[[Jim Kelly (martial artist)|Jim Kelly]]","[[Robert Wall]]","[[Angela Mao]]","[[Betty Chung]]","[[Geoffrey Weeks]]","[[Bolo Yeung]]","[[Peter Archer (actor)|Peter Archer]]","Ho Lee Yan","[[Marlene Clark]]","Allan Kent","William Keller","Mickey Caruso","[[Pat E. Johnson]]","[[Darnell Garcia]]","Mike Bissell","[[Jackie Chan]]","[[Sammo Hung]]","[[Roy Chiao]]","[[Paul Heller]]","[[Lam Ching Ying]]","[[Tony Liu]]","[[Alan Chui Chung-San]]","[[Yuen Biao]]","[[Antone Pagan]]","[[Yuen Wah]]","[[Hidy Ochiai]]","Wei Tung","[[Tadashi Yamashita]]","[[Mars (actor)|Mars]]","Mang Hoi"],"directors":["[[Robert Clouse]]"],"producers":["[[Fred Weintraub]]","[[Paul Heller]]","[[Raymond Chow]]"],"companies":["[[Warner Bros.]]","[[Concord Production Inc.]]","[[Orange Sky Golden Harvest|Golden Harvest]]"],"year":1973}))
+
+		test_helper("The Empire Strikes Back",
+			%Q({"title":"The Empire Strikes Back","cast":["[[Mark Hamill]]","[[Harrison Ford]]","[[Carrie Fisher]]","[[Billy Dee Williams]]","[[Anthony Daniels]]","[[David Prowse]]","[[Kenny Baker (English actor)|Kenny Baker]]","[[Peter Mayhew]]","[[Frank Oz]]"],"directors":["[[Irvin Kershner]]"],"producers":["[[Gary Kurtz]]"],"companies":["[[Lucasfilm Ltd.]]","[[20th Century Fox]]"],"year":1980}))
+
 	end
 
 	def test_tv_shows

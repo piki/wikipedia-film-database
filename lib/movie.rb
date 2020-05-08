@@ -277,6 +277,7 @@ private
 				next
 			end
 
+			line.gsub!(/{{Cast listing\|/i, '')
 			line = plain_textify(line)
 			break if /^ [=']+ \s* cast \s+ notes \b/ix.match(line)
 
@@ -469,9 +470,11 @@ private
 	end
 
 	def self.expand_brace_commands(str)
-		str.gsub(/{{(.*?)}}/) do |sub|
-			tok = split_around_markup($1, "|")
-			case tok.first.downcase
+		while left = str.index("{{") do
+			right = find_end_braces(str, left)
+			inner = str[(left+2)...(right-2)]
+			tok = split_around_markup(inner, "|")
+			str[left...right] = x = case tok.first.downcase
 				# https://en.wikipedia.org/wiki/Template:Anchor
 				when "anchor"
 					""
@@ -503,10 +506,11 @@ private
 					tok[2]
 
 				else
-					puts "BRACE COMMAND: \"#{$1}\"" if Parser.debug
+					puts "BRACE COMMAND: \"#{inner}\"" if Parser.debug
 					""
 			end
 		end
+		str
 	end
 
 	# Is the string the beginning of a new section with at most `max_prefix` '=' characters?
