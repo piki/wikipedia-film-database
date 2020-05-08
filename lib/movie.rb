@@ -478,7 +478,7 @@ private
 
 	def self.expand_brace_commands(str)
 		while left = str.index("{{") do
-			right = find_end_braces(str, left)
+			right = find_end_braces(str, left) || str.size
 			inner = str[(left+2)...(right-2)]
 			tok = split_around_markup(inner, "|")
 			str[left...right] = x = case tok.first.downcase

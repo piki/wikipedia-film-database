@@ -167,7 +167,7 @@ class TestGetCast < Test::Unit::TestCase
 		# Diana Koerner is listed with links to "Diana Koerner" (stars list) and "Diana Körner" (cast section)
 		test_helper("Barry Lyndon",
 			%Q({"title":"Barry Lyndon",
-			    "cast":["[[Ryan O'Neal]]","[[Marisa Berenson]]","[[Patrick Magee (actor)|Patrick Magee]]","[[Hardy Krüger]]","[[Diana Koerner]]","[[Gay Hamilton]]","[[Michael Hordern]]","[[Godfrey Quigley]]","[[Steven Berkoff]]","[[Wolf Kahler]]","[[Marie Kean]]","[[Murray Melvin]]","[[Frank Middlemass]]","[[Leon Vitali]]","[[Leonard Rossiter]]","[[André Morell]]","[[Anthony Sharp]]","[[Philip Stone]]","[[David Morley (musician)|David Morley]]","[[Diana Körner|Diana Koerner]]","[[Arthur O'Sullivan]]","[[Billy Boyle]]","[[Roger Booth (actor)|Roger Booth]]"],
+			    "cast":["[[Ryan O'Neal]]","[[Marisa Berenson]]","[[Patrick Magee (actor)|Patrick Magee]]","[[Hardy Krüger]]","[[Diana Koerner]]","[[Gay Hamilton]]","[[Michael Hordern]]","[[Godfrey Quigley]]","[[Steven Berkoff]]","[[Marie Kean]]","[[Murray Melvin]]","[[Frank Middlemass]]","[[Leon Vitali]]","[[Leonard Rossiter]]","[[André Morell]]","[[Anthony Sharp]]","[[Philip Stone]]","[[David Morley (musician)|David Morley]]","[[Diana Körner|Diana Koerner]]","[[Arthur O'Sullivan]]","[[Billy Boyle]]","[[Jonathan Cecil]]","[[Peter Cellier]]","[[Geoffrey Chater]]","[[Wolf Kahler]]","[[Liam Redmond]]","[[Roger Booth (actor)|Roger Booth]]","[[Ferdy Mayne]]","[[John Sharp (actor)|John Sharp]]","[[Pat Roach]]","[[Hans Meyer (actor)|Hans Meyer]]"],
 			    "directors":["[[Stanley Kubrick]]"],
 			    "producers":["[[Stanley Kubrick]]"],
 			    "companies":["[[Hawk Films]]","Peregrine Productions","[[Warner Bros.]]"],
