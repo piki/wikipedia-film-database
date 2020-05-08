@@ -341,7 +341,14 @@ private
 		ret
 	end
 
+	EPITHETS = [ /^Director\s+/, /^Veteran.*(?=\[\[)/ ]
 	def self.get_actor_from_line(line)
+		was = line.dup
+		# Strip leading epithets
+		EPITHETS.each do |pattern|
+			line.gsub!(pattern, '')
+		end
+
 		# If the line begins with a link, and the text of that link is an
 		# actor's name, then return the whole link.
 		if line[0..1] == "[["
@@ -525,7 +532,7 @@ private
 		WORD_CONNECTORS.include?(word) || /^(?: d' | o' | de[A-Z])/x.match(word)
 	end
 
-	ACTOR_NAME_BLOCKLIST = [ "The", "In", /\b see \s+ below \b/xi ]
+	ACTOR_NAME_BLOCKLIST = [ "The", "In", "Director", /\b see \s+ below \b/xi ]
 	def self.is_legal_actor?(str)
 		str && !str.empty? && !ACTOR_NAME_BLOCKLIST.any? {|pattern| pattern === str }
 	end

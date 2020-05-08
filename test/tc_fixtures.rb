@@ -280,10 +280,21 @@ class TestGetCast < Test::Unit::TestCase
 		# generating blocks with mismatched sets of {{braces}}.
 		test_helper("Enter the Dragon",
 			%Q({"title":"Enter the Dragon","cast":["[[Bruce Lee]]","[[John Saxon]]","[[Ahna Capri]]","[[Robert Wall|Bob Wall]]","[[Shih Kien]]","[[Jim Kelly (martial artist)|Jim Kelly]]","[[Robert Wall]]","[[Angela Mao]]","[[Betty Chung]]","[[Geoffrey Weeks]]","[[Bolo Yeung]]","[[Peter Archer (actor)|Peter Archer]]","Ho Lee Yan","[[Marlene Clark]]","Allan Kent","William Keller","Mickey Caruso","[[Pat E. Johnson]]","[[Darnell Garcia]]","Mike Bissell","[[Jackie Chan]]","[[Sammo Hung]]","[[Roy Chiao]]","[[Paul Heller]]","[[Lam Ching Ying]]","[[Tony Liu]]","[[Alan Chui Chung-San]]","[[Yuen Biao]]","[[Antone Pagan]]","[[Yuen Wah]]","[[Hidy Ochiai]]","Wei Tung","[[Tadashi Yamashita]]","[[Mars (actor)|Mars]]","Mang Hoi"],"directors":["[[Robert Clouse]]"],"producers":["[[Fred Weintraub]]","[[Paul Heller]]","[[Raymond Chow]]"],"companies":["[[Warner Bros.]]","[[Concord Production Inc.]]","[[Orange Sky Golden Harvest|Golden Harvest]]"],"year":1973}))
-
 		test_helper("The Empire Strikes Back",
 			%Q({"title":"The Empire Strikes Back","cast":["[[Mark Hamill]]","[[Harrison Ford]]","[[Carrie Fisher]]","[[Billy Dee Williams]]","[[Anthony Daniels]]","[[David Prowse]]","[[Kenny Baker (English actor)|Kenny Baker]]","[[Peter Mayhew]]","[[Frank Oz]]"],"directors":["[[Irvin Kershner]]"],"producers":["[[Gary Kurtz]]"],"companies":["[[Lucasfilm Ltd.]]","[[20th Century Fox]]"],"year":1980}))
 
+		# These two think "Director" is a person's name.  It's a common enough
+		# problem that "Director" shows up in the top-1000 best centers list.
+		test_helper("Run for Love",
+			%Q({"title":"Run for Love","cast":["[[Zhang Ziyi]]","[[Eddie Peng]]","[[Tong Liya]]","[[Zhou Dongyu]]","[[Michelle Chen]]","[[Zhang Yi (actor)|Zhang Yi]]","[[Liang Jing]]","[[Wang Qianyuan]]","[[Wu Mochou]]","Sebastian Stigar","[[Per Christian Ellefsen]]","Janny Hoff Brekke","Sigmund Sæverud","Trond Halbo","Geir Tangen","[[Brian Rooney (American actor)|Brian Rooney]]"],"directors":["[[Zhang Yibai]]","[[Guan Hu]]","[[Zhang Meng (director)|Zhang Meng]]","[[Teng Huatao]]","[[Gao Qunshu]]"],"producers":["Xu Wen"],"companies":["Beijing Wynn Culture & Media","Shannan Guangxian Pictures","Chuandi Guangnian Entertainment","[[Huayi Brothers]]","Shenzhen Huiye Goldstone Management Company","Wuhan Xinghao Film & Culture","Beijing Monster Pictures","Chengdu Zhiyou Culture Communication Company","Wang Yuelun Studio","Beijing Yixiang Tiankai Media"],"year":2016}))
+		test_helper("The Cannonball Run",
+			%Q({"title":"The Cannonball Run","cast":["[[Burt Reynolds]]","[[Roger Moore]]","[[Farrah Fawcett]]","[[Dom DeLuise]]","[[Dean Martin]]","[[Sammy Davis Jr.]]","[[Adrienne Barbeau]]","[[Jamie Farr]]","[[Terry Bradshaw]]","[[Mel Tillis]]","[[Jackie Chan]]","[[Michael Hui]]","[[George Furth]]","[[Peter Fonda]]","[[Bert Convy]]","[[Jack Elam]]","[[Rick Aviles]]","[[John Fiedler]]","[[Joe Klecko]]","[[Hal Needham]]","[[Ken Squier]]","[[June Foray]]"],"directors":["[[Hal Needham]]"],"producers":["[[Albert S. Ruddy]]"],"companies":["[[Orange Sky Golden Harvest|Golden Harvest]]","[[20th Century Fox]]","[[Warner Bros. Pictures]]","[[HBO Films]]","[[Media Asia|Media Asia Distribution]]","[[Star China Media|Fortune Star Media Ltd.]]"],"year":1981}))
+
+		# A better test for The Cannonball Run
+		# This line should produce two actors:
+		#   - [[Adrienne Barbeau]] and [[Tara Buckman]] as Marcie Thatcher and Jill Rivers
+		skip_test_helper("The Cannonball Run",
+			%Q({"title":"The Cannonball Run","cast":["[[Burt Reynolds]]","[[Roger Moore]]","[[Farrah Fawcett]]","[[Dom DeLuise]]","[[Dean Martin]]","[[Sammy Davis Jr.]]","[[Adrienne Barbeau]]","[[Jamie Farr]]","[[Terry Bradshaw]]","[[Mel Tillis]]","[[Jackie Chan]]","[[Michael Hui]]","[[George Furth]]","[[Tara Buckman]]","[[Peter Fonda]]","[[Bert Convy]]","[[Jack Elam]]","[[Rick Aviles]]","[[John Fiedler]]","[[Joe Klecko]]","[[Hal Needham]]","[[Ken Squier]]","[[June Foray]]"],"directors":["[[Hal Needham]]"],"producers":["[[Albert S. Ruddy]]"],"companies":["[[Orange Sky Golden Harvest|Golden Harvest]]","[[20th Century Fox]]","[[Warner Bros. Pictures]]","[[HBO Films]]","[[Media Asia|Media Asia Distribution]]","[[Star China Media|Fortune Star Media Ltd.]]"],"year":1981}))
 	end
 
 	def test_tv_shows
