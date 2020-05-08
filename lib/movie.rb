@@ -525,7 +525,8 @@ private
 		WORD_CONNECTORS.include?(word) || /^(?: d' | o' | de[A-Z])/x.match(word)
 	end
 
+	ACTOR_NAME_BLOCKLIST = [ "The", "In", /\b see \s+ below \b/xi ]
 	def self.is_legal_actor?(str)
-		str && !str.empty? && str != "The" && str != "In" && str !~ /\b see \s+ below \b/xi
+		str && !str.empty? && !ACTOR_NAME_BLOCKLIST.any? {|pattern| pattern === str }
 	end
 end
