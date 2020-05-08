@@ -217,9 +217,9 @@ private
 					str = str[sep_ofs+1..-1]
 					ofs = 0
 				when brace_ofs
-					ofs = find_block_end(str, brace_ofs, "{{", "}}")
+					ofs = find_block_end(str, brace_ofs, "{{", "}}") || str.size
 				when bracket_ofs
-					ofs = find_block_end(str, bracket_ofs, "[[", "]]")
+					ofs = find_block_end(str, bracket_ofs, "[[", "]]") || str.size
 				else
 					fail
 			end

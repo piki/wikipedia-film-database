@@ -295,6 +295,12 @@ class TestGetCast < Test::Unit::TestCase
 		#   - [[Adrienne Barbeau]] and [[Tara Buckman]] as Marcie Thatcher and Jill Rivers
 		skip_test_helper("The Cannonball Run",
 			%Q({"title":"The Cannonball Run","cast":["[[Burt Reynolds]]","[[Roger Moore]]","[[Farrah Fawcett]]","[[Dom DeLuise]]","[[Dean Martin]]","[[Sammy Davis Jr.]]","[[Adrienne Barbeau]]","[[Jamie Farr]]","[[Terry Bradshaw]]","[[Mel Tillis]]","[[Jackie Chan]]","[[Michael Hui]]","[[George Furth]]","[[Tara Buckman]]","[[Peter Fonda]]","[[Bert Convy]]","[[Jack Elam]]","[[Rick Aviles]]","[[John Fiedler]]","[[Joe Klecko]]","[[Hal Needham]]","[[Ken Squier]]","[[June Foray]]"],"directors":["[[Hal Needham]]"],"producers":["[[Albert S. Ruddy]]"],"companies":["[[Orange Sky Golden Harvest|Golden Harvest]]","[[20th Century Fox]]","[[Warner Bros. Pictures]]","[[HBO Films]]","[[Media Asia|Media Asia Distribution]]","[[Star China Media|Fortune Star Media Ltd.]]"],"year":1981}))
+
+		test_does_not_crash("The Adventures of Milo and Otis")
+		test_does_not_crash("Ninja Scroll")
+		test_does_not_crash("Sendhoorapandi")
+		test_does_not_crash("That's Entertainment!")
+		test_does_not_crash("Hum Saath-Saath Hain")
 	end
 
 	def test_tv_shows
@@ -314,6 +320,10 @@ class TestGetCast < Test::Unit::TestCase
 		test_helper_empty("redirect")
 	end
 
+	def test_does_not_crash(fn)
+		test_helper(fn, nil, false)
+	end
+
 private
 	def test_helper(fn, expect_json, ignore_mismatch=false)
 		count = 0
@@ -321,10 +331,10 @@ private
 			parser = Parser.new do |movie|
 				count += 1
 				actual_json = movie.to_json
-				expect_json = expect_json.gsub(/\n\s*/, '')
+				expect_json = expect_json.gsub(/\n\s*/, '') if expect_json
 				if ignore_mismatch
 					puts "Known-broken test #{fn}: " + ((expect_json == actual_json) ? "FIXED" : "still broken")
-				else
+				elsif expect_json
 					assert_equal(expect_json, actual_json)
 				end
 			end
