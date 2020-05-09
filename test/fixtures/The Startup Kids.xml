@@ -1,0 +1,63 @@
+<page>
+    <title>The Startup Kids</title>
+    <ns>0</ns>
+    <id>39065310</id>
+    <revision>
+      <id>945032723</id>
+      <parentid>893994238</parentid>
+      <timestamp>2020-03-11T12:17:57Z</timestamp>
+      <contributor>
+        <username>Iridescent</username>
+        <id>937705</id>
+      </contributor>
+      <minor />
+      <comment>/* Production &amp; Funding */Cleanup and [[WP:AWB/T|typo fixing]], [[WP:AWB/T|typo(s) fixed]]: $23,000 USD →  US$23,000</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="2793" xml:space="preserve">{{italic title}}
+
+{{Infobox film
+| name           = The Startup Kids
+| image          = The Startup Kids Movie Poster.jpg
+| caption        = Theatrical release poster
+| director       = Vala Halldorsdottir, Sesselja Vilhjalmsdottir
+| starring       = {{Unbulleted list|[[Tim Draper]]|[[MG Siegler]]
+}}
+| released       = {{Film date|2012|09|02}}
+| runtime        = 55 minutes
+| country        = Iceland
+| language       = English
+| budget         = $23,000
+}}
+
+'''''The Startup Kids''''' is a documentary about young technology entrepreneurs in the U.S. and Europe.&lt;ref&gt;{{cit web|url=https://www.imdb.com/title/tt2279353/|title=The Startup Kids (2007)|publisher=IMDB}}&lt;/ref&gt; The hour-long movie was created by two Icelandic women, Vala Halldorsdottir and Sesselja Vilhjalmsdottir, and released in 2012. It contains interviews with startup founders who relay stories about the founding of their respective companies and their lives as [[entrepreneur|entrepreneurs]]. The film also features interviews of notable startup founders and investors from the US and Europe about the startup environment, including the venture capitalist [[Tim Draper]] and [[MG Siegler]], tech blogger at [[Techcrunch]].&lt;ref&gt;{{cite web|url=http://www.thestartupkids.com/|title=The Startup Kids Film Webpage}}&lt;/ref&gt;
+
+Notable interviewees featured in the documentary include:&lt;ref&gt;{{Cite web|url=http://thestartupkids.com/interviewees/|title=The Interviewees|website=The Startup Kids|language=en-US|access-date=2017-06-11}}&lt;/ref&gt;
+*[[Leah Culver]]
+*[[Zach Klein]]
+*[[inDinero|Jessica Mah]]
+*[[Ben Way]]
+*[[Brian Wong]]
+
+==Production &amp; Funding==
+The two filmmakers cited that they were inspired to create the documentary following their own successes in business so that the film could provide motivation to up and coming startup founders.&lt;ref&gt;{{cite web|url=https://smallbiztrends.com/2013/04/startup-kids-documentary.html|title=Startup Kids Documentary Outlines Journey for Young Entrepreneurs|publisher=Small Business Trends}}&lt;/ref&gt;
+
+To finance its production, the filmmakers raised US$23,000 in 2011 on [[crowdfunding]] platform [[Kickstarter]], surpassing the established $7,000 fundraising goal.&lt;ref&gt;{{cite web|url=https://www.kickstarter.com/projects/thestartupkids/the-startup-kids-0|title=The Startup Kids: a documentary about young web entrepreneurs in the U.S. and Europe|publisher=Kickstarter}}&lt;/ref&gt;
+
+==References==
+{{Reflist}}
+
+==External links==
+*{{Official website|http://thestartupkids.com/}}
+*{{IMDB title|id=2279353}}
+*[https://www.entrepreneurs-journey.com/11973/startup-kids/ Review] at Entrepreneurs-Journey.com. Retrieved June 11, 2017.
+
+{{DEFAULTSORT:Startup Kids, The}}
+[[Category:Documentary films about computer and internet entrepreneurs]]
+[[Category:2012 films]]
+
+
+{{bio-documentary-film-stub}}</text>
+      <sha1>mb4sayfy143kjcbn5r377bd17s5t9aq</sha1>
+    </revision>
+  </page>

@@ -481,6 +481,7 @@ private
 			right = find_end_braces(str, left) || str.size
 			inner = str[(left+2)...(right-2)]
 			tok = split_around_markup(inner, "|")
+			return str if tok.nil? || tok.empty?
 			str[left...right] = x = case tok.first.downcase
 				# https://en.wikipedia.org/wiki/Template:Anchor
 				when "anchor"
