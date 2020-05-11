@@ -282,7 +282,8 @@ private
 			break if /^ [=']+ \s* cast \s+ notes \b/ix.match(line)
 
 			# Look for bulleted-list lines, like "* Actor Name as Character Name"
-			if line =~ /^:? \s* \* \s* (.*)/x
+			# Also include indented lines like "** Actor Name as young Character Name"
+			if line =~ /^:? \s* \*+ \s* (.*)/x
 				line = $1
 			else
 				next

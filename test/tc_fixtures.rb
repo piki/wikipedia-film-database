@@ -167,7 +167,7 @@ class TestGetCast < Test::Unit::TestCase
 		# Diana Koerner is listed with links to "Diana Koerner" (stars list) and "Diana Körner" (cast section)
 		test_helper("Barry Lyndon",
 			%Q({"title":"Barry Lyndon",
-			    "cast":["[[Ryan O'Neal]]","[[Marisa Berenson]]","[[Patrick Magee (actor)|Patrick Magee]]","[[Hardy Krüger]]","[[Diana Koerner]]","[[Gay Hamilton]]","[[Michael Hordern]]","[[Godfrey Quigley]]","[[Steven Berkoff]]","[[Marie Kean]]","[[Murray Melvin]]","[[Frank Middlemass]]","[[Leon Vitali]]","[[Leonard Rossiter]]","[[André Morell]]","[[Anthony Sharp]]","[[Philip Stone]]","[[David Morley (musician)|David Morley]]","[[Diana Körner|Diana Koerner]]","[[Arthur O'Sullivan]]","[[Billy Boyle]]","[[Jonathan Cecil]]","[[Peter Cellier]]","[[Geoffrey Chater]]","[[Wolf Kahler]]","[[Liam Redmond]]","[[Roger Booth (actor)|Roger Booth]]","[[Ferdy Mayne]]","[[John Sharp (actor)|John Sharp]]","[[Pat Roach]]","[[Hans Meyer (actor)|Hans Meyer]]"],
+			    "cast":["[[Ryan O'Neal]]","[[Marisa Berenson]]","[[Patrick Magee (actor)|Patrick Magee]]","[[Hardy Krüger]]","[[Diana Koerner]]","[[Gay Hamilton]]","[[Michael Hordern]]","[[Godfrey Quigley]]","[[Steven Berkoff]]","[[Marie Kean]]","[[Murray Melvin]]","[[Frank Middlemass]]","[[Leon Vitali]]","[[Dominic Savage]]","[[Leonard Rossiter]]","[[André Morell]]","[[Anthony Sharp]]","[[Philip Stone]]","[[David Morley (musician)|David Morley]]","[[Diana Körner|Diana Koerner]]","[[Arthur O'Sullivan]]","[[Billy Boyle]]","[[Jonathan Cecil]]","[[Peter Cellier]]","[[Geoffrey Chater]]","[[Wolf Kahler]]","[[Liam Redmond]]","[[Roger Booth (actor)|Roger Booth]]","[[Ferdy Mayne]]","[[John Sharp (actor)|John Sharp]]","[[Pat Roach]]","[[Hans Meyer (actor)|Hans Meyer]]"],
 			    "directors":["[[Stanley Kubrick]]"],
 			    "producers":["[[Stanley Kubrick]]"],
 			    "companies":["[[Hawk Films]]","Peregrine Productions","[[Warner Bros.]]"],
@@ -295,6 +295,10 @@ class TestGetCast < Test::Unit::TestCase
 		#   - [[Adrienne Barbeau]] and [[Tara Buckman]] as Marcie Thatcher and Jill Rivers
 		skip_test_helper("The Cannonball Run",
 			%Q({"title":"The Cannonball Run","cast":["[[Burt Reynolds]]","[[Roger Moore]]","[[Farrah Fawcett]]","[[Dom DeLuise]]","[[Dean Martin]]","[[Sammy Davis Jr.]]","[[Adrienne Barbeau]]","[[Jamie Farr]]","[[Terry Bradshaw]]","[[Mel Tillis]]","[[Jackie Chan]]","[[Michael Hui]]","[[George Furth]]","[[Tara Buckman]]","[[Peter Fonda]]","[[Bert Convy]]","[[Jack Elam]]","[[Rick Aviles]]","[[John Fiedler]]","[[Joe Klecko]]","[[Hal Needham]]","[[Ken Squier]]","[[June Foray]]"],"directors":["[[Hal Needham]]"],"producers":["[[Albert S. Ruddy]]"],"companies":["[[Orange Sky Golden Harvest|Golden Harvest]]","[[20th Century Fox]]","[[Warner Bros. Pictures]]","[[HBO Films]]","[[Media Asia|Media Asia Distribution]]","[[Star China Media|Fortune Star Media Ltd.]]"],"year":1981}))
+
+		test_helper("Mamma Mia! Here We Go Again",
+			%Q({"title":"Mamma Mia! Here We Go Again","cast":["[[Christine Baranski]]","[[Pierce Brosnan]]","[[Dominic Cooper]]","[[Colin Firth]]","[[Andy García|Andy Garcia]]","[[Lily James]]","[[Amanda Seyfried]]","[[Stellan Skarsgård]]","[[Julie Walters]]","[[Cher]]","[[Meryl Streep]]","[[Jessica Keenan Wynn]]","[[Jeremy Irvine]]","[[Hugh Skinner]]","[[Andy García]]","Skarsgard","[[Josh Dylan]]","[[Alexa Davies]]","[[Maria Vacratsis]]","[[Celia Imrie]]","[[Omid Djalili]]","[[Björn Ulvaeus]]","[[Benny Andersson]]"],"directors":["[[Ol Parker]]"],"producers":["[[Judy Craymer]]","[[Gary Goetzman]]"],"companies":["[[Playtone]]","Littlestar Productions","[[Legendary Entertainment|Legendary Pictures]]","[[Perfect World Pictures]]","[[Universal Pictures]]"],"year":2018}))
+
 	end
 
 	def test_things_that_used_to_crash
