@@ -544,9 +544,10 @@ private
 		WORD_CONNECTORS.include?(word) || /^(?: d' | o' | de[A-Z])/x.match(word)
 	end
 
-	ACTOR_NAME_BLOCKLIST = [ "The", "In", "Director", /\b see \s+ below \b/xi, /^(and\s+)? other/xi ]
+	ACTOR_NAME_BLOCKLIST = [ "The", "In", "Director", /\b see \s+ below \b/xi, /^(and\s+)? other/xi, "''", "[[", "]]", "A", "An" ]
+	MIN_NAME_LENGTH = 2
 	def self.is_legal_actor?(str)
-		str && !str.empty? && !ACTOR_NAME_BLOCKLIST.any? {|pattern| pattern === str }
+		str && str.size >= MIN_NAME_LENGTH && !ACTOR_NAME_BLOCKLIST.any? {|pattern| pattern === str }
 	end
 end
 
