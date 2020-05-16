@@ -312,6 +312,14 @@ class TestGetCast < Test::Unit::TestCase
 			    "cast":[],
 			    "directors":["Xavier Agudo","Stanislava Buevich","Mike Canzoniero","Francois Coetzee","Martin de Barra","Todd Felderstein","Nicolas Fogliarini","Yango Gonzales","Omer Kula","Nino Leitner","Craig Lines","Vishesh Mankal","Giacomo Mantovani","Varun Mathur","Steve Murphy","Arne Nostitz-Rieneck","Asmit Pathare","Neha Raheja Thakker","Adam Ruszkowski","Alexander Schoenauer","Sabine Sebaali","Prashant Sehgal","Fahad Saikh","Marty Shea","Brian Shephard","Nicole Sylvester","John Versical","Rafael Yoshida"],
 			    "year":2012}))
+
+		test_helper("Health (film)",
+			%Q({"title":"Health (film)",
+		      "cast":["[[Carol Burnett]]","[[Glenda Jackson]]","[[James Garner]]","[[Lauren Bacall]]","[[Paul Dooley]]","[[Alfre Woodard]]","[[Henry Gibson]]","[[Donald Moffat]]","[[Dick Cavett]]","[[Dinah Shore]]","[[Nancy Foster]]","Nathalie Blossom","Julie Janney","Patty Katz","Diane Shaffer"],
+			    "directors":["[[Robert Altman]]"],
+		      "producers":["[[Robert Altman]]"],
+		      "companies":["Lion's Gate Films","[[20th Century Fox|20th Century-Fox]]"],
+		      "year":1982}))
 	end
 
 	def test_things_that_used_to_crash

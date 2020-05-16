@@ -305,6 +305,9 @@ private
 		top_row = data.first
 		return [] unless top_row
 		actor_columns = (0...top_row.size).select { |idx| top_row[idx] =~ /\b (actor|actress) \b/ix || top_row[idx] =~ /^ \s* cast \b/ix }
+		if actor_columns.empty?
+			actor_columns = (0...top_row.size).select { |idx| top_row[idx] =~ /^name$/i }
+		end
 		puts "Cast table: #{top_row.inspect} => #{actor_columns.inspect}" if Parser.debug
 
 		# If there are no headers with the word "actor", it's a free-form
