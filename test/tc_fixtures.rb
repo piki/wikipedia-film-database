@@ -299,6 +299,10 @@ class TestGetCast < Test::Unit::TestCase
 		test_helper("Mamma Mia! Here We Go Again",
 			%Q({"title":"Mamma Mia! Here We Go Again","cast":["[[Christine Baranski]]","[[Pierce Brosnan]]","[[Dominic Cooper]]","[[Colin Firth]]","[[Andy García|Andy Garcia]]","[[Lily James]]","[[Amanda Seyfried]]","[[Stellan Skarsgård]]","[[Julie Walters]]","[[Cher]]","[[Meryl Streep]]","[[Jessica Keenan Wynn]]","[[Jeremy Irvine]]","[[Hugh Skinner]]","[[Andy García]]","Skarsgard","[[Josh Dylan]]","[[Alexa Davies]]","[[Maria Vacratsis]]","[[Celia Imrie]]","[[Omid Djalili]]","[[Björn Ulvaeus]]","[[Benny Andersson]]"],"directors":["[[Ol Parker]]"],"producers":["[[Judy Craymer]]","[[Gary Goetzman]]"],"companies":["[[Playtone]]","Littlestar Productions","[[Legendary Entertainment|Legendary Pictures]]","[[Perfect World Pictures]]","[[Universal Pictures]]"],"year":2018}))
 
+		test_helper("American Drug War: The Last White Hope",
+			%Q({"title":"American Drug War: The Last White Hope",
+			    "cast":["[[Sheriff Joe Arpaio]]","[[Jello Biafra]]","Chico Brown","[[Celerino Castillo III]]","[[Tommy Chong]]","Sergeant Lou Daigle","Dr. Gary Fisher","Judge [[Jim Gray (jurist)|Jim Gray]]","Dr. Charles Grob","Dr. Claudia Jensen","[[Gary Johnson]]","[[Dennis Kucinich]]","[[Barry McCaffrey|General Barry McCaffrey]]","[[Todd McCormick]]","[[Cynthia McKinney]]","[[Ron Paul]]","Joe Pietri","[[Tom Rhodes]]","[[Joe Rogan]]","[[Ricky Ross (drug trafficker)|Freeway Ricky Ross]]","[[Michael Ruppert]]","[[Robert David Steele|Robert Steele]]"],"directors":["[[Kevin Booth]]"],"producers":["Sacred Cow"],"companies":["Passion River"],"year":2007}))
+
 	end
 
 	def test_things_that_used_to_crash

@@ -181,6 +181,10 @@ private
 			body = expand_brace_commands(body)
 			body = remove_comments(body)
 			arr = split_around_markup(body, "|")
+		elsif
+			line =~ /\]\],\s+\[\[/
+			arr = line.split(/,\s+/)
+			arr.last.sub!(/and\s+/, '')
 		else
 			arr = line.split(/\s* <br \s* \/? > \s*/xi)  # <br/> or <br>
 		end
@@ -534,7 +538,7 @@ private
 		WORD_CONNECTORS.include?(word) || /^(?: d' | o' | de[A-Z])/x.match(word)
 	end
 
-	ACTOR_NAME_BLOCKLIST = [ "The", "In", "Director", /\b see \s+ below \b/xi ]
+	ACTOR_NAME_BLOCKLIST = [ "The", "In", "Director", /\b see \s+ below \b/xi, /^(and\s+)? other/xi ]
 	def self.is_legal_actor?(str)
 		str && !str.empty? && !ACTOR_NAME_BLOCKLIST.any? {|pattern| pattern === str }
 	end
