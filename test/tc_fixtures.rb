@@ -301,8 +301,17 @@ class TestGetCast < Test::Unit::TestCase
 
 		test_helper("American Drug War: The Last White Hope",
 			%Q({"title":"American Drug War: The Last White Hope",
-			    "cast":["[[Sheriff Joe Arpaio]]","[[Jello Biafra]]","Chico Brown","[[Celerino Castillo III]]","[[Tommy Chong]]","Sergeant Lou Daigle","Dr. Gary Fisher","Judge [[Jim Gray (jurist)|Jim Gray]]","Dr. Charles Grob","Dr. Claudia Jensen","[[Gary Johnson]]","[[Dennis Kucinich]]","[[Barry McCaffrey|General Barry McCaffrey]]","[[Todd McCormick]]","[[Cynthia McKinney]]","[[Ron Paul]]","Joe Pietri","[[Tom Rhodes]]","[[Joe Rogan]]","[[Ricky Ross (drug trafficker)|Freeway Ricky Ross]]","[[Michael Ruppert]]","[[Robert David Steele|Robert Steele]]"],"directors":["[[Kevin Booth]]"],"producers":["Sacred Cow"],"companies":["Passion River"],"year":2007}))
+			    "cast":["[[Sheriff Joe Arpaio]]","[[Jello Biafra]]","Chico Brown","[[Celerino Castillo III]]","[[Tommy Chong]]","Sergeant Lou Daigle","Dr. Gary Fisher","Judge [[Jim Gray (jurist)|Jim Gray]]","Dr. Charles Grob","Dr. Claudia Jensen","[[Gary Johnson]]","[[Dennis Kucinich]]","[[Barry McCaffrey|General Barry McCaffrey]]","[[Todd McCormick]]","[[Cynthia McKinney]]","[[Ron Paul]]","Joe Pietri","[[Tom Rhodes]]","[[Joe Rogan]]","[[Ricky Ross (drug trafficker)|Freeway Ricky Ross]]","[[Michael Ruppert]]","[[Robert David Steele|Robert Steele]]"],
+			    "directors":["[[Kevin Booth]]"],
+			    "producers":["Sacred Cow"],
+			    "companies":["Passion River"],
+			    "year":2007}))
 
+		test_helper("The Owner",
+			%Q({"title":"The Owner",
+			    "cast":[],
+			    "directors":["Xavier Agudo","Stanislava Buevich","Mike Canzoniero","Francois Coetzee","Martin de Barra","Todd Felderstein","Nicolas Fogliarini","Yango Gonzales","Omer Kula","Nino Leitner","Craig Lines","Vishesh Mankal","Giacomo Mantovani","Varun Mathur","Steve Murphy","Arne Nostitz-Rieneck","Asmit Pathare","Neha Raheja Thakker","Adam Ruszkowski","Alexander Schoenauer","Sabine Sebaali","Prashant Sehgal","Fahad Saikh","Marty Shea","Brian Shephard","Nicole Sylvester","John Versical","Rafael Yoshida"],
+			    "year":2012}))
 	end
 
 	def test_things_that_used_to_crash

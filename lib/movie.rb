@@ -181,12 +181,13 @@ private
 			body = expand_brace_commands(body)
 			body = remove_comments(body)
 			arr = split_around_markup(body, "|")
-		elsif
-			line =~ /\]\],\s+\[\[/
-			arr = line.split(/,\s+/)
-			arr.last.sub!(/and\s+/, '')
 		else
-			arr = line.split(/\s* <br \s* \/? > \s*/xi)  # <br/> or <br>
+			arr = line.split(/,\s+/)
+			if arr.size >= 3
+				arr.last.sub!(/and\s+/, '')
+			else
+				arr = line.split(/\s* <br \s* \/? > \s*/xi)  # <br/> or <br>
+			end
 		end
 		arr = arr.map { |tok| strip_parenthetical(plain_textify(tok)).strip }
 		arr.select! { |x| is_legal_actor?(x) }
