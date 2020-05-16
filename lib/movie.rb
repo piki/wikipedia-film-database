@@ -143,6 +143,8 @@ private
 					if value =~ /\b ((?: 18 | 19 | 20) \d \d) \b/x
 						ret["year"] = $1.to_i
 					end
+				when "runtime"
+					raise MovieSeriesException.new if value =~ /\bTotal\b/
 			end
 		end
 		ret["companies"].uniq! if ret["companies"]
@@ -547,3 +549,5 @@ private
 		str && !str.empty? && !ACTOR_NAME_BLOCKLIST.any? {|pattern| pattern === str }
 	end
 end
+
+class MovieSeriesException < Exception; end

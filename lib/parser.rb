@@ -65,6 +65,9 @@ private
 		end
 		begin
 			m = Movie.parse(@title, @text)
+		rescue MovieSeriesException
+			puts "MOVIE SERIES: #{@title}"
+			m = nil
 		rescue => e
 			puts "EXCEPTION parsing #{@title.inspect}:"
 			puts e

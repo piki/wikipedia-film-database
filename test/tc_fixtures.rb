@@ -320,6 +320,8 @@ class TestGetCast < Test::Unit::TestCase
 		      "producers":["[[Robert Altman]]"],
 		      "companies":["Lion's Gate Films","[[20th Century Fox|20th Century-Fox]]"],
 		      "year":1982}))
+
+		test_helper_empty("Final Destination")
 	end
 
 	def test_things_that_used_to_crash
