@@ -66,7 +66,7 @@ private
 		begin
 			m = Movie.parse(@title, @text)
 		rescue MovieSeriesException
-			puts "MOVIE SERIES: #{@title}"
+			puts "MOVIE SERIES: #{@title}" if Parser.debug
 			m = nil
 		rescue => e
 			puts "EXCEPTION parsing #{@title.inspect}:"
