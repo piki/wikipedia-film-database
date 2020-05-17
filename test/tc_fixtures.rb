@@ -322,6 +322,14 @@ class TestGetCast < Test::Unit::TestCase
 		      "year":1982}))
 
 		test_helper_empty("Final Destination")
+
+		skip_test_helper("Dr. Strangelove",
+			%Q({"title":"Dr. Strangelove",
+			    "cast":["[[Peter Sellers]]","[[George C. Scott]]","[[Sterling Hayden]]","[[Keenan Wynn]]","[[Slim Pickens]]","[[Tracy Reed (English actress)|Tracy Reed]]","[[Peter Bull]]","[[James Earl Jones]]","[[Shane Rimmer]]"],
+			    "directors":["[[Stanley Kubrick]]"],
+			    "producers":["[[Stanley Kubrick]]"],
+			    "companies":["[[Hawk Films]]","[[Columbia Pictures]]"],
+			    "year":1964}))
 	end
 
 	def test_things_that_used_to_crash
