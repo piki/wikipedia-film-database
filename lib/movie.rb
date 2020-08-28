@@ -183,6 +183,8 @@ private
 			body = expand_brace_commands(body)
 			body = remove_comments(body)
 			arr = split_around_markup(body, "|")
+		elsif line =~ /see.*below/
+			arr = []
 		else
 			arr = line.split(/,\s+/)
 			if arr.size >= 3
