@@ -549,7 +549,8 @@ private
 
 	ACTOR_NAME_BLOCKLIST = [
 		"The", "In", "Director", "This", "He", "She",
-		/'*executive'*/, /'*presenter'*/, "in association with",
+		/^'*associate'*/, /^'*executive'*/, /^'*presenter'*/, "in association with",
+		/uncredited/i,
 		/\b see \s+ below \b/xi, /^(and\s+)? other/xi, "''", "[[", "]]", "A", "An" ]
 	MIN_NAME_LENGTH = 2
 	def self.is_legal_actor?(str)
