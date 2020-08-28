@@ -354,7 +354,7 @@ private
 		ret
 	end
 
-	EPITHETS = [ /^Director\s+/, /^Veteran.*(?=\[\[)/ ]
+	EPITHETS = [ /^Director\s+/, /^Veteran.*(?=\[\[)/, /^'*(?:co-?starring|starring|with)'*(?:<br>)?/ ]
 	def self.get_actor_from_line(line)
 		was = line.dup
 		# Strip leading epithets
