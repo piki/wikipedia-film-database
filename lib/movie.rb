@@ -361,6 +361,7 @@ private
 		EPITHETS.each do |pattern|
 			line.gsub!(pattern, '')
 		end
+		line = line.gsub(/(.*), voiced by (.*)/, '\2 as \1')
 
 		# If the line begins with a link, and the text of that link is an
 		# actor's name, then return the whole link.
