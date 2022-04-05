@@ -6,7 +6,7 @@ GEM
     test-unit (3.3.5)
       power_assert
     unicode (0.4.4.4)
-    yajl-ruby (1.4.1)
+    yajl-ruby (1.4.2)
 
 PLATFORMS
   ruby
