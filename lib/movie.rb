@@ -6,6 +6,7 @@
 # `Movie.get_cast`, which extract structured data from each article's the
 # infobox (right sidebar) and Cast section, respectively.
 require 'yajl'
+require 'set'
 $:.unshift File.expand_path "../../lib", __FILE__
 require 'wikitable'
 require 'unicode'
