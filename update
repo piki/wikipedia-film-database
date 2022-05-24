@@ -1,0 +1,21 @@
+#!/bin/bash -e
+
+TARGET=filmdb.txt
+
+# Find the date of the latest dump
+LATEST=$(curl https://dumps.wikimedia.org/enwiki/ | grep -o '\b[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\b' | sort | tail -1)
+[ -n "$LATEST" ]
+
+# Download the article dump
+wget -c https://dumps.wikimedia.org/enwiki/$LATEST/enwiki-$LATEST-pages-articles-multistream-index.txt.bz2
+wget -c https://dumps.wikimedia.org/enwiki/$LATEST/enwiki-$LATEST-pages-articles-multistream.xml.bz2
+
+# Parse the articles to make the database file
+if [ -r "$TARGET" ]; then
+	mv "$TARGET" "$TARGET.old"
+fi
+bzip2 -cd enwiki-$LATEST-pages-articles-multistream.xml.bz2 | ./find-movies | tee filmdb.txt
+
+# Clean up
+ls enwiki-*-pages-articles-multistream*bz2 | grep -v $LATEST | xargs rm
+rm "$TARGET.old"
