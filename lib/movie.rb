@@ -135,7 +135,7 @@ private
 					if val = parse_infobox_list(value)
 						ret["stars"] = val
 					end
-				when "studio", "distributor", "production companies"
+				when "studio", "distributor", "production companies", "production_companies"
 					if val = parse_infobox_list(value)
 						ret["companies"] ||= []
 						ret["companies"] += val
