@@ -321,6 +321,14 @@ class TestGetCast < Test::Unit::TestCase
 		      "companies":["Lion's Gate Films","[[20th Century Fox|20th Century-Fox]]"],
 		      "year":1982}))
 
+		test_helper("The Incredibles",
+			%Q({"title":"The Incredibles",
+		      "cast":["[[Craig T. Nelson]]","[[Holly Hunter]]","[[Sarah Vowell]]","[[Spencer Fox]]","[[Jason Lee (actor)|Jason Lee]]","[[Samuel L. Jackson]]","[[Elizabeth Peña]]","Eli Fucile","[[Brad Bird]]","[[Teddy Newton]]","[[Jean Sincere]]","[[Bud Luckey]]","[[Wallace Shawn]]","[[Lou Romano]]","Michael Bird","Dominique Louis","Bret Parker","Kimberly Adair Clark","[[John Ratzenberger]]"],
+			    "directors":["[[Brad Bird]]"],
+		      "producers":["[[John Walker (film producer)|John Walker]]"],
+		      "companies":["[[Walt Disney Pictures]]","[[Pixar Animation Studios]]","[[Walt Disney Studios Motion Pictures|Buena Vista Pictures Distribution]]"],
+		      "year":2004}))
+
 		test_helper_empty("Final Destination")
 
 		skip_test_helper("Dr. Strangelove",
