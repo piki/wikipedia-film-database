@@ -246,8 +246,8 @@ private
 	# The return value is an array of actors' names.
 	def self.get_cast(text)
 		# Allow several different formats for the Cast section heading:
-		#   Main cast, Cast, Casting
-		m = /^ =+ \s* (?:Main \s+ cast|Cast|Casting) \b (.*)/xmi.match(text)
+		#   Main cast, Cast, Casting, Voice cast
+		m = /^ =+ \s* (?:Main \s+ cast|Cast|Casting|Voice \s+ cast) \b (.*)/xmi.match(text)
 		return nil unless m
 
 		ofs = m.begin(0)
