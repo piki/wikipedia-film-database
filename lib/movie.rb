@@ -192,6 +192,13 @@ private
 				arr.last.sub!(/and\s+/, '')
 			else
 				arr = line.split(/\s* <br \s* \/? > \s*/xi)  # <br/> or <br>
+
+				# If we split at <br> and shouldn't have, because the whole string
+				# was like "[[ Walt <br> Disney ]]", glue it back together without
+				# the "<br>".
+				if arr.first =~ /^\[\[/ && arr.first !~ /\]\]/ && arr.last !~ /\[\[/ && arr.last =~ /\]\]$/
+					arr = [arr.join(' ')]
+				end
 			end
 		end
 		arr = arr.map { |tok| strip_parenthetical(plain_textify(tok)).strip }

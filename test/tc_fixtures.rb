@@ -329,6 +329,14 @@ class TestGetCast < Test::Unit::TestCase
 		      "companies":["[[Walt Disney Pictures]]","[[Pixar Animation Studios]]","[[Walt Disney Studios Motion Pictures|Buena Vista Pictures Distribution]]"],
 		      "year":2004}))
 
+		test_helper("Cars 2",
+			%Q({"title":"Cars 2",
+		      "cast":["[[Owen Wilson]]","[[Larry the Cable Guy]]","[[Michael Caine]]","[[Emily Mortimer]]","[[John Turturro]]","[[Eddie Izzard]]","[[Thomas Kretschmann]]","[[Joe Mantegna]]","[[Bruce Campbell]]","[[Tony Shalhoub]]","[[Darrell Waltrip]]","[[Guido Quaroni]]","[[Brent Musburger]]","[[Jason Isaacs]]","[[Siddeley (Cars)|Siddeley]]","[[Leland Turbo]]","[[David Hobbs (racing driver)|David Hobbs]]","[[Stanley Townsend]]","[[Lloyd Sherr]]","[[Fillmore (Cars)|Fillmore]]","[[Tony Trihull]]","[[Paul Dooley]]","Michel Michelis","[[Sig Hansen]]","[[Franco Nero]]","[[Vanessa Redgrave]]","[[Bonnie Hunt]]","[[Cheech Marin]]","[[Jenifer Lewis]]","[[Michael Wallis]]","[[Katherine Helmond]]","[[John Ratzenberger]]","[[Jeff Garlin]]","Patrick Walker","[[Lewis Hamilton]]","[[Velibor Topic]]","[[Greg Ellis (actor)|Greg Ellis]]","John Mainier","[[Brad Lewis]]","[[Richard Kind]]","[[Edie McClurg]]","[[Teresa Gallagher]]","[[Jeff Gordon]]","[[John Lasseter]]","[[Mark Winterbottom]]","[[Fernando Alonso]]","[[Vitaly Petrov]]","[[Jan Nilsson]]","[[Memo Rojas]]","[[Sebastian Vettel]]"],
+		      "directors":["[[John Lasseter]]"],
+		      "producers":["Denise Ream"],
+		      "companies":["[[Walt Disney Pictures]]","[[Pixar|Pixar Animation Studios]]","[[Walt Disney Studios Motion Pictures|Walt Disney Studios Motion Pictures]]"],
+		      "year":2011}))
+
 		test_helper_empty("Final Destination")
 
 		skip_test_helper("Dr. Strangelove",
