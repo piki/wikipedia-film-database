@@ -12,7 +12,7 @@ require 'wikitable'
 require 'unicode'
 
 class Movie
-	attr_accessor :title, :cast, :directors, :producers, :companies, :year
+	attr_accessor :title, :cast, :directors, :producers, :production_companies, :distribution_companies, :year
 
 	def initialize(title, year)
 		@title = title
@@ -28,14 +28,14 @@ class Movie
 	# to be two different people.
 	def linkify
 		linkmap = {}
-		[ @cast, @directors, @producers, @companies ].compact.each do |arr|
+		[ @cast, @directors, @producers, @production_companies, @distribution_companies ].compact.each do |arr|
 			arr.each do |name|
 				plain = Movie.delinkify(name)
 				linkmap[plain] = name unless plain == name
 			end
 		end
 
-		[ @cast, @directors, @producers, @companies ].compact.each do |arr|
+		[ @cast, @directors, @producers, @production_companies, @distribution_companies ].compact.each do |arr|
 			arr.each_with_index do |name, idx|
 				if linkmap[name]
 					arr[idx] = linkmap[name]
@@ -72,7 +72,8 @@ class Movie
 			m.year      = infobox["year"]      if infobox["year"]
 			m.directors = infobox["directors"] if infobox["directors"]
 			m.producers = infobox["producers"] if infobox["producers"]
-			m.companies = infobox["companies"] if infobox["companies"]
+			m.production_companies   = infobox["production_companies"]   if infobox["production_companies"]
+			m.distribution_companies = infobox["distribution_companies"] if infobox["distribution_companies"]
 		end
 
 		if cast.empty?
@@ -90,7 +91,8 @@ class Movie
 		h["cast"] = @cast if @cast
 		h["directors"] = @directors if @directors
 		h["producers"] = @producers if @producers
-		h["companies"] = @companies if @companies
+		h["production_companies"] = @production_companies if @production_companies
+		h["distribution_companies"] = @distribution_companies if @distribution_companies
 		h["year"] = @year if @year
 
 		@@encoder ||= Yajl::Encoder.new
@@ -135,10 +137,15 @@ private
 					if val = parse_infobox_list(value)
 						ret["stars"] = val
 					end
-				when "studio", "distributor", "production companies", "production_companies"
+				when "studio", "production companies", "production_companies"
 					if val = parse_infobox_list(value)
-						ret["companies"] ||= []
-						ret["companies"] += val
+						ret["production_companies"] ||= []
+						ret["production_companies"] += val
+					end
+				when "distributor"
+					if val = parse_infobox_list(value)
+						ret["distribution_companies"] ||= []
+						ret["distribution_companies"] += val
 					end
 				when "released"
 					if value =~ /\b ((?: 18 | 19 | 20) \d \d) \b/x
@@ -148,7 +155,8 @@ private
 					raise MovieSeriesException.new if value =~ /\bTotal\b/
 			end
 		end
-		ret["companies"].uniq! if ret["companies"]
+		ret["production_companies"].uniq! if ret["production_companies"]
+		ret["distribution_companies"].uniq! if ret["distribution_companies"]
 		ret
 	end
 
