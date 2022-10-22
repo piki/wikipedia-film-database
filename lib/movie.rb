@@ -172,7 +172,9 @@ private
 			break unless eofs
 
 			body = str[ofs+2 ... eofs-2]  # omit {{ and }}
-			entries = body.lines[1..-1].map { |x| x.gsub(/^\s* \* \s* /x, '').chomp }
+			entries = body.lines.map { |x|
+				x.gsub(/^plain \s* list \s* \| \s*/xi, '').gsub(/^\s* \* \s* /xi, '').chomp
+			}.reject(&:empty?)
 			
 			replacement = "{{ubl|#{entries.join('|')}}}"
 			str = str[0...ofs] + replacement + str[eofs..-1]

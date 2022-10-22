@@ -402,6 +402,15 @@ class TestGetCast < Test::Unit::TestCase
 			    "distribution_companies":["[[Walt Disney Studios Motion Pictures|Walt Disney Studios Motion Pictures]]"],
 			    "year":2011}))
 
+		test_helper("Things (film)",
+			%Q({"title":"Things (film)",
+			    "cast":["Barry J. Gillis","[[Amber Lynn]]","Bruce Roach","Doug Bunston","Jan W. Pachul","Patricia Sadler"],
+			    "directors":["Andrew Jordan"],
+			    "producers":["Andrew Jordan","Barry J. Gillis","Lorinda Collins"],
+			    "production_companies":["Left Field Productions"],
+			    "distribution_companies":["Exosphere Motion Pictures"],
+			    "year":1989}))
+
 		test_helper_empty("Final Destination")
 
 		skip_test_helper("Dr. Strangelove",
