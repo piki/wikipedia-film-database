@@ -1,0 +1,11 @@
+#!/usr/bin/ruby
+
+require 'csv'
+
+a = CSV.read("crops.csv")
+
+a.each do |_,fn,w,h,left,top,_,_|
+  puts fn
+	newfn = fn.gsub(%r{(.*/)}) { "#{$1}crop-" }
+  system("convert \"#{fn}\" -crop #{w}x#{h}+#{left}+#{top} \"#{newfn}\"")
+end

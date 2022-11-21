@@ -1,0 +1,48 @@
+#!/usr/bin/ruby
+
+require 'cgi'
+require 'open-uri'
+
+who = ARGV.first
+dir = "#{Dir.pwd}/images/#{who}"
+fn = "#{dir}/#{who}.xml"
+Dir.mkdir(dir) unless Dir.exist?(dir)
+
+if !File.exist?(fn)
+	system("cd .. ; ./get-article \"#{who}\" > \"#{fn}\"")
+end
+
+lines = File.readlines(fn)
+images = lines.grep(/\|\s*image\d*\s*=/).map{|s| s.split('=')[1].strip}
+lines.each do |line|
+	if line =~ /(File:[^\|\]]+\.(jpg|JPG|png|PNG))/
+		images << $1
+	end
+end
+
+images.each do |img|
+	puts "Image name: #{img.inspect}"
+	img = img[5..-1] if img.start_with?("File:")
+	url = "https://commons.wikimedia.org/wiki/File:#{CGI.escape(img.gsub(' ', '_'))}"
+	puts "URL: #{url}"
+
+	imgurl = license = nil
+	licenses = []
+	fp = open(url)
+	fp.each_line do |line|
+		if line =~ /div class="fullImageLink" id="file"><a href="([^"]+)">/
+			imgurl = $1
+			puts "Image URL: #{imgurl}"
+		elsif line =~ /<span class="licensetpl_long"[^>]*>([^<]+)</
+			puts "License: #{$1}"
+			licenses << $1
+		end
+	end
+	fp.close
+
+	fp = open(imgurl)
+	IO.copy_stream(fp, "#{dir}/#{img}")
+	puts "Download complete."
+
+	File.write("#{dir}/#{img}.license", licenses.join("\n"))
+end
