@@ -2,10 +2,16 @@
 
 require 'csv'
 
-a = CSV.read("crops.csv")
+LARGE_SIZE = "850x850"
+SMALL_SIZE = "150x150"
+
+a = CSV.new($stdin)
 
 a.each do |_,fn,w,h,left,top,_,_|
-  puts fn
-	newfn = fn.gsub(%r{(.*/)}) { "#{$1}crop-" }
-  system("convert \"#{fn}\" -crop #{w}x#{h}+#{left}+#{top} \"#{newfn}\"")
+	puts fn
+	path = File.dirname(fn)
+	system %Q{convert "#{fn}" -crop #{w}x#{h}+#{left}+#{top} "#{path}/crop.jpg"}
+	system %Q{convert "#{path}/crop.jpg" -resize '#{LARGE_SIZE}>' "#{path}/large.jpg"}
+	system %Q{convert "#{path}/crop.jpg" -resize '#{SMALL_SIZE}>' "#{path}/small.jpg"}
+	system %Q{jhead -de -di "#{path}/large.jpg" "#{path}/small.jpg"}
 end
