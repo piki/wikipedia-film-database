@@ -2,21 +2,32 @@
 
 require 'cgi'
 require 'open-uri'
+require 'fileutils'
 
 who = ARGV.first
 dir = "#{Dir.pwd}/images/#{who}"
 fn = "#{dir}/#{who}.xml"
-Dir.mkdir(dir) unless Dir.exist?(dir)
+FileUtils.mkdir_p(dir)
 
 if !File.exist?(fn)
-	system("cd .. ; ./get-article \"#{who}\" > \"#{fn}\"")
+	system("cd .. ; ./get-article '#{who}' > '#{fn}'")
 end
 
 lines = File.readlines(fn)
 images = lines.grep(/\|\s*image\d*\s*=/).map{|s| s.split('=')[1].strip}
+images = []
+
+lines.grep(/\|\s*image\d*\s*=/).each do |line|
+	fn = line.split('=')[1].strip
+	fn.gsub!(/\s*&lt;!--.*?--&gt;\s*/, '')
+		images << fn
+end
+
 lines.each do |line|
 	if line =~ /(File:[^\|\]]+\.(jpg|JPG|png|PNG))/
-		images << $1
+		fn = $1
+		fn.gsub!(/\s*&lt;!--.*?--&gt;\s*/, '')
+		images << fn
 	end
 end
 
